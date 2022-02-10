@@ -3,17 +3,27 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
+    const hyperLinks = [
+        ["Campus Cafe", "https://tab-web.scansoftware.com/cafeweb/login"],
+        ["Tabor Cafe Menu", "https://oncampusdining.com/tabor/menus/"],
+        ["Tabor Main Page", "https://tabor.edu/"],
+        ["Sports", "https://www.taborbluejays.com/"],
+        ["Calendar", "https://tabor.edu/calendar/"],
+        ["News", "https://tabor.edu/news"],
+        ["library", "https://taborcollege.libguides.com/library"],
+    ];
+
     return (
         <View style={styles.container}>
-            <Text
-                onPress={() =>
-                    Linking.openURL(
-                        "https://tab-web.scansoftware.com/cafeweb/login"
-                    )
-                }
-            >
-                Campus Cafe
-            </Text>
+            {hyperLinks.map(([name, url]) => (
+                <Text
+                    key={name}
+                    style={{ marginVertical: 18 }}
+                    onPress={() => Linking.openURL(url)}
+                >
+                    {name}
+                </Text>
+            ))}
             <StatusBar style="auto" />
         </View>
     );
