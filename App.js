@@ -1,17 +1,25 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+=======
+import React from 'react';
+import {StyleSheet, View, Text, Image} from 'react-native';
+
+import MenuScreen from './screens/MenuScreen.js';
+
+>>>>>>> 4e332832759686f7911fab62c5544be9e1b646d6
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+       <View style={styles.container}>
+          <MenuScreen title="Tabor College" />
+       </View>
+    );
 }
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -59,3 +67,9 @@ const styles = StyleSheet.create({
     },
 >>>>>>> parent of 4e33283... Comit for Front_End
 });
+=======
+    container: {
+        flex: 1,
+    }
+})
+>>>>>>> 4e332832759686f7911fab62c5544be9e1b646d6
