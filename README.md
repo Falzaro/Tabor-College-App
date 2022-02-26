@@ -11,9 +11,11 @@
 3. On your iPhone, scan the QR code with your default camera. You can now view the UI of the app. If you are using an android phone, press "Scan QR Code" on the "Projects" tab of the Expo Go app and scan the QR code you see in the terminal or in Expo Dev Tools.
 
 
-### Documentation from Team Members
+### Brief Description of Team Member's Roles
 Fitri Rozi - <br />
 Tan Tran - <br />
 Dan Khuu - <br />
-Sriram Srinivasan - My role is a backend developer and I work with Karishma Bhakta and Fitri Rozi to (a) scrape Tabor College website, (b) put the scraped data into Firebase, and (c) connect the backend to the frontend components. Here my individual journal: [Sriram Individual Journal.docx](https://github.com/Falzaro/Tabor-College-App/files/8147344/Sriram.Individual.Journal.docx) <br />
+Sriram Srinivasan - My role is a backend developer and I work with Karishma Bhakta and Fitri Rozi to (a) scrape Tabor College website, (b) put the scraped data into Firebase, and (c) connect the backend to the frontend components of the mobile app. Here my individual journal: [Sriram Individual Journal.docx](https://github.com/Falzaro/Tabor-College-App/files/8147344/Sriram.Individual.Journal.docx) <br />
 Karishma Bhakta - <br />
+
+### Team Documents from Fall 2021
