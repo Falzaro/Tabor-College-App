@@ -15,7 +15,7 @@
 Fitri Rozi - <br />
 Tan Tran - <br />
 Dan Khuu - <br />
-Sriram Srinivasan - My role is a backend developer and I work with Karishma Bhakta and Fitri Rozi to (a) scrape Tabor College website, (b) put the scraped data into Firebase, and (c) connect the backend to the frontend components of the mobile app. Here my individual journal: [Sriram Individual Journal.docx](https://github.com/Falzaro/Tabor-College-App/files/8147344/Sriram.Individual.Journal.docx) <br />
+Sriram Srinivasan - My role is a backend developer and I work with Karishma Bhakta and Fitri Rozi to (a) scrape Tabor College website, (b) put the scraped data into Firebase, and (c) connect the backend to the frontend components of the mobile app. <br />
 Karishma Bhakta - <br />
 
-### Team Documents from Fall 2021
+### Documents from Fall 2021
