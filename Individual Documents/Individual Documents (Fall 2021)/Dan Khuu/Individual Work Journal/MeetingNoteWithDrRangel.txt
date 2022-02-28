@@ -1,0 +1,59 @@
+Dr Rangle : 
+
+Background : Campus problem, poor communication...bombarded email w/ student life (from all sources, academic, athletic) go to diff place to find the answer. Ignoring all the email from campus (it's overwhelming). Sol : a one stop shop to go see all thing on campus. For ex: what's for lunch, what is on sale at the bookstore...etc.
+
+-No one at campus is a cs major or IT.
+
+A static apps. Giving student information that students needs.
+
+Requirements : 
+
+Texas A&AM app (something similar to that)
+
+Multi-app platform : will be both for IOS & ANDROID
+
+How to communicate to talk : 
+
+zoom any time and students in class that can meet during the day. Cells.
+
+Target is students on campus and Alumini. 
+
+ISSUES: Update? how would I be able to update. If you guys leave then how would I update this? 
+
+What kind of software requirements would I need to do this update (for this project, cause I don't know coding)? 
+
+What kind of update ? the content? 
+
+- buttons they selected would take them to a website. For ex, athletic take to a page with all the sport and click it to take it to the tabor football webpage...
+- Don't have the man power to keep the power in the app to get the content updated.
+- 1 button to take them everywhere...
+
+The thing on the app that need update : add new functions (ex button) for example : all program that kids need to login, campus cafe, enrollment and grades. 
+
+Goals : to have button that don't need to manipulate often. (Need to stay it for a while) further to dev a **robust apps**.
+
+If I needed help or support what do I do. (Dr. Rangle)
+
+Arranging a testing community ? Yes there is a group that would provide feedback for testing. 
+
+Would this app req students to sign in? No login requires (same information for all students)
+
+1. Method of hosting content? Talk to IT
+2. GitHub software management?  (APPLE STORE AND GOOGLEPLAY)
+3. User interface requirements - ADA? 
+
+What do you for see a req or need from the IT departments?
+
+What do we need to know from the IT teams (Dr Rangle asked) ? 
+
+How would we get access to other department information ?
+
+- She is going to relied on all those admin to maintain the website. If there's a static information (ex a list of number) she will provide it to us.
+
+Problems : student life sent out information that student need to know. But there's a tons of email that spam them already. So they ignored it. 
+
+-A dynamic content...API to get live data to get update information. 
+
+Need to Provide Dr Rangle a UI / UX designs and a Timeline.
+
+Zack Ditrix will be main contact.
