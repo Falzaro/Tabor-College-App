@@ -33,6 +33,6 @@
 
 ### Example to import an Icon 
 - How to import Icon once it is installed. 
-- Type: `import name_it_your_choice from 'react-native-vector-icons/which_Available_Icons_it_is_from';
+- Type: `import name_it_your_choice from 'react-native-vector-icons/which_Available_Icons_it_is_from';`
 Here is an example from fontAwesome: 
-- `import ShoppingCart from 'react-native-vector-icons/FontAwesome';
+- `import ShoppingCart from 'react-native-vector-icons/FontAwesome';`
