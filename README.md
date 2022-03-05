@@ -19,13 +19,13 @@ Installing Python: </br>
 1. Install Python via https://www.python.org/downloads/.
 2. Verify Python is installed by running the following command in the terminal: $ python --version
 
-Installing Pip </br>
+Installing Pip: </br>
 1. Once Python is installed, download script from https://bootstrap.pypa.io/get-pip.py and store in </br>
 the same directory where Python was installed earlier.
 2. In the terminal, run the following command: python get-pip.py
 3. Once the installation process is completed, Pip is now installed in the system.
 
-Installing BeautifulSoup </br>
+Installing BeautifulSoup: </br>
 1. Once Pip is installed, run the following command: pip install beautifulsoup4
 2. Once the installation process is completed, BeautifulSoup is now installed in the system.
 
