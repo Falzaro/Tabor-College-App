@@ -4,7 +4,6 @@ import { Text, StyleSheet, TouchableOpacity, Linking } from "react-native";
 function MainButton({ label, link, Image }) {
     return (
         <TouchableOpacity
-            key={label}
             style={styles.button}
             onPress={() => Linking.openURL(link)}
         >
