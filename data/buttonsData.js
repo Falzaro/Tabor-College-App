@@ -1,14 +1,22 @@
+import {Image, StyleSheet} from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
+
+const styles = StyleSheet.create({
+    imageIcon: {
+        width: 50,
+        height: 50,
+    }
+})
 export const buttonsData = [
     {
         label: "Canvas",
         link: "https://tabor.instructure.com/login/ldap",
-        Image: null,
+        Image: <Image style = {styles.imageIcon} width="50%" height="50%"  source = {require('../assets/Canvas-Logo.png')}/>
     },
     {
         label: "Student Life",
@@ -80,3 +88,5 @@ export const buttonsData = [
         Image: <Ionicons name="library" size={40} color="#003082" />,
     },
 ];
+
+
