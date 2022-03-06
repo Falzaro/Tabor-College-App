@@ -27,7 +27,12 @@ const MenuScreen = ({ title }) => {
             {/* Map out the buttons */}
             <View style={styles.buttonContainer}>
                 {buttonsData.map(({ label, link, Image }) => (
-                    <MainButton label={label} link={link} Image={Image} />
+                    <MainButton
+                        key={label}
+                        label={label}
+                        link={link}
+                        Image={Image}
+                    />
                 ))}
             </View>
             {/*Setting Button and Customize Navigation Bar */}

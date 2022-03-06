@@ -64,7 +64,7 @@ export const buttonsData = [
     },
     {
         label: "News",
-        link: "https://tabor.instructure.com/login/ldap",
+        link: "https://tabor.edu/news",
         Image: <FontAwesome name="newspaper-o" size={50} color="#003082" />,
     },
     {
@@ -73,5 +73,10 @@ export const buttonsData = [
         Image: (
             <Ionicons name="notifications-outline" size={40} color="#003082" />
         ),
+    },
+    {
+        label: "Library",
+        link: "https://taborcollege.libguides.com/library",
+        Image: <Ionicons name="library" size={40} color="#003082" />,
     },
 ];
