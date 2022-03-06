@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         paddingVertical: 20,
-        paddingHorizontal: 45,
+        paddingHorizontal: 30,
         marginTop: 30,
         flexWrap: "wrap",
     },
