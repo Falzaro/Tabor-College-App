@@ -1,107 +1,13 @@
-import React, { useState } from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    ImageBackground,
-    Image,
-    Alert,
-    TouchableOpacity,
-    Linking,
-} from "react-native";
+// Module Imports
+import React from "react";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
+
+// Relative Imports
 import ButtonLabel from "../components/SettingButtonLabel.js";
-
-import Ionicons from "react-native-vector-icons/Ionicons";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-
-import Foundation from "react-native-vector-icons/Foundation";
+import { buttonsData } from "../data/buttonsData";
+import MainButton from "../components/MainButton";
 
 const MenuScreen = ({ title }) => {
-    const buttonOptions = [
-        {
-            label: "Canvas",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: null,
-        },
-        {
-            label: "Student Life",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: <Ionicons name="people" size={50} color="#003082" />,
-        },
-        {
-            label: "Dining",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: (
-                <MaterialIcons name="local-dining" size={50} color="#003082" />
-            ),
-        },
-        {
-            label: "Campus Cafe",
-            link: "https://tab-web.scansoftware.com/cafeweb/login",
-            Image: <Ionicons name="cafe" size={50} color="#003082" />,
-        },
-        {
-            label: "Calendar",
-            link: "https://tabor.edu/calendar/",
-            Image: <FontAwesome5 name="calendar" size={50} color="#003082" />,
-        },
-        {
-            label: "Jayshop",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: (
-                <MaterialCommunityIcons
-                    name="shopping-outline"
-                    size={50}
-                    color="#003082"
-                />
-            ),
-        },
-        {
-            label: "Maps",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: (
-                <FontAwesome5 name="map-marked-alt" size={50} color="#003082" />
-            ),
-        },
-        {
-            label: "Sports",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: (
-                <Ionicons name="american-football" size={50} color="#003082" />
-            ),
-        },
-        {
-            label: "Helpful Hours",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: (
-                <MaterialCommunityIcons
-                    name="account-clock-outline"
-                    size={50}
-                    color="#003082"
-                />
-            ),
-        },
-        {
-            label: "News",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: <FontAwesome name="newspaper-o" size={50} color="#003082" />,
-        },
-        {
-            label: "Notifications",
-            link: "https://tabor.instructure.com/login/ldap",
-            Image: (
-                <Ionicons
-                    name="notifications-outline"
-                    size={40}
-                    color="#003082"
-                />
-            ),
-        },
-    ];
-
     return (
         <View style={styles.screen}>
             {/* Setting up Image Header */}
@@ -118,15 +24,10 @@ const MenuScreen = ({ title }) => {
                 </ImageBackground>
             </View>
 
+            {/* Map out the buttons */}
             <View style={styles.buttonContainer}>
-                {buttonOptions.map(({ label, link, Image }) => (
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => Linking.openURL(link)}
-                    >
-                        {Image}
-                        <Text style={styles.buttonText}>{label}</Text>
-                    </TouchableOpacity>
+                {buttonsData.map(({ label, link, Image }) => (
+                    <MainButton label={label} link={link} Image={Image} />
                 ))}
             </View>
             {/*Setting Button and Customize Navigation Bar */}
@@ -164,6 +65,11 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
     },
+    text: {
+        textAlign: "center",
+        justifyContent: "center",
+        paddingHorizontal: 15,
+    },
     buttonContainer: {
         flex: 1,
         flexDirection: "row",
@@ -171,27 +77,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         marginTop: 30,
         flexWrap: "wrap",
-    },
-    button: {
-        display: "flex",
-        width: 100,
-        height: 100,
-        alignItems: "center",
-        justifyContent: "center",
-        margin: 5,
-    },
-    text: {
-        textAlign: "center",
-        justifyContent: "center",
-        paddingHorizontal: 15,
-    },
-    buttonText: {
-        alignSelf: "stretch",
-        display: "flex",
-        fontSize: 14,
-        textAlign: "center",
-        flexWrap: "wrap",
-        color: "red",
     },
     imageIcon: {
         width: 50,
