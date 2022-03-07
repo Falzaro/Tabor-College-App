@@ -2,9 +2,18 @@
 ## Introduction
 With school being back in person and events happening on campus, it is important that the announcements of school events reach out to students. Our goal is to create a one-stop app that allows Tabor College students, faculty, and even ulumni to seeminglessly find school related information through their phones. Instead of searching through multiple sites to look for certain info, we have collected the resources that students frequently visit. Such resources are student life, Jayshop, maps, news, helpful hours, and more. We believe that having a curated mobile app can help students feel better connected to campus and informed of the ongoing activities at Tabor College. 
 
-### Frontend Documentation
+## Frontend Documentation
 Since the mobile app needs to support both IOS and Android devices, the frontend team is using React Native, an open-source UI software framework that enables developers to create cross-platform applications. This tool is written in JavaScript, so a strong understanding of the JavaScript language is required. For example, ES6 (ECMAScript 6). React Native is a light-weight library, and it does not enforce a strict, opinionated way of coding. However, several React Native developers like to follow the Airbnb React/JSX Style Guide due to its prevalent convention. Using the same style guides can facilicate new developers learn React and become comfortable with a code base.
 
+
+*React Native*: https://reactnative.dev/ <br>
+*Airbnb React/JSX Style Guide*: https://airbnb.io/javascript/react/
+
+**Requirements**
+- HTML
+- CSS
+- JavaScript
+- React Native
 
 ### Setting up the development environment
 1. On your git bash window or terminal on Mac, run `git clone https://github.com/Falzaro/Tabor-College-App.git` to clone the Tabor-College-App repository from Github.
@@ -36,7 +45,7 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 - [simple-line-icon](https://simplelineicons.github.io/)
 - [zocial](http://weloveiconfonts.com/)
 
-- To Check out all the supported icons, visit [react-native-vector-icons directory](https://oblador.github.io/react-native-vector-icons/)
+- To check out all the supported icons, visit [react-native-vector-icons directory](https://oblador.github.io/react-native-vector-icons/)
 
 ### Example to import an Icon 
 - How to import Icon once it is installed. 
@@ -44,10 +53,15 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 Here is an example from fontAwesome: 
 - `import ShoppingCart from 'react-native-vector-icons/FontAwesome';`
 
-### Backend Documentation
+## Backend Documentation
 The backend team is using a package from Python that consists of BeautifulSoup. BeautifulSoup </br>
 is a Python library that extracts data from HTML and XML files. The requirements for BeautifulSoup </br>
 are Python and PIP (package installer for python). </br>
+
+The following tools are used for the backend development: </br>
+- Firebase Firestore(database)
+- Cloud functions(APIs)
+- Python, Pip, BeautifulSoup
 
 Installing Python: </br>
 1. Install Python via https://www.python.org/downloads/.
@@ -62,9 +76,3 @@ the same directory where Python was installed earlier.
 Installing BeautifulSoup: </br>
 1. Once Pip is installed, run the following command: pip install beautifulsoup4
 2. Once the installation process is completed, BeautifulSoup is now installed in the system.
-
-The following tools are used for the backend development: </br>
-- Firestore Firebase
-- Cloud functions / API
-- Python, Pip, BeautifulSoup
-- ReactNative
