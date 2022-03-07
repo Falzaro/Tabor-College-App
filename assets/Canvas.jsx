@@ -16,7 +16,6 @@ const Canvas = (props) => (
             strokeWidth={3}
             strokeLinecap="round"
             strokeLinejoin="round"
-            color=""
         />
     </Svg>
 );
