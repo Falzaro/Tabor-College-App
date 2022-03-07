@@ -1,15 +1,18 @@
+import { Image } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Canvas from "../assets/Canvas";
+// import Canvas from "../assets/Canvas";
+import CanvasTest from "../assets/CanvasTest";
+import CanvasSVG from "../assets/Canvas-Logo.svg";
 
 export const buttonsData = [
     {
         label: "Canvas",
         link: "https://tabor.instructure.com/login/ldap",
-        Image: <Canvas />,
+        Image: <CanvasTest color="#003082" />,
     },
     {
         label: "Student Life",
