@@ -1,0 +1,40 @@
+	
+
+
+	
+	What is our requirements? Our requirement is to make a mobile application that is compatible for IOS and Android.
+
+	The requirement for the design have to be simplistic.
+
+	It is meaning no animation nor too much fancy/color to the front menu.
+
+	Also, keeping the menu and buttons as organize as possible.
+
+	Will this app be a static or dynamic? The app will be dynamic but the content that we will be pulling from, its will be static.
+
+	We will be relying on third party UI library for our design layout. 
+
+	For ex. We can use multiple library rather building our own. This way to reduce development time and avoid bugs. 
+
+	In order to make this app a multi platform we will use the React Native.
+
+	It is a JavaScript Framework that allows us to create a truly native app that doesn’t compromise the user experience.
+
+	Within this Framework there is an Expo toolkit that will allow us to test the product.
+
+	The main language is JavaScript. It is commonly use language that is easy to understand and most of our team is familiar with it. 
+
+	It is also allow I.T. and follow on teams to pick up the language with low learning curve.
+
+	For mobile responsiveness, we have to consider  how the app will support  older mobile operating system.
+
+	(For ex. Will it support all the way back to older android version or iphone4, iphone5 or iphone6?) This requirements is still in discussion with our sponsor.
+
+ 	Also, we  have to take in consideration on how to make it responsive when changing screen sizes.
+
+ 	(For example, phones have many/variety of sizes and changing from tablet or ipad. 
+	
+	We have to consider how to make it display and scale correctly for each devices.)
+
+	For back end development I will pass this to Sriram.
+
