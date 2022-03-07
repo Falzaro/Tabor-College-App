@@ -1,4 +1,11 @@
 # Tabor-College-App
+## Introduction
+With school being back in person and events happening on campus, it is important that the announcements of school events reach out to students. Our goal is to create a one-stop app that allows Tabor College students, faculty, and even ulumni to seeminglessly find school related information through their phones. Instead of searching through multiple sites to look for certain info, we have collected the resources that students frequently visit. Such resources are student life, Jayshop, maps, news, helpful hours, and more. We believe that having a curated mobile app can help students feel better connected to campus and informed of the ongoing activities at Tabor College. 
+
+### Frontend Documentation
+Since the mobile app needs to support both IOS and Android devices, the frontend team is using React Native, an open-source UI software framework that enables developers to create cross-platform applications. This tool is written in JavaScript, so a strong understanding of the JavaScript language is required. For example, ES6 (ECMAScript 6). React Native is a light-weight library, and it does not enforce a strict, opinionated way of coding. However, several React Native developers like to follow the Airbnb React/JSX Style Guide due to its prevalent convention. Using the same style guides can facilicate new developers learn React and become comfortable with a code base.
+
+
 ### Setting up the development environment
 1. On your git bash window or terminal on Mac, run `git clone https://github.com/Falzaro/Tabor-College-App.git` to clone the Tabor-College-App repository from Github.
 2. Then run `cd tabor-college-app` to go to the project directory.
