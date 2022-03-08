@@ -17,18 +17,16 @@ export default MainButton;
 
 const styles = StyleSheet.create({
     button: {
-        display: "flex",
-        width: 100,
-        height: 100,
+        width: 110,
+        height: 110,
         alignItems: "center",
         justifyContent: "center",
-        margin: 5,
     },
     buttonText: {
-        alignSelf: "stretch",
-        display: "flex",
-        fontSize: 14,
+        fontSize: 14.2,
         textAlign: "center",
-        flexWrap: "wrap",
+        marginTop: 12,
+        fontWeight: "500",
+        color: "#495057",
     },
 });

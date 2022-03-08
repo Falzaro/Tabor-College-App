@@ -12,27 +12,28 @@ const Home = () => {
             {/* Setting up Image Header */}
             <View style={styles.coverImage}>
                 <ImageBackground
-                    style={{ width: "100%", height: "100%" }}
-                    blurRadius={3}
+                    style={styles.imgBackground}
+                    blurRadius={2}
                     source={require("../assets/MenuHeader.jpg")}
                 >
                     {/* Setting up Text Header */}
-                    <View style={styles.textView}>
-                        <Text style={styles.imageText}>Tabor College</Text>
-                    </View>
+                    <Text style={styles.imageText}>Tabor College</Text>
                 </ImageBackground>
             </View>
-
-            {/* Map out the buttons */}
-            <View style={styles.buttonContainer}>
-                {buttonsData.map(({ label, link, Image }) => (
-                    <MainButton
-                        key={label}
-                        label={label}
-                        link={link}
-                        Image={Image}
-                    />
-                ))}
+            <View style={styles.screenBody}>
+                <View style={styles.headerButtonsWrapper}>
+                    {/* Map out the buttons */}
+                    <View style={styles.buttonContainer}>
+                        {buttonsData.map(({ label, link, Image }) => (
+                            <MainButton
+                                key={label}
+                                label={label}
+                                link={link}
+                                Image={Image}
+                            />
+                        ))}
+                    </View>
+                </View>
             </View>
         </View>
     );
@@ -41,45 +42,43 @@ const Home = () => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        backgroundColor: "#E5E5E5", // or #E5E5E5
+        fontFamily: "Roboto",
+        // backgroundColor: "#E5E5E5", // or #E5E5E5
     },
     coverImage: {
         width: "100%",
-        height: 150,
-        alignItems: "center",
+        height: 180,
+    },
+    imgBackground: {
+        width: "100%",
+        height: "100%",
         justifyContent: "center",
-        display: "flex",
+        alignItems: "center",
     },
     imageText: {
-        fontSize: 25,
+        fontSize: 28,
         fontWeight: "bold",
         color: "#fff",
+        marginTop: 18,
     },
-    textView: {
-        display: "flex",
-        justifyContent: "center",
+    screenBody: {
+        flex: 1,
+        padding: 10,
+    },
+    headerButtonsWrapper: {
+        flex: 1,
         alignItems: "center",
-        top: 80,
-        left: 0,
-        right: 0,
-        bottom: 0,
-    },
-    text: {
-        textAlign: "center",
-        justifyContent: "center",
-        paddingHorizontal: 15,
     },
     buttonContainer: {
         flex: 1,
         flexDirection: "row",
-        paddingVertical: 20,
-        paddingHorizontal: 20,
-        marginTop: 30,
+        justifyContent: "center",
+        alignItems: "center",
         flexWrap: "wrap",
     },
-    imageIcon: {
-        width: 50,
-        height: 50,
+    navigationHeader: {
+        fontSize: 30,
+        textDecorationLine: "underline",
     },
 });
 
