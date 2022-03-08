@@ -21,7 +21,7 @@ const Home = () => {
                 </ImageBackground>
             </View>
             <View style={styles.screenBody}>
-                <View style={styles.headerButtonsWrapper}>
+                <View style={styles.buttonsBackCover}>
                     {/* Map out the buttons */}
                     <View style={styles.buttonContainer}>
                         {buttonsData.map(({ label, link, Image }) => (
@@ -42,8 +42,6 @@ const Home = () => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        fontFamily: "Roboto",
-        // backgroundColor: "#E5E5E5", // or #E5E5E5
     },
     coverImage: {
         width: "100%",
@@ -59,15 +57,17 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: "bold",
         color: "#fff",
-        marginTop: 18,
+        marginTop: 20,
     },
     screenBody: {
         flex: 1,
-        padding: 10,
+        padding: 15,
     },
-    headerButtonsWrapper: {
-        flex: 1,
+    buttonsBackCover: {
+        height: "100%",
         alignItems: "center",
+        borderRadius: 20,
+        backgroundColor: "#F8F8F8",
     },
     buttonContainer: {
         flex: 1,
@@ -75,10 +75,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flexWrap: "wrap",
-    },
-    navigationHeader: {
-        fontSize: 30,
-        textDecorationLine: "underline",
+        marginTop: 23,
     },
 });
 
