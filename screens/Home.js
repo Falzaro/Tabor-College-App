@@ -3,11 +3,10 @@ import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
 // Relative Imports
-import ButtonLabel from "../components/SettingButtonLabel.js";
 import { buttonsData } from "../data/buttonsData";
 import MainButton from "../components/MainButton";
 
-const MenuScreen = ({ title }) => {
+const Home = () => {
     return (
         <View style={styles.screen}>
             {/* Setting up Image Header */}
@@ -19,7 +18,7 @@ const MenuScreen = ({ title }) => {
                 >
                     {/* Setting up Text Header */}
                     <View style={styles.textView}>
-                        <Text style={styles.imageText}>{title}</Text>
+                        <Text style={styles.imageText}>Tabor College</Text>
                     </View>
                 </ImageBackground>
             </View>
@@ -35,10 +34,6 @@ const MenuScreen = ({ title }) => {
                     />
                 ))}
             </View>
-            {/*Setting Button and Customize Navigation Bar */}
-            <View>
-                <ButtonLabel text="Setting" />
-            </View>
         </View>
     );
 };
@@ -46,7 +41,6 @@ const MenuScreen = ({ title }) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        //alignItems: 'baseline',
         backgroundColor: "#E5E5E5", // or #E5E5E5
     },
     coverImage: {
@@ -89,4 +83,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MenuScreen;
+export default Home;
