@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, TouchableOpacity, Linking } from "react-native";
 
+// Buttons for the main screen
 function MainButton({ label, link, Image }) {
     return (
         <TouchableOpacity
@@ -17,18 +18,16 @@ export default MainButton;
 
 const styles = StyleSheet.create({
     button: {
-        display: "flex",
-        width: 100,
-        height: 100,
+        width: 112,
+        height: 110,
         alignItems: "center",
         justifyContent: "center",
-        margin: 5,
     },
     buttonText: {
-        alignSelf: "stretch",
-        display: "flex",
-        fontSize: 14,
+        fontSize: 14.2,
         textAlign: "center",
-        flexWrap: "wrap",
+        marginTop: 14,
+        fontWeight: "500",
+        color: "#495057",
     },
 });
