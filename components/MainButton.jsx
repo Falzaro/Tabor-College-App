@@ -17,7 +17,7 @@ export default MainButton;
 
 const styles = StyleSheet.create({
     button: {
-        width: 110,
+        width: 112,
         height: 110,
         alignItems: "center",
         justifyContent: "center",
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 14.2,
         textAlign: "center",
-        marginTop: 12,
+        marginTop: 14,
         fontWeight: "500",
         color: "#495057",
     },

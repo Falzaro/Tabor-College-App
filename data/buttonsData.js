@@ -6,7 +6,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Canvas from "../assets/Canvas";
 
-const SIZE = 38;
+const SIZE = 36;
 const COLOR = "#373737";
 
 export const buttonsData = [
