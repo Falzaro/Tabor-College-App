@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, TouchableOpacity, Linking } from "react-native";
 
+// Buttons for the main screen
 function MainButton({ label, link, Image }) {
     return (
         <TouchableOpacity
