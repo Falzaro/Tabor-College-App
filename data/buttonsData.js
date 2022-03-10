@@ -17,7 +17,7 @@ export const buttonsData = [
     {
         label: "Cafe Menu",
         link: "https://oncampusdining.com/tabor/menus/?d=2022-03-09",
-        Image: <MaterialIcons name="local-dining" size={SIZE} color={COLOR} />,
+        Image: <Ionicons name="fast-food-outline" size={SIZE} color={COLOR} />,
     },
     {
         label: "Sports",
@@ -41,6 +41,7 @@ export const buttonsData = [
             />
         ),
     },
+    // Row 2
     {
         label: "News",
         link: "https://tabor.edu/news",
@@ -62,6 +63,7 @@ export const buttonsData = [
         link: "https://taborcollege.libguides.com/library",
         Image: <Ionicons name="library-outline" size={SIZE} color={COLOR} />,
     },
+    // Row 3
     {
         label: "Student Life",
         link: "https://tabor.edu/undergraduate/student-life/",
@@ -77,6 +79,7 @@ export const buttonsData = [
         link: "https://tab-web.scansoftware.com/cafeweb/login",
         Image: <Ionicons name="cafe-outline" size={SIZE} color={COLOR} />,
     },
+    // Row 4
     {
         label: "Canvas",
         link: "https://tabor.instructure.com/login/ldap",
