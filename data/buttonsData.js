@@ -1,60 +1,34 @@
-import { Image } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import Canvas from "../assets/Canvas";
 
 const SIZE = 36;
 const COLOR = "#373737";
 
+// Objects for the buttons
+// Every three buttons will get rendered as a row in the app
 export const buttonsData = [
+    // Row 1
     {
-        label: "Canvas",
-        link: "https://tabor.instructure.com/login/ldap",
-        Image: <Canvas color={COLOR} size={SIZE} />,
-    },
-    {
-        label: "Student Life",
-        link: "https://tabor.instructure.com/login/ldap",
-        Image: <Ionicons name="people" size={SIZE} color={COLOR} />,
-    },
-    {
-        label: "Dining",
-        link: "https://tabor.instructure.com/login/ldap",
+        label: "Cafe Menu",
+        link: "https://oncampusdining.com/tabor/menus/?d=2022-03-09",
         Image: <MaterialIcons name="local-dining" size={SIZE} color={COLOR} />,
     },
     {
-        label: "Campus Cafe",
-        link: "https://tab-web.scansoftware.com/cafeweb/login",
-        Image: <Ionicons name="cafe" size={SIZE} color={COLOR} />,
-    },
-    {
-        label: "Calendar",
-        link: "https://tabor.edu/calendar/",
-        Image: <FontAwesome5 name="calendar" size={SIZE} color={COLOR} />,
-    },
-    {
-        label: "Jayshop",
-        link: "https://tabor.instructure.com/login/ldap",
+        label: "Sports",
+        link: "https://www.taborbluejays.com/",
         Image: (
-            <MaterialCommunityIcons
-                name="shopping-outline"
+            <Ionicons
+                name="american-football-outline"
                 size={SIZE}
                 color={COLOR}
             />
         ),
-    },
-    {
-        label: "Maps",
-        link: "https://tabor.instructure.com/login/ldap",
-        Image: <FontAwesome5 name="map-marked-alt" size={SIZE} color={COLOR} />,
-    },
-    {
-        label: "Sports",
-        link: "https://tabor.instructure.com/login/ldap",
-        Image: <Ionicons name="american-football" size={SIZE} color={COLOR} />,
     },
     {
         label: "Helpful Hours",
@@ -73,15 +47,51 @@ export const buttonsData = [
         Image: <FontAwesome name="newspaper-o" size={SIZE} color={COLOR} />,
     },
     {
-        label: "Notifications",
-        link: "https://tabor.instructure.com/login/ldap",
+        label: "Jayshop",
+        link: "https://tabor.edu/shop/",
         Image: (
-            <Ionicons name="notifications-outline" size={SIZE} color={COLOR} />
+            <MaterialCommunityIcons
+                name="shopping-outline"
+                size={SIZE}
+                color={COLOR}
+            />
         ),
     },
     {
         label: "Library",
         link: "https://taborcollege.libguides.com/library",
-        Image: <Ionicons name="library" size={SIZE} color={COLOR} />,
+        Image: <Ionicons name="library-outline" size={SIZE} color={COLOR} />,
+    },
+    {
+        label: "Student Life",
+        link: "https://tabor.edu/undergraduate/student-life/",
+        Image: <Ionicons name="people-outline" size={SIZE} color={COLOR} />,
+    },
+    {
+        label: "Maps",
+        link: "https://goo.gl/maps/78K3q8qKUso6ZYYR7",
+        Image: <Feather name="map" size={SIZE} color={COLOR} />,
+    },
+    {
+        label: "Campus Cafe",
+        link: "https://tab-web.scansoftware.com/cafeweb/login",
+        Image: <Ionicons name="cafe-outline" size={SIZE} color={COLOR} />,
+    },
+    {
+        label: "Canvas",
+        link: "https://tabor.instructure.com/login/ldap",
+        Image: <Canvas color={COLOR} size={SIZE} />,
+    },
+    {
+        label: "Calendar",
+        link: "https://tabor.edu/calendar/",
+        Image: <AntDesign name="calendar" size={SIZE} color={COLOR} />,
+    },
+    {
+        label: "Faculty",
+        link: "https://tabor.edu/faculty/",
+        Image: (
+            <FontAwesome5 name="chalkboard-teacher" size={SIZE} color={COLOR} />
+        ),
     },
 ];
