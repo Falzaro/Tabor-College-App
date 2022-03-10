@@ -7,6 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 
 // Relative Imports
 import Home from "./screens/Home";
+import Settings from "./screens/Settings";
+import Notifications from "./screens/Notifications";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +24,7 @@ export default function App() {
             >
                 <Tab.Screen
                     name="Settings"
-                    component={Home}
+                    component={Settings}
                     options={{
                         tabBarIcon: ({ color }) => (
                             <Ionicons
@@ -44,7 +46,7 @@ export default function App() {
                 />
                 <Tab.Screen
                     name="Notifications"
-                    component={Home}
+                    component={Notifications}
                     options={{
                         tabBarIcon: ({ color }) => (
                             <Ionicons

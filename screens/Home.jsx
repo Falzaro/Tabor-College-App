@@ -42,6 +42,7 @@ const Home = () => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
+        backgroundColor: "#EEEEEE",
     },
     coverImage: {
         width: "100%",
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: "bold",
         color: "#fff",
-        marginTop: 20,
+        marginTop: 24,
     },
     screenBody: {
         flex: 1,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
         height: "100%",
         alignItems: "center",
         borderRadius: 20,
-        backgroundColor: "#F8F8F8",
+        backgroundColor: "#f8f8f8",
     },
     buttonContainer: {
         flex: 1,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flexWrap: "wrap",
-        marginTop: 23,
+        marginTop: 30,
     },
 });
 
