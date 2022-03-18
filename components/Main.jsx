@@ -16,6 +16,7 @@ const Main = ({ children, name }) => {
                     <Text style={styles.imageText}>{name}</Text>
                 </ImageBackground>
             </View>
+            {/* Children contains screen content (Tabor College, Cafe Menu, etc.) */}
             <View style={styles.screenBody}>{children}</View>
         </>
     );

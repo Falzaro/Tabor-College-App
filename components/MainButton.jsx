@@ -13,7 +13,9 @@ function MainButton({ label, link, Image }) {
             "Calendar",
             "Faculty",
         ];
+        // If the button is an external link, open it in the browser
         if (externalButtons.includes(label)) Linking.openURL(link);
+        // Otherwise, navigate to the screen
         else navigation.navigate(label);
     };
 
