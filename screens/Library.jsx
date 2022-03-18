@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text } from "react-native";
 import Main from "../components/Main";
-// import libraryCover from "../assets/coverImage/library.jpg";
 
 function Library({ route }) {
     const { name } = route;

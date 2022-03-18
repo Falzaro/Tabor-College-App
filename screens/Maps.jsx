@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text } from "react-native";
 import Main from "../components/Main";
-// import mapsCover from "../assets/coverImage/maps.jpeg";
 
 function Maps({ route }) {
     const { name } = route;
