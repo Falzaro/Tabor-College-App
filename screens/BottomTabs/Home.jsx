@@ -12,8 +12,7 @@ import Library from "../Library";
 import StudentLife from "../StudentLife";
 import Maps from "../Maps";
 
-const Home = ({ navigation }) => {
-    console.log(navigation);
+const Home = () => {
     const Stack = createNativeStackNavigator();
     return (
         <View style={styles.screen}>

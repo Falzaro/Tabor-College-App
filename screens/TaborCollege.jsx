@@ -20,6 +20,7 @@ const TaborCollege = ({ route }) => {
                             label={label}
                             link={link}
                             Image={Image}
+                            name={name}
                         />
                     ))}
                 </View>
