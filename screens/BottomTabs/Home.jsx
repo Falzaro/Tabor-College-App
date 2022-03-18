@@ -24,6 +24,7 @@ const Home = () => {
                 initialRouteName="Tabor College"
                 screenOptions={{
                     headerBackTitle: "Back",
+                    headerTintColor: "#fff",
                     headerTitle: "",
                     headerTransparent: true,
                 }}
