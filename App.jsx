@@ -6,9 +6,9 @@ import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
 // Relative Imports
-import Home from "./screens/Home";
-import Settings from "./screens/Settings";
-import Notifications from "./screens/Notifications";
+import Home from "./screens/BottomTabs/Home";
+import Settings from "./screens/BottomTabs/Settings";
+import Notifications from "./screens/BottomTabs/Notifications";
 
 const Tab = createBottomTabNavigator();
 

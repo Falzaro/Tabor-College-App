@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 
-function Settings() {
+function HelpfulHours() {
     return (
         <View style={styles.center}>
             <Text>Helpful Hours</Text>
@@ -8,7 +8,7 @@ function Settings() {
     );
 }
 
-export default Settings;
+export default HelpfulHours;
 
 const styles = StyleSheet.create({
     center: {

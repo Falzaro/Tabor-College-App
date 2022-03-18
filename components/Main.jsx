@@ -2,11 +2,7 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
-// Relative Imports
-import { buttonsData } from "../data/buttonsData";
-import MainButton from "../components/MainButton";
-
-const Home = () => {
+const Main = ({ children, title }) => {
     return (
         <View style={styles.screen}>
             {/* Setting up Image Header */}
@@ -17,24 +13,10 @@ const Home = () => {
                     source={require("../assets/MenuHeader.jpg")}
                 >
                     {/* Setting up Text Header */}
-                    <Text style={styles.imageText}>Tabor College</Text>
+                    <Text style={styles.imageText}>{title}</Text>
                 </ImageBackground>
             </View>
-            <View style={styles.screenBody}>
-                <View style={styles.buttonsBackCover}>
-                    {/* Map out the buttons */}
-                    <View style={styles.buttonContainer}>
-                        {buttonsData.map(({ label, link, Image }) => (
-                            <MainButton
-                                key={label}
-                                label={label}
-                                link={link}
-                                Image={Image}
-                            />
-                        ))}
-                    </View>
-                </View>
-            </View>
+            <View style={styles.screenBody}>{children}</View>
         </View>
     );
 };
@@ -80,4 +62,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Home;
+export default Main;
