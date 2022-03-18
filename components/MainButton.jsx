@@ -2,11 +2,13 @@ import React from "react";
 import { Text, StyleSheet, TouchableOpacity, Linking } from "react-native";
 
 // Buttons for the main screen
-function MainButton({ label, link, Image }) {
+function MainButton({ label, link, Image, navigation }) {
+    console.log({ navigation });
     return (
         <TouchableOpacity
             style={styles.button}
-            onPress={() => Linking.openURL(link)}
+            // onPress={() => Linking.openURL(link)}
+            // onPress={() => navigation.navigate("")}
         >
             {Image}
             <Text style={styles.buttonText}>{label}</Text>
