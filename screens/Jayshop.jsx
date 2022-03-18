@@ -1,14 +1,18 @@
 import { StyleSheet, View, Text } from "react-native";
+import Main from "../components/Main";
 
-function Settings() {
+function Jayshop({ route }) {
+    const { name } = route;
     return (
-        <View style={styles.center}>
-            <Text>Jayshop</Text>
-        </View>
+        <Main name={name}>
+            <View style={styles.center}>
+                <Text>Jayshop</Text>
+            </View>
+        </Main>
     );
 }
 
-export default Settings;
+export default Jayshop;
 
 const styles = StyleSheet.create({
     center: {

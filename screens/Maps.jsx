@@ -1,14 +1,18 @@
 import { StyleSheet, View, Text } from "react-native";
+import Main from "../components/Main";
 
-function Settings() {
+function Maps({ route }) {
+    const { name } = route;
     return (
-        <View style={styles.center}>
-            <Text>Maps</Text>
-        </View>
+        <Main name={name}>
+            <View style={styles.center}>
+                <Text>Maps</Text>
+            </View>
+        </Main>
     );
 }
 
-export default Settings;
+export default Maps;
 
 const styles = StyleSheet.create({
     center: {

@@ -1,14 +1,18 @@
 import { StyleSheet, View, Text } from "react-native";
+import Main from "../components/Main";
 
-function Settings() {
+function Sports({ route }) {
+    const { name } = route;
     return (
-        <View style={styles.center}>
-            <Text>Sports</Text>
-        </View>
+        <Main name={name}>
+            <View style={styles.center}>
+                <Text>Sports</Text>
+            </View>
+        </Main>
     );
 }
 
-export default Settings;
+export default Sports;
 
 const styles = StyleSheet.create({
     center: {

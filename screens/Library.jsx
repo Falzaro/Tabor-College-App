@@ -1,14 +1,18 @@
 import { StyleSheet, View, Text } from "react-native";
+import Main from "../components/Main";
 
-function Settings() {
+function Library({ route }) {
+    const { name } = route;
     return (
-        <View style={styles.center}>
-            <Text>Library</Text>
-        </View>
+        <Main name={name}>
+            <View style={styles.center}>
+                <Text>Library</Text>
+            </View>
+        </Main>
     );
 }
 
-export default Settings;
+export default Library;
 
 const styles = StyleSheet.create({
     center: {

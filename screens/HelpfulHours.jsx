@@ -1,10 +1,14 @@
 import { StyleSheet, View, Text } from "react-native";
+import Main from "../components/Main";
 
-function HelpfulHours() {
+function HelpfulHours({ route }) {
+    const { name } = route;
     return (
-        <View style={styles.center}>
-            <Text>Helpful Hours</Text>
-        </View>
+        <Main name={name}>
+            <View style={styles.center}>
+                <Text>Helpful Hours</Text>
+            </View>
+        </Main>
     );
 }
 
