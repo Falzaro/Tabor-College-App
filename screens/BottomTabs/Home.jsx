@@ -1,7 +1,7 @@
 // Module Imports
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { View, StyleSheet } from "react-native";
 import TaborCollege from "../TaborCollege";
 import CafeMenu from "../CafeMenu";
 import Sports from "../Sports";
@@ -11,6 +11,7 @@ import Jayshop from "../Jayshop";
 import Library from "../Library";
 import StudentLife from "../StudentLife";
 import Maps from "../Maps";
+import { HeaderBackButton } from "@react-navigation/elements";
 
 const Home = () => {
     const Stack = createNativeStackNavigator();
@@ -19,7 +20,13 @@ const Home = () => {
             <Stack.Navigator
                 initialRouteName="Tabor College"
                 screenOptions={{
-                    headerShown: false,
+                    headerBackTitle: "Back",
+                    headerTitle: "",
+                    // headerLeft: (props) => {
+                    //     console.log(props);
+                    //     return <HeaderBackButton {...props} label="Back" />;
+                    // },
+                    headerTransparent: true,
                 }}
             >
                 <Stack.Screen name="Tabor College" component={TaborCollege} />
