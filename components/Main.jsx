@@ -2,18 +2,20 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
-const Main = ({ children, name }) => {
+const Main = ({ children, name, coverImage }) => {
     return (
         <>
             {/* Setting up Image Header */}
             <View style={styles.coverImage}>
                 <ImageBackground
                     style={styles.imgBackground}
-                    blurRadius={2}
-                    source={require("../assets/MenuHeader.jpg")}
+                    blurRadius={1}
+                    source={coverImage}
                 >
-                    {/* Setting up Text Header */}
-                    <Text style={styles.imageText}>{name}</Text>
+                    <View style={styles.imgBackgroundOverlay}>
+                        {/* Setting up Text Header */}
+                        <Text style={styles.imageText}>{name}</Text>
+                    </View>
                 </ImageBackground>
             </View>
             {/* Children contains screen content (Tabor College, Cafe Menu, etc.) */}
@@ -30,14 +32,18 @@ const styles = StyleSheet.create({
     imgBackground: {
         width: "100%",
         height: "100%",
+    },
+    imgBackgroundOverlay: {
+        flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "rgba(0,0,0,0.16)",
     },
     imageText: {
         fontSize: 28,
         fontWeight: "bold",
         color: "#fff",
-        marginTop: 24,
+        marginTop: 27,
     },
     screenBody: {
         flex: 1,

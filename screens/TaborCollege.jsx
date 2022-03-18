@@ -9,8 +9,9 @@ import Main from "../components/Main";
 
 const TaborCollege = ({ route }) => {
     const { name } = route;
+    const taborCollegeCover = require("../assets/coverImage/taborCollege.jpg");
     return (
-        <Main name={name}>
+        <Main name={name} coverImage={taborCollegeCover}>
             <View style={styles.buttonsBackCover}>
                 {/* Map out the buttons */}
                 <View style={styles.buttonContainer}>

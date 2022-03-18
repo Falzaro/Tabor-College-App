@@ -1,10 +1,12 @@
 import { StyleSheet, View, Text } from "react-native";
 import Main from "../components/Main";
+// import mapsCover from "../assets/coverImage/maps.jpeg";
 
 function Maps({ route }) {
     const { name } = route;
+    const mapsCover = require("../assets/coverImage/maps.jpg");
     return (
-        <Main name={name}>
+        <Main name={name} coverImage={mapsCover}>
             <View style={styles.center}>
                 <Text>Maps</Text>
             </View>

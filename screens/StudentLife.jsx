@@ -3,8 +3,9 @@ import Main from "../components/Main";
 
 function StudentLife({ route }) {
     const { name } = route;
+    const studentLifeCover = require("../assets/coverImage/studentLife.png");
     return (
-        <Main name={name}>
+        <Main name={name} coverImage={studentLifeCover}>
             <View style={styles.center}>
                 <Text>Student Life</Text>
             </View>
