@@ -1,15 +1,17 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Main from "../components/Main";
-// import jayshopCover from "../assets/coverImage/jayshop.jpeg";
 
 function Jayshop({ route }) {
     const { name } = route;
     const jayshopCover = require("../assets/coverImage/jayshop.png");
+    const coverImage = {
+        source: jayshopCover,
+        darkness: "rgba(0, 0, 0, 0.10)",
+        blurRadius: 0.5,
+    };
     return (
-        <Main name={name} coverImage={jayshopCover}>
-            <View style={styles.center}>
-                <Text>Jayshop</Text>
-            </View>
+        <Main name={name} coverImage={coverImage}>
+            <View style={styles.center}>{/* No Content */}</View>
         </Main>
     );
 }

@@ -5,11 +5,14 @@ import Main from "../components/Main";
 function Library({ route }) {
     const { name } = route;
     const libraryCover = require("../assets/coverImage/library.jpg");
+    const coverImage = {
+        source: libraryCover,
+        darkness: "rgba(0, 0, 0, 0.12)",
+        blurRadius: 1,
+    };
     return (
-        <Main name={name} coverImage={libraryCover}>
-            <View style={styles.center}>
-                <Text>Library</Text>
-            </View>
+        <Main name={name} coverImage={coverImage}>
+            <View style={styles.center}>{/* No Content */}</View>
         </Main>
     );
 }

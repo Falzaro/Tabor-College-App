@@ -5,11 +5,14 @@ import Main from "../components/Main";
 function News({ route }) {
     const { name } = route;
     const newsCover = require("../assets/coverImage/news.jpg");
+    const coverImage = {
+        source: newsCover,
+        darkness: "rgba(0, 0, 0, 0.0)",
+        blurRadius: 0,
+    };
     return (
-        <Main name={name} coverImage={newsCover}>
-            <View style={styles.center}>
-                <Text>News</Text>
-            </View>
+        <Main name={name} coverImage={coverImage}>
+            <View style={styles.center}>{/* No Content */}</View>
         </Main>
     );
 }

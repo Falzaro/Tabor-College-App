@@ -1,14 +1,17 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Main from "../components/Main";
 
 function StudentLife({ route }) {
     const { name } = route;
     const studentLifeCover = require("../assets/coverImage/studentLife.png");
+    const coverImage = {
+        source: studentLifeCover,
+        darkness: "rgba(0, 0, 0, 0.11)",
+        blurRadius: 0.5,
+    };
     return (
-        <Main name={name} coverImage={studentLifeCover}>
-            <View style={styles.center}>
-                <Text>Student Life</Text>
-            </View>
+        <Main name={name} coverImage={coverImage}>
+            <View style={styles.center}>{/* No Content */}</View>
         </Main>
     );
 }

@@ -3,16 +3,24 @@ import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
 const Main = ({ children, name, coverImage }) => {
+    const coverImageStyles = StyleSheet.create({
+        backgroundOverlay: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: coverImage.darkness,
+        },
+    });
     return (
         <>
             {/* Setting up Image Header */}
             <View style={styles.coverImage}>
                 <ImageBackground
                     style={styles.imgBackground}
-                    blurRadius={1}
-                    source={coverImage}
+                    blurRadius={coverImage.blurRadius}
+                    source={coverImage.source}
                 >
-                    <View style={styles.imgBackgroundOverlay}>
+                    <View style={coverImageStyles.backgroundOverlay}>
                         {/* Setting up Text Header */}
                         <Text style={styles.imageText}>{name}</Text>
                     </View>
@@ -32,12 +40,6 @@ const styles = StyleSheet.create({
     imgBackground: {
         width: "100%",
         height: "100%",
-    },
-    imgBackgroundOverlay: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "rgba(0,0,0,0.16)",
     },
     imageText: {
         fontSize: 28,

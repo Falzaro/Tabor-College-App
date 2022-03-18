@@ -1,15 +1,17 @@
 import { StyleSheet, View, Text } from "react-native";
 import Main from "../components/Main";
-// import helpfulHoursCover from "../assets/coverImage/helpfulHours.jpeg";
 
 function HelpfulHours({ route }) {
     const { name } = route;
     const helpfulHoursCover = require("../assets/coverImage/helpfulHours.jpg");
+    const coverImage = {
+        source: helpfulHoursCover,
+        darkness: "rgba(0, 0, 0, 0.12)",
+        blurRadius: 0.5,
+    };
     return (
-        <Main name={name} coverImage={helpfulHoursCover}>
-            <View style={styles.center}>
-                <Text>Helpful Hours</Text>
-            </View>
+        <Main name={name} coverImage={coverImage}>
+            <View style={styles.center}>{/* No Content */}</View>
         </Main>
     );
 }

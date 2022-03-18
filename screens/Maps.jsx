@@ -5,11 +5,14 @@ import Main from "../components/Main";
 function Maps({ route }) {
     const { name } = route;
     const mapsCover = require("../assets/coverImage/maps.jpg");
+    const coverImage = {
+        source: mapsCover,
+        darkness: "rgba(0, 0, 0, 0.12)",
+        blurRadius: 0,
+    };
     return (
-        <Main name={name} coverImage={mapsCover}>
-            <View style={styles.center}>
-                <Text>Maps</Text>
-            </View>
+        <Main name={name} coverImage={coverImage}>
+            <View style={styles.center}>{/* No Content */}</View>
         </Main>
     );
 }
