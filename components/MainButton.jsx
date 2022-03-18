@@ -1,13 +1,26 @@
 import React from "react";
 import { Text, StyleSheet, TouchableOpacity, Linking } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Buttons for the main screen
 function MainButton({ label, link, Image }) {
+    const navigation = useNavigation();
+
+    const handlePress = () => {
+        const externalButtons = [
+            "Campus Cafe",
+            "Canvas",
+            "Calendar",
+            "Faculty",
+        ];
+        // If the button is an external link, open it in the browser
+        if (externalButtons.includes(label)) Linking.openURL(link);
+        // Otherwise, navigate to the screen
+        else navigation.navigate(label);
+    };
+
     return (
-        <TouchableOpacity
-            style={styles.button}
-            onPress={() => Linking.openURL(link)}
-        >
+        <TouchableOpacity style={styles.button} onPress={handlePress}>
             {Image}
             <Text style={styles.buttonText}>{label}</Text>
         </TouchableOpacity>
