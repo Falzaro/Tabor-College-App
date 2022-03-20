@@ -12,7 +12,6 @@ menu_categories = doc.find_all("div", class_="menuArea")
 # Initialize the data that will get stored in Firestore
 cafe_menu_data = {
     "Breakfast": [],
-    "testing": "testing",
     "Lunch": [],
     "Lunch Rotisserie": [],
     "Dinner": [],
