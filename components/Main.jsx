@@ -28,6 +28,7 @@ const Main = ({ children, name, coverImage }) => {
             </View>
             {/* Children contains screen content (Tabor College, Cafe Menu, etc.) */}
             <View style={styles.screenBody}>{children}</View>
+            {/* {children} */}
         </>
     );
 };
@@ -49,7 +50,6 @@ const styles = StyleSheet.create({
     },
     screenBody: {
         flex: 1,
-        padding: 15,
         backgroundColor: "#EBEBEB",
     },
 });
