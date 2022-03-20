@@ -17,18 +17,20 @@ const TaborCollege = ({ route }) => {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.buttonsBackCover}>
-                {/* Map out the buttons */}
-                <View style={styles.buttonContainer}>
-                    {buttonsData.map(({ label, link, Image }) => (
-                        <MainButton
-                            key={label}
-                            label={label}
-                            link={link}
-                            Image={Image}
-                            name={name}
-                        />
-                    ))}
+            <View style={styles.screenContainer}>
+                <View style={styles.buttonsBackCover}>
+                    {/* Map out the buttons */}
+                    <View style={styles.buttonContainer}>
+                        {buttonsData.map(({ label, link, Image }) => (
+                            <MainButton
+                                key={label}
+                                label={label}
+                                link={link}
+                                Image={Image}
+                                name={name}
+                            />
+                        ))}
+                    </View>
                 </View>
             </View>
         </Main>
@@ -36,6 +38,10 @@ const TaborCollege = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+    screenContainer: {
+        flex: 1,
+        padding: 15,
+    },
     buttonsBackCover: {
         height: "100%",
         alignItems: "center",
