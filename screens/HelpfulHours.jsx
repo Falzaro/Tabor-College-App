@@ -1,7 +1,14 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button, TouchableOpacity, Alert } from "react-native";
 import Main from "../components/Main";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-function HelpfulHours({ route }) {
+
+import TestScreens from '../screens/TestScreens';
+
+// this is homeScreen
+function HelpfulHours({ route, navigation, }) {
     const { name } = route;
     const helpfulHoursCover = require("../assets/coverImage/helpfulHours.jpg");
     const coverImage = {
@@ -11,17 +18,71 @@ function HelpfulHours({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+            <View style={styles.center}>
+            <View style={styles.container}>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate('TestScreens')}
+            >
+            <Text>Useful Numbers</Text>
+            
+      </TouchableOpacity>
+            </View>
+            </View>
         </Main>
     );
 }
 
-export default HelpfulHours;
+
+  const Stack = createStackNavigator();
+  
+  function Root() {
+    return (
+
+      <Stack.Navigator>
+        <Stack.Screen name="HelpfulHours" component={HelpfulHours} options={{header:() =>null, headerLeft:() =>null}} />
+        <Stack.Screen 
+            name="TestScreens" 
+            component={TestScreens} 
+            options={{title: 'TestSCreens',
+            //headerLeft: null,
+            headerTransparent: true,
+            headerTitleAlign: 'center',
+            headerStatusBarHeight: 90,
+            }} />
+      </Stack.Navigator>
+    );
+  }
+  
+  export default function App() {
+    return (
+      <NavigationContainer independent = {true}>
+        <Stack.Navigator
+          initialRouteName="HelpfulHours"
+          screenOptions={{ headerShown: false, }}
+        >
+          <Stack.Screen name="Helpful Hours" component={Root} options={{headerLeft: null,}} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 
 const styles = StyleSheet.create({
     center: {
-        flex: 1,
+        flex:1,
         justifyContent: "center",
-        alignItems: "center",
+       
     },
+    button: {
+        alignItems: "center",
+        backgroundColor: "white",
+        padding: 20,
+        borderRadius: 10,
+        flexWrap: "wrap",
+      },
+    container: {
+        flex: 1,
+        padding: 10,
+    },
+    
 });

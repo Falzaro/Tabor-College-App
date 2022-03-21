@@ -24,16 +24,18 @@ const Home = () => {
                 initialRouteName="Tabor College"
                 screenOptions={{
                     headerBackTitle: "Back",
-                    headerTintColor: "#fff",
+                    headerTintColor: "black",
                     headerTitle: "",
                     headerTransparent: true,
+                    
                 }}
+              
             >
                 {/* Render the screen that the user is on */}
                 <Stack.Screen name="Tabor College" component={TaborCollege} />
                 <Stack.Screen name="Cafe Menu" component={CafeMenu} />
                 <Stack.Screen name="Sports" component={Sports} />
-                <Stack.Screen name="Helpful Hours" component={HelpfulHours} />
+                <Stack.Screen name="Helpful Hours" component={HelpfulHours} options={{headerLeft: null, }}/>
                 <Stack.Screen name="News" component={News} />
                 <Stack.Screen name="Jayshop" component={Jayshop} />
                 <Stack.Screen name="Library" component={Library} />
