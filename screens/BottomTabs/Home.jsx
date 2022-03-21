@@ -29,6 +29,7 @@ const Home = () => {
                     headerTransparent: true,
                     
                 }}
+                options={{headerLeft: () => null}}
               
             >
                 {/* Render the screen that the user is on */}

@@ -22,7 +22,7 @@ function HelpfulHours({ route, navigation, }) {
             <View style={styles.container}>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate('TestScreens')}
+                onPress={() => navigation.push('TestScreens')}
             >
             <Text>Useful Numbers</Text>
             
@@ -35,25 +35,6 @@ function HelpfulHours({ route, navigation, }) {
 
 
   const Stack = createStackNavigator();
-  
-  function Root() {
-    return (
-
-      <Stack.Navigator>
-        <Stack.Screen name="HelpfulHours" component={HelpfulHours} options={{header:() =>null, headerLeft:() =>null}} />
-        <Stack.Screen 
-            name="TestScreens" 
-            component={TestScreens} 
-            options={{title: 'TestSCreens',
-            //headerLeft: null,
-            headerTransparent: true,
-            headerTitleAlign: 'center',
-            headerStatusBarHeight: 90,
-            }} />
-      </Stack.Navigator>
-    );
-  }
-  
   export default function App() {
     return (
       <NavigationContainer independent = {true}>
@@ -61,11 +42,31 @@ function HelpfulHours({ route, navigation, }) {
           initialRouteName="HelpfulHours"
           screenOptions={{ headerShown: false, }}
         >
-          <Stack.Screen name="Helpful Hours" component={Root} options={{headerLeft: null,}} />
+          <Stack.Screen name="HelpfulHours" component={Root}  />
         </Stack.Navigator>
       </NavigationContainer>
     );
   }
+  
+  function Root() {
+    return (
+
+      <Stack.Navigator>
+        <Stack.Screen name="MainScreen" component={HelpfulHours} options={{header:() =>null, headerLeft:() =>null}} />
+        <Stack.Screen 
+            name="TestScreens" 
+            component={TestScreens} 
+            options={{title: 'TestSCreens',
+            headerTransparent: true,
+            headerTitleAlign: 'center',
+            //headerLeft: () => null,
+            headerStatusBarHeight: 60,
+            }} />
+      </Stack.Navigator>
+    );
+  }
+  
+  
 
 const styles = StyleSheet.create({
     center: {
