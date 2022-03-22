@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TestScreens from '../screens/TestScreens';
 
 // this is homeScreen
-function HelpfulHours({ route, navigation, }) {
+function HelpfulHours({ route, navigation }) {
     const { name } = route;
     const helpfulHoursCover = require("../assets/coverImage/helpfulHours.jpg");
     const coverImage = {
@@ -22,7 +22,7 @@ function HelpfulHours({ route, navigation, }) {
             <View style={styles.container}>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.push('TestScreens')}
+                onPress={() => navigation.navigate('TestScreens')}
             >
             <Text>Useful Numbers</Text>
             
@@ -32,6 +32,7 @@ function HelpfulHours({ route, navigation, }) {
         </Main>
     );
 }
+
 
 
   const Stack = createStackNavigator();
@@ -52,7 +53,7 @@ function HelpfulHours({ route, navigation, }) {
     return (
 
       <Stack.Navigator>
-        <Stack.Screen name="MainScreen" component={HelpfulHours} options={{header:() =>null, headerLeft:() =>null}} />
+        <Stack.Screen name="Screen" component={HelpfulHours} options={{header:() =>null, headerLeft:() =>null}} />
         <Stack.Screen 
             name="TestScreens" 
             component={TestScreens} 
