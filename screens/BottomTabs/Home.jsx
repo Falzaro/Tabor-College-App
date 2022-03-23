@@ -1,7 +1,8 @@
 // Module Imports
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, StyleSheet } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { View, StyleSheet, Button } from "react-native";
 
 // Relative Imports
 import TaborCollege from "../TaborCollege";
@@ -17,7 +18,7 @@ import Maps from "../Maps";
 const Home = () => {
     // Stack Navigator to handle different screens
     const Stack = createNativeStackNavigator();
-
+   
     return (
         <View style={styles.screen}>
             <Stack.Navigator
@@ -33,7 +34,7 @@ const Home = () => {
                 <Stack.Screen name="Tabor College" component={TaborCollege} />
                 <Stack.Screen name="Cafe Menu" component={CafeMenu} />
                 <Stack.Screen name="Sports" component={Sports} />
-                <Stack.Screen name="Helpful Hours" component={HelpfulHours} />
+                <Stack.Screen name="Helpful Hours" component={HelpfulHours} options={{header: () => false}}  />
                 <Stack.Screen name="News" component={News} />
                 <Stack.Screen name="Jayshop" component={Jayshop} />
                 <Stack.Screen name="Library" component={Library} />
