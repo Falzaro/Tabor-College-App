@@ -1,7 +1,13 @@
+import * as React from 'react';
 import { StyleSheet, View, Text } from "react-native";
 import Main from "../components/Main";
 
+import { List } from 'react-native-paper';
+import AccordionManager from '../components/accordions/AccordManager';
 function HelpfulHours({ route }) {
+
+  
+
     const { name } = route;
     const helpfulHoursCover = require("../assets/coverImage/helpfulHours.jpg");
     const coverImage = {
@@ -11,7 +17,7 @@ function HelpfulHours({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+         <AccordionManager />
         </Main>
     );
 }
