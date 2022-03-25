@@ -30,10 +30,6 @@ function CafeMenu({ route }) {
             });
     }, []);
 
-    useEffect(() => {
-        console.log(cafeMenu);
-    }, [cafeMenu]);
-
     return (
         <Main name={name} coverImage={coverImage}>
             {
