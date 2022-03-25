@@ -31,7 +31,7 @@ function MainButton({ label, link, Image }) {
                         <Ionicons
                             name="arrow-redo-sharp"
                             size={14}
-                            color="#4A4A4A"
+                            color="#444444"
                             style={styles.externalIcon}
                         />
                     )}
@@ -60,12 +60,13 @@ const styles = StyleSheet.create({
     },
     externalIconWrapper: {
         position: "absolute",
-        top: 6,
-        right: 20,
+        top: 4,
+        right: 18,
         width: 20,
         height: 20,
         borderRadius: 10,
         transform: [{ rotate: "-6deg" }],
+        opacity: 0.86,
     },
     externalIcon: {},
 });
