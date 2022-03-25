@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         height: 20,
         borderRadius: 10,
         transform: [{ rotate: "-6deg" }],
-        opacity: 0.86,
+        opacity: 0.84,
     },
     externalIcon: {},
 });
