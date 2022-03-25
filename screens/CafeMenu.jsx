@@ -1,11 +1,12 @@
 // Module Imports
 import { useEffect, useState } from "react";
-import { StyleSheet, View, Text, SectionList } from "react-native";
+import { StyleSheet, View, Text, FlatList } from "react-native";
 
 // Relative Imports
 import Main from "../components/Main";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
+import { Card, Title, Caption } from "react-native-paper";
 
 function CafeMenu({ route }) {
     const [cafeMenu, setCafeMenu] = useState([]);
@@ -29,29 +30,32 @@ function CafeMenu({ route }) {
             });
     }, []);
 
-    useEffect(() => {
-        console.log(cafeMenu);
-    }, [cafeMenu]);
-
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>
-                <SectionList
-                    style={styles.sectionList}
+            {
+                <FlatList
+                    data={cafeMenu}
                     contentContainerStyle={styles.contentContainer}
-                    stickySectionHeadersEnabled={false}
-                    sections={cafeMenu}
-                    keyExtractor={(item, index) => item + index}
-                    renderItem={({ item }) => (
-                        <Text style={styles.item}>{item}</Text>
-                    )}
-                    renderSectionHeader={({ section }) => (
-                        <Text style={styles.sectionHeader}>
-                            {section.title}
-                        </Text>
+                    keyExtractor={(item) => item.title}
+                    renderItem={({ item: section }) => (
+                        <Card style={styles.card}>
+                            <Title>{section.title}</Title>
+                            <FlatList
+                                keyExtractor={(item) => item}
+                                data={section.data}
+                                renderItem={({ item }) => (
+                                    <View style={styles.foodItem}>
+                                        <Text style={styles.bulletedPoint}>
+                                            {`\u2B24` + " "}
+                                        </Text>
+                                        <Caption key={item}>{item}</Caption>
+                                    </View>
+                                )}
+                            />
+                        </Card>
                     )}
                 />
-            </View>
+            }
         </Main>
     );
 }
@@ -59,19 +63,22 @@ function CafeMenu({ route }) {
 export default CafeMenu;
 
 const styles = StyleSheet.create({
-    center: {
+    contentContainer: {
+        paddingHorizontal: 18,
+        paddingTop: 18,
+        width: "100%",
+    },
+    cardsContainer: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        width: "98%",
+    },
+    card: {
+        marginBottom: 15,
+        padding: 10,
     },
     sectionList: {
         flex: 1,
         width: "100%",
-    },
-    contentContainer: {
-        flexGrow: 1,
-        width: "100%",
-        alignItems: "center",
     },
     sectionHeader: {
         fontSize: 20,
@@ -81,5 +88,14 @@ const styles = StyleSheet.create({
     item: {
         fontSize: 18,
         marginBottom: 5,
+    },
+    foodItem: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    bulletedPoint: {
+        fontSize: 4,
+        marginRight: 6,
+        color: "#787878",
     },
 });
