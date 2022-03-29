@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { StyleSheet, View } from 'react-native';
+
 import { List } from 'react-native-paper';
+import styles from './styles';
 
 const HelpDesk = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -10,9 +13,11 @@ const HelpDesk = () => {
     <List.Section>
       <List.Accordion
         title="Help Desks"
-        left={props => <List.Icon {...props} icon="remote-desktop" />}>
-        <List.Item title="First item" />
+        right={props => <List.Icon {...props} icon="remote-desktop" />}>
+        <View style ={styles.background} >
+        <List.Item title="First item"  />
         <List.Item title="Second item" />
+        </View>
       </List.Accordion>
 
       
@@ -21,3 +26,4 @@ const HelpDesk = () => {
 };
 
 export default HelpDesk;
+

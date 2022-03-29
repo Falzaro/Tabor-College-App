@@ -19,4 +19,7 @@ const app = initializeApp(firebaseConfig);
 // Get Firestore database
 const db = getFirestore(app);
 
+// collection ref
+
+
 export { db };

@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { View } from 'react-native';
 import { List } from 'react-native-paper';
-
+import styles from './styles';
 const CourtSideGrill = () => {
   const [expanded, setExpanded] = React.useState(true);
 
@@ -10,9 +11,11 @@ const CourtSideGrill = () => {
     <List.Section>
       <List.Accordion
         title="Court Side Grill"
-        left={props => <List.Icon {...props} icon="grill-outline" />}>
-        <List.Item title="First item" />
+        right={props => <List.Icon {...props} icon="grill-outline" />}>
+        <View style ={styles.background} >
+        <List.Item title="First item"  />
         <List.Item title="Second item" />
+        </View>
       </List.Accordion>
 
      
