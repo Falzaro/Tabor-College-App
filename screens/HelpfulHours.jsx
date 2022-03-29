@@ -44,13 +44,12 @@ function HelpfulHours({ route }) {
 export default HelpfulHours;
 
 const styles = StyleSheet.create({
-    center: {
-       flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
+   
     contentContainer: {
         padding: 10,
+        flex: 1,
         paddingHorizontal: 20,
+        justifyContent: "center",
+        flexGrow: 1,
     },
 });
