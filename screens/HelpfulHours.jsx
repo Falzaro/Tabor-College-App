@@ -10,6 +10,7 @@ import CourtSideGrill from './HelpfulHoursTabs/CourtSideGrill';
 import HelpDesk from './HelpfulHoursTabs/HelpDesk';
 import StudentLife from './HelpfulHoursTabs/StudentLife';
 import StudentSuccess from './HelpfulHoursTabs/StudentSuccess';
+import Dinning from './HelpfulHoursTabs/DiningHall';
 
 function HelpfulHours({ route }) {
 
@@ -30,6 +31,7 @@ function HelpfulHours({ route }) {
             <View style = {styles.contentContainer}>
                 <BusinessOffice />
                 <CourtSideGrill />
+                <Dinning />
                 <HelpDesk />
                 <StudentLife />
                 <StudentSuccess />

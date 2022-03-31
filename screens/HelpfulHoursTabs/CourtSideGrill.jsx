@@ -17,7 +17,7 @@ const CourtSideGrill = () => {
   const [courtSideGrill, setCourtSideGrill] = useState([]);
   useEffect(() => {
     // Get the cafe menu from firebase version 9
-    const docRef = doc(db, "business office", "information");
+    const docRef = doc(db, "Courtside Grill", "information");
     getDoc(docRef)
         .then((doc) => {
           setCourtSideGrill(doc.data().sections);
@@ -32,7 +32,7 @@ const CourtSideGrill = () => {
       <List.Accordion 
         style={{ backgroundColor: 'white', marginBottom: 5 }}
         title="Courtside Grill"
-        right={props => <List.Icon {...props} icon="school-outline" />}>
+        right={props => <List.Icon {...props} icon="grill-outline" />}>
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList
@@ -43,6 +43,7 @@ const CourtSideGrill = () => {
             renderItem={({ item: section }) => (
                 <Card style={styles.card}>
                 <Title style={styles.title}>{section.title}</Title>
+                <Subheading  style={styles.names} >{section.location}</Subheading>
                 {/* extract days and hours data */}
                 <FlatList
                         keyExtractor={(item, index) => item + index}
@@ -54,7 +55,6 @@ const CourtSideGrill = () => {
                           )}
                 />
                 {/* extract names, emails, and phone  */}
-                  <Text  style={styles.names}>{section.name}</Text>
                   <Text  style={styles.contacts} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.email}</Text>
                   <Text  style={styles.contacts} color= "blue" onPress={() => Linking.openURL(`tel:${section.phone}`)}>{section.phone}</Text>
                 </Card>

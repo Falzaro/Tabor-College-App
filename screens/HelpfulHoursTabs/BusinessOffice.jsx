@@ -31,9 +31,10 @@ const BusinessOffice = () => {
   return (
     <List.Section >
        <List.Accordion 
+        listKey = "1.1"
         style={{ backgroundColor: 'white', marginBottom: 5 }}
         title="Business Office"
-        right={props => <List.Icon {...props} icon="school-outline" />}>
+        right={props => <List.Icon {...props} icon="office-building" />}>
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList

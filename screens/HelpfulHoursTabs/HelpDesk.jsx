@@ -33,7 +33,7 @@ const HelpDesk = () => {
       <List.Accordion 
         style={{ backgroundColor: 'white', marginBottom: 5 }}
         title="Help Desks"
-        right={props => <List.Icon {...props} icon="school-outline" />}>
+        right={props => <List.Icon {...props} icon="remote-desktop" />}>
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList
