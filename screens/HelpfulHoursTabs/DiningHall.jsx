@@ -32,9 +32,10 @@ const DinningHall = () => {
   return (
     <List.Section >
        <List.Accordion 
-        style={{ backgroundColor: 'white', marginBottom: 5 }}
+        style={{ backgroundColor: 'white' }}
         title="Dinning Hall"
-        right={props => <List.Icon {...props} icon="office-building" />}>
+       /* right={props => <List.Icon {...props} icon="office-building" />} */
+       >
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList

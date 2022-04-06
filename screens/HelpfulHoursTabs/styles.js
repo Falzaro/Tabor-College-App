@@ -15,12 +15,16 @@ export default StyleSheet.create({
     cardsContainer: {
        // flex: 1,
        width: "100%", 
+       
           
     },
     card: {
-        marginBottom: 10,
+       // marginBottom: 10,
         //padding: 10,
         //borderBottomColor: 'blue',
+        
+        
+        
     },
     displayItem: {
         //flexDirection: "row",
@@ -31,25 +35,27 @@ export default StyleSheet.create({
         fontSize: 18,
         //marginBottom: 5,
         textAlign: "center",
+     
        
     },
     names:{
       alignItems: "center",
         //backgroundColor: "white",
-        textAlign: "center",
-      marginTop: 10,
-      fontSize: 15
+      textAlign: "center",
+      marginBottom: 5,
+      fontSize: 17
     },
     contacts:{
       alignItems: "center",
       //backgroundColor: "white",
       textAlign: "center",
-      fontSize: 15,
-      marginTop: 10,
-      color: "blue"
+      fontSize: 17,
+      marginTop: 0,
+      color: "blue",
+      marginBottom: 5
     },
     subheading: {
-      marginTop: 5,
+     // marginTop: 5,
       fontSize: 15
     }
     

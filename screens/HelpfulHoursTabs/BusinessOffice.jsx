@@ -32,10 +32,11 @@ const BusinessOffice = () => {
     <List.Section >
        <List.Accordion 
         listKey = "1.1"
-        style={{ backgroundColor: 'white', marginBottom: 5 }}
+        style={{ backgroundColor: 'white' }}
         title="Business Office"
-        right={props => <List.Icon {...props} icon="office-building" />}>
-      <View style ={styles.background}>
+        titleStyle={{ fontSize: 15 }}
+       /* right={props => <List.Icon {...props} icon="office-building" />} */ >
+      <View style ={{backgroundColor: 'white'}}>
        {/*unique identifier key for each flatlist */}
         <FlatList
             listKey="1.1"
@@ -43,7 +44,7 @@ const BusinessOffice = () => {
             contentContainerStyle={styles.contentContainer}
             keyExtractor={(item) => item.title}
             renderItem={({ item: section }) => (
-                <Card style={styles.card}>
+                <View style={styles.card}>
                 <Title style={styles.title}>{section.title}</Title>
                 {/* extract days and hours data */}
                 <FlatList
@@ -56,10 +57,10 @@ const BusinessOffice = () => {
                           )}
                 />
                 {/* extract names, emails, and phone  */}
-                  <Text  style={styles.names}>{section.name}</Text>
+              
                   <Text  style={styles.contacts} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.email}</Text>
-                  <Text  style={styles.contacts} color= "blue" onPress={() => Linking.openURL(`tel:${section.phone}`)}>{section.phone}</Text>
-                </Card>
+                 
+                </View>
                 
             )}
         />

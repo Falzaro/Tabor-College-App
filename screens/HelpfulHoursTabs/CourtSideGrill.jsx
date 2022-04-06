@@ -30,9 +30,10 @@ const CourtSideGrill = () => {
   return (
     <List.Section>
       <List.Accordion 
-        style={{ backgroundColor: 'white', marginBottom: 5 }}
+        style={{ backgroundColor: 'white', }}
         title="Courtside Grill"
-        right={props => <List.Icon {...props} icon="grill-outline" />}>
+        titleStyle={{ fontSize: 15}}
+       /* right={props => <List.Icon {...props} icon="grill-outline" />} */ >
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList
@@ -41,7 +42,7 @@ const CourtSideGrill = () => {
             contentContainerStyle={styles.contentContainer}
             keyExtractor={(item) => item.title}
             renderItem={({ item: section }) => (
-                <Card style={styles.card}>
+                <View style = {{backgroundColor: "white"}}>
                 <Title style={styles.title}>{section.title}</Title>
                 <Subheading  style={styles.names} >{section.location}</Subheading>
                 {/* extract days and hours data */}
@@ -57,7 +58,7 @@ const CourtSideGrill = () => {
                 {/* extract names, emails, and phone  */}
                   <Text  style={styles.contacts} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.email}</Text>
                   <Text  style={styles.contacts} color= "blue" onPress={() => Linking.openURL(`tel:${section.phone}`)}>{section.phone}</Text>
-                </Card>
+                </View>
                 
             )}
         />

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text, VirtualizedList, ScrollView, FlatList } from "react-native";
 import Main from "../components/Main";
 
-import { List } from 'react-native-paper';
+
 
 //import relative 
 import BusinessOffice from './HelpfulHoursTabs/BusinessOffice';

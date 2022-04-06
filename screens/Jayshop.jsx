@@ -26,7 +26,6 @@ function Jayshop({ route }) {
         getDoc(docRef)
            
             .then((doc) => {
-                 console.log(doc.data());
                 setJayshop(doc.data().sections);
                 
             })
@@ -39,16 +38,17 @@ function Jayshop({ route }) {
     return (
         <Main name={name} coverImage={coverImage}>
             <View style={styles.center}>
-            <Text>Testing Testing</Text>
+           
             
            <FlatList 
                listKey="1.0"
                data={jayshop}
                keyExtractor = {(item) => item.id}
                renderItem = {({ item: section }) => (
-                   <View>
-                    <Image style = {{width: 100, height: 100}} source = {{uri: section.image}}/>
+                   <View style={styles.center}>
+                    <Image style = {{width: 100, height: 100,}} source = {{uri: section.image}}/>
                     <Text>{section.text}</Text>
+                    <Text>{section.price}</Text>
                    </View>
                )}
            />
@@ -64,7 +64,13 @@ export default Jayshop;
 const styles = StyleSheet.create({
     center: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        //justifyContent: "center",
+        //alignItems: "center",
+        flexDirection: "row",
+        marginBottom: 20,
+
     },
+    imageLayout: {
+        justifyContent: "space-between",
+    }
 });
