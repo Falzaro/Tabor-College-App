@@ -17,7 +17,7 @@ const StudentLife = () => {
 
   useEffect(() => {
     // Get the cafe menu from firebase version 9
-    const docRef = doc(db, "student life", "information");
+    const docRef = doc(db, "helpful hours", "student life");
     getDoc(docRef)
         .then((doc) => {
           setStudentLife(doc.data().sections);
@@ -44,6 +44,7 @@ const StudentLife = () => {
             keyExtractor={(item) => item.title}
             renderItem={({ item: section }) => (
                 <View style={{backgroundColor: 'white'}}>
+                  <Title style={styles.title}>{section.location}</Title>
                 <Title style={styles.title}>{section.title}</Title>
                 {/* extract days and hours data */}
                 <FlatList
@@ -58,8 +59,9 @@ const StudentLife = () => {
                 {/* extract names, emails, and phone  */}
                   <Text  style={styles.names}>{section.name}</Text>
                   <Text  style={styles.contacts} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.email}</Text>
-                  <Text  style={styles.contacts} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.alt}</Text>
+                  <Text  style={styles.contacts} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.email1}</Text>
                   <Text  style={styles.contacts} color= "blue" onPress={() => Linking.openURL(`tel:${section.phone}`)}>{section.phone}</Text>
+                  <Text style ={{textAlign: "center", fontSize: 17}}>{section.ext}</Text>
                 </View>
                 
             )}

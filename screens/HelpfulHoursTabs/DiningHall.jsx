@@ -7,7 +7,7 @@ import { db } from "../../firebase/config";
 import { doc, getDoc, collection } from "firebase/firestore";
 
 import styles from './styles';
-import { Card, Title, Subheading, Paragraph } from "react-native-paper";
+import {  Title, Subheading } from "react-native-paper";
 
 const DinningHall = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -18,10 +18,9 @@ const DinningHall = () => {
 
   useEffect(() => {
     // Get the cafe menu from firebase version 9
-    const docRef = doc(db, "dinning hall", "information");
+    const docRef = doc(db, "helpful hours", "dining hours");
     getDoc(docRef)
         .then((doc) => {
-            console.log(doc.data());
             setDinningHall(doc.data().sections);
         })
         .catch((err) => {
@@ -39,12 +38,13 @@ const DinningHall = () => {
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList
-            listKey="1.6"
+            listKey="1.7"
             data={diningHall}
             contentContainerStyle={styles.contentContainer}
             keyExtractor={(item) => item.title}
             renderItem={({ item: section }) => (
-                <Card style={styles.card}>
+                <View style={{ backgroundColor: "white"}}>
+                  <Title style={styles.otherText}>{section.location}</Title>
                 <Title style={styles.title}>{section.title}</Title>
                 {/* extract days and hours data */}
                 <FlatList
@@ -57,9 +57,9 @@ const DinningHall = () => {
                           )}
                 />
                 {/* extract names, emails, and phone  */}
-                  <Text  style={styles.names}>{section.breakfast}</Text>
-
-                </Card>
+                  
+                  <Text  style={styles.contacts} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.email}</Text>
+                </View>
                 
             )}
         />

@@ -11,6 +11,8 @@ import HelpDesk from './HelpfulHoursTabs/HelpDesk';
 import StudentLife from './HelpfulHoursTabs/StudentLife';
 import StudentSuccess from './HelpfulHoursTabs/StudentSuccess';
 import Dinning from './HelpfulHoursTabs/DiningHall';
+import AdrienneCoffee from './HelpfulHoursTabs/AdrienneCoffee';
+import JavaCoffee from './HelpfulHoursTabs/JavaCoffee';
 
 function HelpfulHours({ route }) {
 
@@ -26,15 +28,18 @@ function HelpfulHours({ route }) {
     return (
         <Main name={name} coverImage={coverImage}>
         
-        <FlatList    
+        <FlatList 
         ListFooterComponent={
             <View style = {styles.contentContainer}>
+                <AdrienneCoffee />
                 <BusinessOffice />
                 <CourtSideGrill />
                 <Dinning />
                 <HelpDesk />
+                <JavaCoffee />
                 <StudentLife />
                 <StudentSuccess />
+               
             </View>
         }
           />  

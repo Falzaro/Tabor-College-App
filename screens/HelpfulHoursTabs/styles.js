@@ -30,6 +30,7 @@ export default StyleSheet.create({
         //flexDirection: "row",
        alignItems: "center",
         //backgroundColor: "white",
+        paddingBottom: 10,
     },
     title: {
         fontSize: 18,
@@ -52,11 +53,28 @@ export default StyleSheet.create({
       fontSize: 17,
       marginTop: 0,
       color: "blue",
-      marginBottom: 5
+      marginBottom: 5,
+      paddingBottom: 10,
     },
     subheading: {
      // marginTop: 5,
-      fontSize: 15
+      fontSize: 15,
+      marginBottom: 5
+    },
+    otherText: {
+      fontSize: 20,
+        //marginBottom: 5,
+      textAlign: "center",
+    },
+    phone: {
+      alignItems: "center",
+      //backgroundColor: "white",
+      textAlign: "center",
+      fontSize: 17,
+      marginTop: 0,
+      color: "blue",
+      marginBottom: 5,
+      paddingBottom: 10,
     }
     
 
