@@ -12,7 +12,13 @@ import { Ionicons } from "@expo/vector-icons";
 // Buttons for the main screen
 function MainButton({ label, link, Image }) {
     const navigation = useNavigation();
-    const externalButtons = ["Campus Cafe", "Canvas", "Calendar", "Faculty"];
+    const externalButtons = [
+        "News",
+        "Campus Cafe",
+        "Canvas",
+        "Calendar",
+        "Arts",
+    ];
     const isButtonExternal = externalButtons.includes(label);
 
     const handlePress = () => {
