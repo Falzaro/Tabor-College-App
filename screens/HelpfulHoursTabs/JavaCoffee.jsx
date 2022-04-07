@@ -38,10 +38,10 @@ const JavaCoffee = () => {
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList
-            listKey="2.0"
             data={javaCoffee}
             contentContainerStyle={styles.contentContainer}
-            keyExtractor={(item) => item.title}
+            listKey={(item, index) => `_key${index.toString()}`}
+            keyExtractor={(item, index) => `_key${index.toString()}`}
             renderItem={({ item: section }) => (
                 <View style={{ backgroundColor: "white"}}>
                   <Title style={styles.otherText}>{section.location}</Title>

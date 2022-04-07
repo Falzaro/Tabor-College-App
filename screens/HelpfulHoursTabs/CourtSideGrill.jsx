@@ -37,10 +37,10 @@ const CourtSideGrill = () => {
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList
-            listKey="1.2"
             data={courtSideGrill}
             contentContainerStyle={styles.contentContainer}
-            keyExtractor={(item) => item.title}
+            listKey={(item, index) => `_key${index.toString()}`}
+            keyExtractor={(item, index) => `_key${index.toString()}`}
             renderItem={({ item: section }) => (
                 <View style = {{backgroundColor: "white"}}>
                 <Title style={styles.title}>{section.title}</Title>

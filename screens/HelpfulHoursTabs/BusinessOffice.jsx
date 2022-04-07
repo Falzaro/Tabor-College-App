@@ -31,7 +31,6 @@ const BusinessOffice = () => {
   return (
     <List.Section >
        <List.Accordion 
-        listKey = "1.1"
         style={{ backgroundColor: 'white' }}
         title="Business Office"
         titleStyle={{ fontSize: 15 }}
@@ -39,10 +38,11 @@ const BusinessOffice = () => {
       <View style ={{backgroundColor: 'white'}}>
        {/*unique identifier key for each flatlist */}
         <FlatList
-            listKey="1.1"
+
             data={businessOffice}
             contentContainerStyle={styles.contentContainer}
-            keyExtractor={(item) => item.title}
+            listKey={(item, index) => `_key${index.toString()}`}
+            keyExtractor={(item, index) => `_key${index.toString()}`}
             renderItem={({ item: section }) => (
                 <View style={styles.card}>
                 <Title style={styles.title}>{section.title}</Title>
