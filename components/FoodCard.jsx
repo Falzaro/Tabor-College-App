@@ -5,7 +5,13 @@ import { Card, Title, Caption } from "react-native-paper";
 function FoodCard({ section }) {
     return (
         <Card style={styles.card}>
-            <Title>{section.title}</Title>
+            {/* Create custom card cover */}
+            <View style={styles.cardCover}>
+                <Title style={styles.cardTitle}>{section.title}</Title>
+                <Caption style={styles.cardSubtitle}>
+                    {section.subtitle}
+                </Caption>
+            </View>
             <FlatList
                 keyExtractor={(item) => item}
                 data={section.data}
@@ -28,6 +34,14 @@ const styles = StyleSheet.create({
     card: {
         marginBottom: 15,
         padding: 10,
+    },
+    cardCover: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "flex-start",
+        backgroundColor: "rgba(0, 0, 0, 0.1)",
+        height: 120,
+        marginBottom: 10,
     },
     foodItem: {
         flexDirection: "row",
