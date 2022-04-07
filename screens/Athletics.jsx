@@ -1,7 +1,7 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Main from "../components/Main";
 
-function Sports({ route }) {
+function Athletics({ route }) {
     const { name } = route;
     const sportsCover = require("../assets/coverImage/sports.jpeg");
     const coverImage = {
@@ -16,7 +16,7 @@ function Sports({ route }) {
     );
 }
 
-export default Sports;
+export default Athletics;
 
 const styles = StyleSheet.create({
     center: {
