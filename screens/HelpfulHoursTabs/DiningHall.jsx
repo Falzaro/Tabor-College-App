@@ -6,6 +6,8 @@ import { List } from 'react-native-paper';
 import { db } from "../../firebase/config";
 import { doc, getDoc, collection } from "firebase/firestore";
 
+
+
 import styles from './styles';
 import {  Title, Subheading } from "react-native-paper";
 

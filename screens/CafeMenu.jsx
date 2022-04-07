@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 
+
+
 // Relative Imports
 import Main from "../components/Main";
 import { db } from "../firebase/config";

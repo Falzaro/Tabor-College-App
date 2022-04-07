@@ -5,10 +5,9 @@ import { List } from 'react-native-paper';
 import styles from "../HelpfulHoursTabs/styles";
 
 import { db } from "../../firebase/config";
-import { doc, getDoc, collection } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
-import { Card, Title, Subheading, Paragraph } from "react-native-paper";
-
+import { Title, Subheading } from "react-native-paper";
 
 
 const StudentSuccess = () => {

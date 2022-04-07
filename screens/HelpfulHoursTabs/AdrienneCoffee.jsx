@@ -4,7 +4,9 @@ import  { View, FlatList, Text, Linking } from 'react-native';
 import { List } from 'react-native-paper';
 
 import { db } from "../../firebase/config";
-import { doc, getDoc, collection } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
+
+
 
 import styles from './styles';
 import {  Title, Subheading } from "react-native-paper";
@@ -14,14 +16,14 @@ const AdrienneCoffe = () => {
 
   const handlePress = () => setExpanded(!expanded);
 
-  const [adrienneCoffe, setAdrienneCoffe] = useState([]);
+  const [adrienneCoffee, setAdrienneCoffee] = useState([]);
 
   useEffect(() => {
     // Get the cafe menu from firebase version 9
     const docRef = doc(db, "helpful hours", "adrienne coffee shop");
     getDoc(docRef)
         .then((doc) => {
-            setAdrienneCoffe(doc.data().sections);
+            setAdrienneCoffee(doc.data().sections);
         })
         .catch((err) => {
             console.log(err);
@@ -38,7 +40,7 @@ const AdrienneCoffe = () => {
       <View style ={styles.background}>
        {/*unique identifier key for each flatlist */}
         <FlatList
-            data={adrienneCoffe}
+            data={adrienneCoffee}
             contentContainerStyle={styles.contentContainer}
             listKey={(item, index) => `_key${index.toString()}`}
             keyExtractor={(item, index) => `_key${index.toString()}`}

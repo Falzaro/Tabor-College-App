@@ -5,6 +5,9 @@ import  { View, FlatList, Text, Linking } from 'react-native';
 import { List } from 'react-native-paper';
 import { db } from "../../firebase/config";
 import { doc, getDoc, collection } from "firebase/firestore";
+
+
+
 import styles from './styles';
 import { Card, Title, Subheading, Paragraph } from "react-native-paper";
 

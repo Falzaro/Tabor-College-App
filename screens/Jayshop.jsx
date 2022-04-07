@@ -4,6 +4,7 @@ import  { View, FlatList, Text, Linking, StyleSheet, Image } from 'react-native'
 import Main from "../components/Main";
 
 
+
 // Relative Imports
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
@@ -41,10 +42,10 @@ function Jayshop({ route }) {
            
             
            <FlatList 
-               listKey="1.0"
-               data={jayshop}
-               keyExtractor = {(item) => item.id}
-               renderItem = {({ item: section }) => (
+                data={jayshop}
+                listKey={(item, index) => `_key${index.toString()}`}
+                keyExtractor={(item, index) => `_key${index.toString()}`}
+                renderItem = {({ item: section }) => (
                    <View style={styles.center}>
                     <Image style = {{width: 100, height: 100,}} source = {{uri: section.image}}/>
                     <Text>{section.text}</Text>
