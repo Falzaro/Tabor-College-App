@@ -19,7 +19,7 @@ export const buttonsData = [
         Image: <Ionicons name="fast-food-outline" size={SIZE} color={COLOR} />,
     },
     {
-        label: "Sports",
+        label: "Athletics",
         link: "https://www.taborbluejays.com/",
         Image: (
             <Ionicons
@@ -42,9 +42,9 @@ export const buttonsData = [
     },
     // Row 2
     {
-        label: "News",
-        link: "https://tabor.edu/news",
-        Image: <FontAwesome name="newspaper-o" size={SIZE} color={COLOR} />,
+        label: "Maps",
+        link: "https://goo.gl/maps/78K3q8qKUso6ZYYR7",
+        Image: <Feather name="map" size={SIZE} color={COLOR} />,
     },
     {
         label: "Jayshop",
@@ -69,9 +69,9 @@ export const buttonsData = [
         Image: <Ionicons name="people-outline" size={SIZE} color={COLOR} />,
     },
     {
-        label: "Maps",
-        link: "https://goo.gl/maps/78K3q8qKUso6ZYYR7",
-        Image: <Feather name="map" size={SIZE} color={COLOR} />,
+        label: "News",
+        link: "https://tabor.edu/news",
+        Image: <FontAwesome name="newspaper-o" size={SIZE} color={COLOR} />,
     },
     {
         label: "Campus Cafe",
@@ -90,10 +90,8 @@ export const buttonsData = [
         Image: <AntDesign name="calendar" size={SIZE} color={COLOR} />,
     },
     {
-        label: "Faculty",
-        link: "https://tabor.edu/faculty/",
-        Image: (
-            <FontAwesome5 name="chalkboard-teacher" size={SIZE} color={COLOR} />
-        ),
+        label: "Arts",
+        link: "https://tabor.edu/performing-arts/",
+        Image: <FontAwesome5 name="theater-masks" size={SIZE} color={COLOR} />,
     },
 ];
