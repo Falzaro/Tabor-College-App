@@ -13,6 +13,11 @@ import StudentSuccess from './HelpfulHoursTabs/StudentSuccess';
 import Dinning from './HelpfulHoursTabs/DiningHall';
 import AdrienneCoffee from './HelpfulHoursTabs/AdrienneCoffee';
 import JavaCoffee from './HelpfulHoursTabs/JavaCoffee';
+import DormHours from './HelpfulHoursTabs/DormsHours';
+import InfoTech from './HelpfulHoursTabs/InformationTech';
+import FinancialAid from './HelpfulHoursTabs/FinancialAid';
+import MailRoom from './HelpfulHoursTabs/MailRoom';
+import TutorCenter from './HelpfulHoursTabs/TutoringCenter';
 
 function HelpfulHours({ route }) {
 
@@ -35,10 +40,15 @@ function HelpfulHours({ route }) {
                 <BusinessOffice />
                 <CourtSideGrill />
                 <Dinning />
+                <DormHours />
+                <FinancialAid />
                 <HelpDesk />
+                <InfoTech />
                 <JavaCoffee />
+                <MailRoom />
                 <StudentLife />
                 <StudentSuccess />
+                <TutorCenter />
                
             </View>
         }
