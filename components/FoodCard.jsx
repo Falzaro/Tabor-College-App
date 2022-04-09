@@ -1,29 +1,36 @@
+// Module Imports
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, ImageBackground } from "react-native";
 import { Card, Title, Caption } from "react-native-paper";
 
+// Relative Imports
+
 function FoodCard({ section }) {
+    const breakfastImg = require("../assets/cafe_menu/breakfast.jpg");
+
     return (
         <Card style={styles.card}>
             {/* Create custom card cover */}
-            <View style={styles.cardCover}>
-                <Title style={styles.cardTitle}>{section.title}</Title>
-                <Caption style={styles.cardSubtitle}>
-                    {section.subtitle}
-                </Caption>
-            </View>
-            <FlatList
-                keyExtractor={(item) => item}
-                data={section.data}
-                renderItem={({ item }) => (
-                    <View style={styles.foodItem}>
-                        <Text style={styles.bulletedPoint}>
-                            {`\u2B24` + " "}
-                        </Text>
-                        <Caption key={item}>{item}</Caption>
-                    </View>
-                )}
+            <ImageBackground
+                source={breakfastImg}
+                style={styles.cardCover}
+                imageStyle={{ borderRadius: 4 }}
             />
+            <View style={styles.cardContent}>
+                <View style={styles.titleWrapper}>
+                    <Title style={styles.cardTitle}>{section.title}</Title>
+                    <View style={styles.titleUnderline} />
+                </View>
+                <FlatList
+                    keyExtractor={(item) => item}
+                    data={section.data}
+                    renderItem={({ item }) => (
+                        <View style={styles.foodItem}>
+                            <Caption key={item}>{item}</Caption>
+                        </View>
+                    )}
+                />
+            </View>
         </Card>
     );
 }
@@ -37,19 +44,27 @@ const styles = StyleSheet.create({
     },
     cardCover: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "flex-start",
         backgroundColor: "rgba(0, 0, 0, 0.1)",
-        height: 120,
-        marginBottom: 10,
+        height: 90,
+        marginBottom: 5,
+        borderRadius: 10,
+    },
+    cardContent: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    titleWrapper: {
+        marginBottom: 5,
+    },
+    titleUnderline: {
+        height: 1.5,
+        backgroundColor: "#6c757d",
+        marginBottom: 5,
     },
     foodItem: {
         flexDirection: "row",
         alignItems: "center",
-    },
-    bulletedPoint: {
-        fontSize: 4,
-        marginRight: 6,
-        color: "#787878",
+        justifyContent: "center",
     },
 });
