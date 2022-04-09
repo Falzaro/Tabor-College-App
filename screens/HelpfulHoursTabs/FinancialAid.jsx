@@ -36,7 +36,6 @@ const FinancialAid = () => {
       <List.Accordion 
         style={{ backgroundColor: 'white', }}
         title="Financial Aid office hours"
-        
         titleStyle={{ fontSize: 15 }}
        /* left={props => <List.Icon {...props} icon="school-outline" />}*/
        > 

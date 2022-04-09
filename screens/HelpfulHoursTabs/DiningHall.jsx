@@ -20,6 +20,7 @@ const DinningHall = () => {
 
   useEffect(() => {
     // Get the cafe menu from firebase version 9
+
     const docRef = doc(db, "helpful hours", "dining hours");
     getDoc(docRef)
         .then((doc) => {
@@ -35,6 +36,7 @@ const DinningHall = () => {
        <List.Accordion 
         style={{ backgroundColor: 'white' }}
         title="Dinning Hall"
+        titleStyle={{ fontSize: 15 }}
        /* right={props => <List.Icon {...props} icon="office-building" />} */
        >
       <View style ={styles.background}>

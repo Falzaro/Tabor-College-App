@@ -40,7 +40,6 @@ const BusinessOffice = () => {
       <View style ={{backgroundColor: 'white'}}>
        {/*unique identifier key for each flatlist */}
         <FlatList
-
             data={businessOffice}
             contentContainerStyle={styles.contentContainer}
             listKey={(item, index) => `_key${index.toString()}`}

@@ -34,7 +34,7 @@ const StudentSuccess = () => {
   return (
     <List.Section>
       <List.Accordion 
-        style={{ backgroundColor: 'white', }}
+        style={{ backgroundColor: 'white',  }}
         title="Student Success"
         
         titleStyle={{ fontSize: 15 }}

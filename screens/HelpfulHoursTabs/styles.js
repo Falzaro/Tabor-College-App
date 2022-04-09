@@ -2,16 +2,38 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     
-    background: {
-        flex: 1,
-        //backgroundColor: '#fff',
-      },
     contentContainer: {
-        paddingHorizontal: 18,
-        paddingTop: 10,
-        width: "100%",  
+        paddingTop: 5,
+        width: "100%", 
+        flex: 1,
         
     },
+    innerBackground:{
+        backgroundColor: 'white',
+    },
+    locationText: {
+      textAlign: 'center',
+      //fontSize: 15,
+    },
+    dataRender: {
+      textAlign: 'center',
+      marginTop: 10,
+      fontSize: 15,
+      fontWeight: 'bold',
+    },
+    renderTitle: {
+      textAlign: 'center',
+      marginBottom: 5,
+    },
+    renderEmail: {
+      fontSize: 15,
+      textAlign: 'center',
+      paddingBottom: 10,
+      marginBottom: 5,
+      //position: 'relative',
+      
+    },
+
     cardsContainer: {
        // flex: 1,
        width: "100%", 

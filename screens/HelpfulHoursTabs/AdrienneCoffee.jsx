@@ -11,12 +11,10 @@ import { doc, getDoc } from "firebase/firestore";
 import styles from './styles';
 import {  Title, Subheading } from "react-native-paper";
 
-const AdrienneCoffe = () => {
-  const [expanded, setExpanded] = React.useState(true);
-
-  const handlePress = () => setExpanded(!expanded);
-
+const AdrienneCoffee = () => {
+ 
   const [adrienneCoffee, setAdrienneCoffee] = useState([]);
+  
 
   useEffect(() => {
     // Get the cafe menu from firebase version 9
@@ -35,32 +33,32 @@ const AdrienneCoffe = () => {
        <List.Accordion 
         style={{ backgroundColor: 'white' }}
         title="Adrienne Coffee Shop"
-       /* right={props => <List.Icon {...props} icon="office-building" />} */
+        titleStyle={{ fontSize: 15 }}
+       /*  right={props => <List.Icon {...props} icon="office-building" />} */
        >
-      <View style ={styles.background}>
+      <View style = {styles.contentContainer}>
        {/*unique identifier key for each flatlist */}
         <FlatList
             data={adrienneCoffee}
-            contentContainerStyle={styles.contentContainer}
             listKey={(item, index) => `_key${index.toString()}`}
             keyExtractor={(item, index) => `_key${index.toString()}`}
             renderItem={({ item: section }) => (
-                <View style={{ backgroundColor: "white"}}>
-                  <Title style={styles.otherText}>{section.location}</Title>
-                <Title style={styles.title}>{section.title}</Title>
+                <View style={styles.innerBackground}>
+                  <Title style={styles.renderTitle}>{section.title}</Title>
+                 
                 {/* extract days and hours data */}
                 <FlatList
-                        keyExtractor={(item, index) => item + index}
+                        keyExtractor={(item) => item}
                           data={section.data}
                           renderItem={({ item }) => (
                             <View style={styles.displayItem}>
-                              <Subheading style={styles.subheading} key={item}>{item}</Subheading>
+                              <Text style={styles.dataRender} key={item}>{item}</Text>
                             </View>
                           )}
                 />
                 {/* extract names, emails, and phone  */}
-                  
-                  <Text  style={styles.contacts} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.email}</Text>
+            
+                <Text style={styles.renderEmail} onPress={() => Linking.openURL(`mailto:{section.email}`)}>{section.email}</Text>
                 </View>
                 
             )}
@@ -74,4 +72,4 @@ const AdrienneCoffe = () => {
   );
 };
 
-export default AdrienneCoffe;
+export default AdrienneCoffee;

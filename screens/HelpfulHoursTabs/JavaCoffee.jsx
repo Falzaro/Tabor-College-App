@@ -35,6 +35,7 @@ const JavaCoffee = () => {
        <List.Accordion 
         style={{ backgroundColor: 'white' }}
         title="Java Jays Coffee Shop"
+        titleStyle={{ fontSize: 15 }}
        /* right={props => <List.Icon {...props} icon="office-building" />} */
        >
       <View style ={styles.background}>
