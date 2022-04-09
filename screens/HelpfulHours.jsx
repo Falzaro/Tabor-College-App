@@ -1,6 +1,9 @@
 import { StyleSheet, View, Text } from "react-native";
 import Main from "../components/Main";
 
+// import Relative
+import CourtSideGrill from './HelpfulHoursTab/CourtSideGrill';
+
 function HelpfulHours({ route }) {
     const { name } = route;
     const helpfulHoursCover = require("../assets/coverImage/helpfulHours.jpg");
@@ -11,7 +14,9 @@ function HelpfulHours({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+            <View style={styles.center}>
+                <CourtSideGrill />
+            </View>
         </Main>
     );
 }
@@ -22,6 +27,5 @@ const styles = StyleSheet.create({
     center: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
     },
 });
