@@ -46,7 +46,7 @@ const TutorCenter = () => {
                             <Title style = {styles.header}>{section.title}</Title>
                             <Text style = {styles.location}>({section.location})</Text>
                             <FlatList 
-                                keyExtractor={(item) => item}
+                                keyExtractor={(item) => item.id} // since firestore have two child w/ same, set id so it don't cause problem
                                 data={section.data}
                                 renderItem={({item}) => (
                                     <View style = {styles.item}>
