@@ -4,10 +4,6 @@ import { View, StyleSheet, FlatList, ImageBackground } from "react-native";
 import { Card, Title, Caption } from "react-native-paper";
 
 function FoodCard({ section }) {
-    // const breakfastImg = require("../assets/cafe_menu/breakfast.jpg");
-    // const dinnerRotisserieImg = require("../assets/cafe_menu/dinner_rotisserie.jpg");
-    // const breakfastImg = require("../assets/cafe_menu/breakfast.jpg");
-
     const getImage = (title) => {
         switch (title) {
             case "Breakfast":
@@ -31,7 +27,6 @@ function FoodCard({ section }) {
                 source={getImage(section.title)}
                 style={styles.cardCover}
                 imageStyle={{ borderRadius: 4 }}
-                // resize="center"
             />
             <View style={styles.cardContent}>
                 <View style={styles.titleWrapper}>
