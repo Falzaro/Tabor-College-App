@@ -14,6 +14,7 @@ import Javajay from './HelpfulHoursTab/Javajay';
 import MailRoom from './HelpfulHoursTab/MailRoom';
 import StudentLife from './HelpfulHoursTab/StudentLife';
 import StudentSuccess from "./HelpfulHoursTab/StudentSuccess";
+import TutorCenter from './HelpfulHoursTab/TutoringCenter';
 
 
 function HelpfulHours({ route }) {
@@ -41,6 +42,7 @@ function HelpfulHours({ route }) {
                     <MailRoom />
                     <StudentLife />
                     <StudentSuccess />
+                    <TutorCenter />
                 </View>
             }
             />
