@@ -1,17 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    container: {
+    contentContainer: {
         flex: 1,
-        padding: 18,
+        paddingTop: 5,
+        width: "100%",
     },
     accordion:{
-        backgroundColor: 'white',
-        overflow: 'hidden',
+       
     },
     card: {
         marginTop: 5,
         alignItems: 'center',
+        marginBottom: 5,
     },
     header: {
         textAlign: 'center',
@@ -26,10 +27,18 @@ export default StyleSheet.create({
     location: {
         textAlign: 'center',
     },
-    email: {
+    contact: {
         textAlign: 'center',
         color: '#003082',
-        marginBottom: 10,
+    },
+    dormContact:{
+        textAlign: 'auto',
+        color: '#003082',
+        fontSize: 13,
+    },
+    ext:{
+        textAlign: 'center',
     }
+
 
 });

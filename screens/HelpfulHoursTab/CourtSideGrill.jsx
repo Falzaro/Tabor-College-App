@@ -28,11 +28,10 @@ const CourtSideGrill = () => {
     }, []);
 
     return (
-        <View style = {styles.container}>
+        <View style = {styles.contentContainer}>
             <List.Accordion 
-                style = {styles.accordion}
                 title = "Court Side Grill"
-                theme ={{ colors: {primary: "#003082" , background: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
+                theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
                 onPress={handlePress} >
                 <FlatList
@@ -55,7 +54,7 @@ const CourtSideGrill = () => {
                             <Title style = {styles.header}>Contact Information:</Title>
                             <Subheading 
                                 onPress = {() => Linking.openURL(`mailto:${section.email}`)}
-                                style = {styles.email}>Email: {section.email}</Subheading>
+                                style = {styles.contact}>Email: {section.email}</Subheading>
                         </Card>
                     )}
                 />

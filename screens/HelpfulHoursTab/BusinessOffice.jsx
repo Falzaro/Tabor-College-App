@@ -9,18 +9,18 @@ import { doc, getDoc } from 'firebase/firestore';
 // import StyleSheet 
 import styles from './styles';
 
-const InfoTech = () => {
-    const [infoTech, setInfoTech] = useState([]);
+const BusinessOffice = () => {
+    const [businessOffice, setBusinessOffice] = useState([]);
     // useState for List Accordions
     const [expanded, setExpanded] = useState(false);
     const handlePress = () => setExpanded(!expanded);
 
     useEffect(() => {
         // Get Court Side Grill data from firestore
-        const docRef = doc(db, "helpful hours" , "info tech support");
+        const docRef = doc(db, "helpful hours" , "business office");
         getDoc(docRef)
             .then((doc) => {
-                setInfoTech(doc.data().sections);
+                setBusinessOffice(doc.data().sections);
             })
             .catch((err) => {
                 console.log(err);
@@ -30,12 +30,12 @@ const InfoTech = () => {
     return (
         <View style = {styles.contentContainer}>
             <List.Accordion 
-                title = "Information Technology Office"
+                title = "Business Office"
                 theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
                 onPress={handlePress} >
                 <FlatList
-                    data={infoTech}
+                    data={businessOffice}
                     listKey={(item, index) => `_key${index.toString()}`}
                     keyExtractor={(item, index) => `_key${index.toString()}`}
                     renderItem={({item: section}) => (
@@ -67,4 +67,4 @@ const InfoTech = () => {
     );
 };
 
-export default InfoTech;
+export default BusinessOffice;
