@@ -30,10 +30,13 @@ const DormHours = () => {
     return (
         <View style = {styles.contentContainer}>
             <List.Accordion 
+                style = {styles.accordion}
                 title = "Dorm Hours"
                 theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
-                onPress={handlePress} >
+                onPress={handlePress} 
+                left={props => <List.Icon {...props} icon="door-open" />}
+                >
                 <FlatList
                     data={dormHours}
                     listKey={(item, index) => `_key${index.toString()}`}

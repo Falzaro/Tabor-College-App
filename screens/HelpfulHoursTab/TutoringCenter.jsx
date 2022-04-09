@@ -30,10 +30,13 @@ const TutorCenter = () => {
     return (
         <View style = {styles.contentContainer}>
             <List.Accordion 
+                style = {styles.accordion}
                 title = "Tutoring Center"
                 theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
-                onPress={handlePress} >
+                onPress={handlePress} 
+                left={props => <List.Icon {...props} icon="desk-lamp" />}
+                >
                 <FlatList
                     data={tutorCenter}
                     listKey={(item, index) => `_key${index.toString()}`}

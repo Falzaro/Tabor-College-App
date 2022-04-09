@@ -29,11 +29,14 @@ const DiningHall = () => {
 
     return (
         <View style = {styles.contentContainer}>
-            <List.Accordion 
+            <List.Accordion
+                style = {styles.accordion} 
                 title = "Dining Hall"
                 theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
-                onPress={handlePress} >
+                onPress={handlePress} 
+                left={props => <List.Icon {...props} icon="silverware-fork-knife" />}
+                >
                 <FlatList
                     data={diningHall}
                     listKey={(item, index) => `_key${index.toString()}`}

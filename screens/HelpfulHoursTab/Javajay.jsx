@@ -30,10 +30,13 @@ const JavaJay = () => {
     return (
         <View style = {styles.contentContainer}>
             <List.Accordion 
+                style = {styles.accordion}
                 title = "Java Jays Coffee Shop"
                 theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
-                onPress={handlePress} >
+                onPress={handlePress} 
+                left={props => <List.Icon {...props} icon="coffee" />}
+                >
                 <FlatList
                     data={javaJay}
                     listKey={(item, index) => `_key${index.toString()}`}

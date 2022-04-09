@@ -9,6 +9,8 @@ import { doc, getDoc } from 'firebase/firestore';
 // import StyleSheet 
 import styles from './styles';
 
+import { AntDesign } from "@expo/vector-icons";
+
 const AcademicOffice = () => {
     const [academicOffice, setAcademicOffice] = useState([]);
     // useState for List Accordions
@@ -30,10 +32,13 @@ const AcademicOffice = () => {
     return (
         <View style = {styles.contentContainer}>
         <List.Accordion 
+            style = {styles.accordion}
             title = "Academic Office"
-            theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
+            theme ={{ colors: {primary: "#003082" , overflow: "hidden", animation: "scale", font: 'medium',}}} // this changes the Text when press to blue
             expanded = {expanded}
-            onPress={handlePress} >
+            onPress={handlePress} 
+            left={props => <List.Icon {...props} icon="book-open" />}
+            >
             <FlatList
                 data={academicOffice}
                 listKey={(item, index) => `_key${index.toString()}`}
@@ -56,7 +61,7 @@ const AcademicOffice = () => {
                             onPress = {() => Linking.openURL(`mailto:${section.email}`)}
                             style = {styles.contact}>Email: {section.email}</Subheading>
                          <Subheading 
-                            onPress = {() => Linking.openURL(`mailto:${section.phone}`)}
+                            onPress = {() => Linking.openURL(`tel:${section.phone}`)}
                             style = {styles.contact}>Phone: {section.phone}</Subheading>
                     </Card>
                 )}

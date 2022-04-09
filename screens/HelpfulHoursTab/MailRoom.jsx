@@ -30,10 +30,13 @@ const MailRoom = () => {
     return (
         <View style = {styles.contentContainer}>
             <List.Accordion 
+                style = {styles.accordion}
                 title = "Mail Room Office"
                 theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
-                onPress={handlePress} >
+                onPress={handlePress}
+                left={props => <List.Icon {...props} icon="mailbox-up" />} 
+                >
                 <FlatList
                     data={mailRoom}
                     listKey={(item, index) => `_key${index.toString()}`}

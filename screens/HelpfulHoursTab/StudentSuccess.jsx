@@ -29,11 +29,14 @@ const StudentSuccess = () => {
 
     return (
         <View style = {styles.contentContainer}>
-            <List.Accordion 
+            <List.Accordion
+                style = {styles.accordion} 
                 title = "Student Success Office"
                 theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
-                onPress={handlePress} >
+                onPress={handlePress} 
+                left={props => <List.Icon {...props} icon="school" />}
+                >
                 <FlatList
                     data={studentSuccess}
                     listKey={(item, index) => `_key${index.toString()}`}

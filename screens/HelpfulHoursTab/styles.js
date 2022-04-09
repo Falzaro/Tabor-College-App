@@ -7,7 +7,9 @@ export default StyleSheet.create({
         width: "100%",
     },
     accordion:{
-       
+       backgroundColor: 'white',
+       //borderRadius: 10,
+       overflow: 'hidden',
     },
     card: {
         marginTop: 5,
