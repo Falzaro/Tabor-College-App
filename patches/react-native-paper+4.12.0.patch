@@ -1,0 +1,57 @@
+diff --git a/node_modules/react-native-paper/src/components/List/ListAccordion.tsx b/node_modules/react-native-paper/src/components/List/ListAccordion.tsx
+index 08507da..20dd44f 100644
+--- a/node_modules/react-native-paper/src/components/List/ListAccordion.tsx
++++ b/node_modules/react-native-paper/src/components/List/ListAccordion.tsx
+@@ -187,7 +187,7 @@ const ListAccordion = ({
+       : handlePressAction;
+   return (
+     <View>
+-      <View style={{ backgroundColor: theme.colors.background }}>
++      <View style={{ backgroundColor: theme.colors.background, borderRadius: 10 }}>
+         <TouchableRipple
+           style={[styles.container, style]}
+           onPress={handlePress}
+@@ -249,7 +249,7 @@ const ListAccordion = ({
+                 <MaterialCommunityIcon
+                   name={isExpanded ? 'chevron-up' : 'chevron-down'}
+                   color={titleColor}
+-                  size={24}
++                  size={20}
+                   direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+                 />
+               )}
+@@ -282,11 +282,14 @@ ListAccordion.displayName = 'List.Accordion';
+ 
+ const styles = StyleSheet.create({
+   container: {
+-    padding: 8,
++    //padding: 8,  
++    //backgroundColor: 'transparent', // manually added
++   // borderRadius: 5,  // manually added
+   },
+   row: {
+     flexDirection: 'row',
+     alignItems: 'center',
++    
+   },
+   multiline: {
+     height: 40,
+@@ -295,15 +298,17 @@ const styles = StyleSheet.create({
+   },
+   title: {
+     fontSize: 16,
++    
+   },
+   description: {
+     fontSize: 14,
++    
+   },
+   item: {
+     margin: 8,
+   },
+   child: {
+-    paddingLeft: 64,
++   // paddingLeft: 0, // paddingLeft: 64, have to make it 0 for sizing purpose
+   },
+   content: {
+     flex: 1,
