@@ -6,7 +6,8 @@ import { StyleSheet, FlatList } from "react-native";
 import Main from "../components/Main";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
-import FoodCard from "../components/FoodCard";
+import FoodCard from "../components/cafe_menu/FoodCard";
+import DaysButtonGroup from "../components/cafe_menu/DaysButtonGroup";
 
 function CafeMenu({ route }) {
     const [cafeMenu, setCafeMenu] = useState([]);
@@ -32,6 +33,7 @@ function CafeMenu({ route }) {
 
     return (
         <Main name={name} coverImage={coverImage}>
+            <DaysButtonGroup />
             <FlatList
                 data={cafeMenu}
                 contentContainerStyle={styles.contentContainer}
@@ -49,7 +51,6 @@ export default CafeMenu;
 const styles = StyleSheet.create({
     contentContainer: {
         paddingHorizontal: 18,
-        paddingTop: 18,
-        width: "100%",
+        paddingBottom: 5,
     },
 });
