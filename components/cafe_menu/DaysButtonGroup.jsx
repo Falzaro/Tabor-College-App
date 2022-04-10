@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { ToggleButton, Text } from "react-native-paper";
 
 function ButtonDaysGroup() {
-    const [activeDay, setActiveDay] = useState("Sun");
-    const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+    const [activeDay, setActiveDay] = useState();
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    useEffect(() => {
+        // Set today as the default active day
+        setActiveDay(days[new Date().getDay()]);
+    }, []);
+
+    console.log(activeDay);
+    const handleDayChange = (day) => {
+        setActiveDay(day);
+    };
 
     return (
         <ToggleButton.Row
             style={styles.toggleButtonRow}
-            onValueChange={(value) => setActiveDay(value)}
+            onValueChange={handleDayChange}
         >
             {days.map((day, index) => (
                 <ToggleButton
