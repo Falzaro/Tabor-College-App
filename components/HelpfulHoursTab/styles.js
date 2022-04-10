@@ -11,6 +11,11 @@ export default StyleSheet.create({
        borderRadius: 5,
        overflow: 'hidden',
        paddingLeft: 0,
+       padding: 0,
+       margin: 0,
+       width: "100%",
+    
+      
     },
     card: {
         marginTop: 5,

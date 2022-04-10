@@ -9,7 +9,6 @@ import { doc, getDoc } from 'firebase/firestore';
 // import StyleSheet 
 import styles from './styles';
 
-import { AntDesign } from "@expo/vector-icons";
 
 const AcademicOffice = () => {
     const [academicOffice, setAcademicOffice] = useState([]);
@@ -32,13 +31,12 @@ const AcademicOffice = () => {
     return (
         <View style = {styles.contentContainer}>
         <List.Accordion 
-            children = {{children: 0}}
             style = {styles.accordion}
             title = "Academic Office"
             theme ={{ colors: {primary: "#003082" , overflow: "hidden", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
             expanded = {expanded}
             onPress={handlePress} 
-            left={props => <List.Icon {...props} icon="book-open" />}
+            left={props => <List.Icon {...props} icon="book-open"/>}
             >
             <FlatList
                 data={academicOffice}
@@ -71,7 +69,6 @@ const AcademicOffice = () => {
            
             
         </List.Accordion>
-       
     </View>
     );
 };
