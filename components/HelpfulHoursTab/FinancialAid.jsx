@@ -31,7 +31,7 @@ const FinancialAid = () => {
         <View style = {styles.contentContainer}>
             <List.Accordion
                 style = {styles.accordion} 
-                title = "Financial Aid"
+                title = "Financial Aid Office"
                 theme ={{ colors: {primary: "#003082", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
                 expanded = {expanded}
                 onPress={handlePress} 
