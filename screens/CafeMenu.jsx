@@ -7,6 +7,7 @@ import Main from "../components/Main";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import FoodCard from "../components/FoodCard";
+import ButtonDaysGroup from "../components/cafe_menu/ButtonDaysGroup";
 
 function CafeMenu({ route }) {
     const [cafeMenu, setCafeMenu] = useState([]);
@@ -32,6 +33,7 @@ function CafeMenu({ route }) {
 
     return (
         <Main name={name} coverImage={coverImage}>
+            <ButtonDaysGroup />
             <FlatList
                 data={cafeMenu}
                 contentContainerStyle={styles.contentContainer}
@@ -49,7 +51,9 @@ export default CafeMenu;
 const styles = StyleSheet.create({
     contentContainer: {
         paddingHorizontal: 18,
-        paddingTop: 18,
+        // paddingVertical: -10,
+        // paddingVertical: 10,
+        paddingBottom: 5,
         width: "100%",
     },
 });
