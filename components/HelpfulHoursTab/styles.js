@@ -8,8 +8,9 @@ export default StyleSheet.create({
     },
     accordion:{
        backgroundColor: 'white',
-       //borderRadius: 10,
+       borderRadius: 5,
        overflow: 'hidden',
+       paddingLeft: 0,
     },
     card: {
         marginTop: 5,

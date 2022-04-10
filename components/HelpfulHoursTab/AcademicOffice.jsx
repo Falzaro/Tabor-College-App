@@ -32,9 +32,10 @@ const AcademicOffice = () => {
     return (
         <View style = {styles.contentContainer}>
         <List.Accordion 
+            children = {{children: 0}}
             style = {styles.accordion}
             title = "Academic Office"
-            theme ={{ colors: {primary: "#003082" , overflow: "hidden", animation: "scale", font: 'medium',}}} // this changes the Text when press to blue
+            theme ={{ colors: {primary: "#003082" , overflow: "hidden", animation: "scale", font: 'medium'}}} // this changes the Text when press to blue
             expanded = {expanded}
             onPress={handlePress} 
             left={props => <List.Icon {...props} icon="book-open" />}
