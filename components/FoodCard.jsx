@@ -4,6 +4,7 @@ import { View, StyleSheet, FlatList, ImageBackground } from "react-native";
 import { Card, Title, Caption } from "react-native-paper";
 
 function FoodCard({ section }) {
+    // Render background image that matches with the food category
     const getImage = (title) => {
         switch (title) {
             case "Breakfast":
@@ -28,11 +29,13 @@ function FoodCard({ section }) {
                 style={styles.cardCover}
                 imageStyle={{ borderRadius: 4 }}
             />
+            {/* Card title with underline */}
             <View style={styles.cardContent}>
                 <View style={styles.titleWrapper}>
                     <Title style={styles.cardTitle}>{section.title}</Title>
                     <View style={styles.titleUnderline} />
                 </View>
+                {/* List of food items */}
                 <FlatList
                     keyExtractor={(item) => item}
                     data={section.data}
