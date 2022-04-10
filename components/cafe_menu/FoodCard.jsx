@@ -8,17 +8,17 @@ function FoodCard({ section }) {
     const getImage = (title) => {
         switch (title) {
             case "Breakfast":
-                return require("../assets/cafe_menu/breakfast.jpg");
+                return require("../../assets/cafe_menu/breakfast.jpg");
             case "Lunch":
-                return require("../assets/cafe_menu/lunch.jpg");
+                return require("../../assets/cafe_menu/lunch.jpg");
             case "Lunch Rotisserie":
-                return require("../assets/cafe_menu/lunch_rotisserie.jpg");
+                return require("../../assets/cafe_menu/lunch_rotisserie.jpg");
             case "Dinner":
-                return require("../assets/cafe_menu/dinner.jpg");
+                return require("../../assets/cafe_menu/dinner.jpg");
             case "Dinner Rotisserie":
-                return require("../assets/cafe_menu/dinner_rotisserie.jpg");
+                return require("../../assets/cafe_menu/dinner_rotisserie.jpg");
             default:
-                return require("../assets/cafe_menu/lunch.jpg");
+                return require("../../assets/cafe_menu/lunch.jpg");
         }
     };
 

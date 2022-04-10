@@ -6,7 +6,7 @@ import { StyleSheet, FlatList } from "react-native";
 import Main from "../components/Main";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
-import FoodCard from "../components/FoodCard";
+import FoodCard from "../components/cafe_menu/FoodCard";
 import DaysButtonGroup from "../components/cafe_menu/DaysButtonGroup";
 
 function CafeMenu({ route }) {
