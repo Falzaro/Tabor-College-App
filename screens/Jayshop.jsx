@@ -1,6 +1,9 @@
 import { StyleSheet, View } from "react-native";
 import Main from "../components/Main";
 
+import JayShopCarousel from '../components/Jay_Shop/JayShopCarousel';
+import JayShopData from '../components/Jay_Shop/JayShopData';
+
 function Jayshop({ route }) {
     const { name } = route;
     const jayshopCover = require("../assets/coverImage/jayshop.png");
@@ -11,7 +14,10 @@ function Jayshop({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+            <View style={styles.center}>
+                <JayShopData />
+                <JayShopCarousel />
+            </View>
         </Main>
     );
 }
