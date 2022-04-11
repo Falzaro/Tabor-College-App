@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Image, Animated, FlatList, View, Linking, Alert, StyleSheet, Text, SafeAreaView, TouchableOpacity } from 'react-native';
-import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
+import Carousel, { ParallaxImage, Pagination } from 'react-native-snap-carousel';
 import { Card, List, Title, Subheading } from 'react-native-paper';
 
 
@@ -25,15 +25,18 @@ const JayShopCarousel = () => {
             });
     }, []);
 
-   
 
     return (
         <View style={styles.center}>
-             <Title style ={{fontWeight: "bold", paddingBottom: 10}}>Products on Sales:</Title>
+            <View>
+                <Title style ={{fontWeight: "bold", paddingBottom: 10}}>Products on Sales:</Title>
+            </View>
         <View style={styles.carouselLayout}>
-          
+
             <Carousel 
                 layout = {'default'}
+                panGestureHandlerProps={{
+                activeOffsetX: [-10, 10], }}
                 data={getImage}
                 decelerationRate = 'fast'
                 horizontal
@@ -65,9 +68,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         marginTop: 5,
-        marginLeft: 18,
-        marginRight: 18,
-        marginBottom: 5,
+       
         borderRadius: 5,
         overflow: 'hidden',
       
@@ -104,9 +105,9 @@ const styles = StyleSheet.create({
         width: 300, 
         height:350, 
         backgroundColor: 'white', 
-        alignItems: 'center', 
-        resizeMode: 'contain', 
-        justifyContent: 'center'
+       // alignItems: 'center', 
+       // resizeMode: 'contain', 
+       // justifyContent: 'center'
     }
    
 });

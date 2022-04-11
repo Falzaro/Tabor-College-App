@@ -32,6 +32,7 @@ export default Jayshop;
 const styles = StyleSheet.create({
     center: {
         flex: 1,
+        paddingHorizontal: 18,
         //justifyContent: "center",
         //alignItems: "center",
     },

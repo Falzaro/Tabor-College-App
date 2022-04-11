@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     contentContainer: {
         paddingTop: 5,
         width: "100%",
-        paddingHorizontal: 18,
+       
     },
     accordion:{
        backgroundColor: 'white',
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
         //fontSize: 17,
         fontWeight: 'bold',
         paddingTop: 5,
+        
     },
     item: {
         alignItems: 'center',
