@@ -28,6 +28,7 @@ function HelpfulHours({ route }) {
     return (
         <Main name={name} coverImage={coverImage}>
             <FlatList
+            showsVerticalScrollIndicator = {false}
             ListFooterComponent={
                 <View style = {styles.center}>
                     <AcademicOffice />
