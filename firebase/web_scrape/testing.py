@@ -40,7 +40,8 @@ db = firestore.client()
 
 # # # Save data to Firestore
 def save(collection_id, document_id, data):
-    db.collection(collection_id).document(document_id).set(data)
+    # db.collection(collection_id).document(document_id).set(data)
+    print(collection_id, document_id, data)
 
 
 save(collection_id="cafe menu", document_id="tuesday", data=cafe_menu_data)
