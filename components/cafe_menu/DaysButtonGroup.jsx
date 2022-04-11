@@ -31,15 +31,30 @@ function ButtonDaysGroup({ activeDay, setActiveDay }) {
             style={styles.toggleButtonRow}
             onValueChange={handleDayChange}
         >
-            {days.map((day, index) => (
-                <ToggleButton
-                    style={{ width: 48 }}
-                    key={day + index}
-                    icon={() => <Text>{day}</Text>}
-                    value={day}
-                    status={activeDay === day ? "checked" : "unchecked"}
-                />
-            ))}
+            {days.map((day, index) => {
+                const isActive = day === activeDay;
+                return (
+                    <ToggleButton
+                        style={
+                            isActive
+                                ? styles.activeButton
+                                : styles.inactiveButton
+                        }
+                        key={day + index}
+                        icon={() => (
+                            <Text
+                                style={{
+                                    color: isActive ? "#fff" : "#000",
+                                }}
+                            >
+                                {day}
+                            </Text>
+                        )}
+                        value={day}
+                        status={isActive ? "checked" : "unchecked"}
+                    />
+                );
+            })}
         </ToggleButton.Row>
     );
 }
@@ -51,5 +66,15 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 25,
         marginBottom: 20,
+    },
+    inactiveButton: {
+        width: 48,
+        backgroundColor: "#EBEBEB",
+        color: "#000",
+    },
+    activeButton: {
+        width: 48,
+        backgroundColor: "#1292F1",
+        color: "#fff",
     },
 });
