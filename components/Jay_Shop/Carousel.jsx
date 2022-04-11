@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Image, Animated, FlatList, View, StatusBar, Dimensions, StyleSheet, Text } from 'react-native';
+import { Image, Animated, FlatList, View, StatusBar, Dimensions, StyleSheet, Text, SafeAreaView } from 'react-native';
 import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
+import { Card, List, Title, Subheading } from 'react-native-paper';
 
-const {width, height} = Dimensions.get('window');
 
-const ITEM_WIDTH = 200;
-const ITEM_HEIGHT = 200;
 
 // Relative Imports
 import { db } from '../../firebase/config';
 import { doc, getDoc } from "firebase/firestore";
-import { Card, Title, Caption } from "react-native-paper";
-
-
-const DOT_SIZE = 8;
-const DOT_SPACING = 8;
 
 const JayShopCarousel = () => {
     const [getImage, setImage] = useState([]);
@@ -34,41 +27,29 @@ const JayShopCarousel = () => {
 
    
 
-    const scrollY = React.useRef(new Animated.Value(0)).current;
-    
     return (
         <View style={styles.center}>
-           
-        <View style ={{ overflow: 'hidden', marginTop: 10, padding: 10}}>
-
-        <Animated.FlatList 
-             data={getImage}
-             listKey={(item, index) => `_key${index.toString()}`}
-             keyExtractor={(item, index) => `_key${index.toString()}`}
-             snapToInterval = {ITEM_HEIGHT}
-             decelerationRate = 'fast'
-             pagingEnabled
-             horizontal
-             showsVerticalScrollIndicator = {false}
-             showsHorizontalScrollIndicator = {false}
-             bounces = {false}
-             onScroll = {Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], {useNativeDriver: true})}
-             renderItem = {({ item: section }) => (
-                 <Card style = {{padding:5}}>
-                 <Image style = {styles.imageLayout} source = {{uri: section.image}}/>
-                 <Text>{section.price}</Text>
-                 <Text>{section.text}</Text>
+             <Title style ={{fontWeight: "bold"}}>Products on sales:</Title>
+        <View style={styles.carouselLayout}>
+          
+            <Carousel 
+                layout = {'default'}
+                data={getImage}
+                decelerationRate = 'fast'
+                horizontal
+                sliderWidth={360}
+                itemWidth={250}
+                renderItem = {({ item: section }) => (
+                 <Card style = {{width: 250, height:300, backgroundColor: 'white', alignItems: 'center', resizeMode: 'contain', }}>
+             
+                    <Image style = {styles.imageLayout} source = {{uri: section.image}}/>
+                    <Text style = {styles.text}>{section.price}</Text>
+                    <Text style = {styles.text}>{section.text}</Text>
                 </Card>
+                
             )}
-        />
-           <View style = {styles.pagination}>
-               {getImage.map((item, index) => {
-                   return (
-                       <View  key = {index} styles = {[styles.dot]}/>
-                   )
-               })}
-           </View> 
-           
+            
+            />
         </View>
         
          </View>
@@ -78,30 +59,37 @@ const JayShopCarousel = () => {
 const styles = StyleSheet.create({
     center: {
         flex: 1,
-        //justifyContent: "center",
-        //alignItems: "center",
-        flexDirection: "row",
-        marginBottom: 20,
+        alignItems: 'center',
+        backgroundColor: 'white',
+        marginTop: 5,
+        marginLeft: 18,
+        marginRight: 18,
+        marginBottom: 5,
+        borderRadius: 5,
+        overflow: 'hidden'
 
     },
+    carouselLayout: {
+        flexDirection:'row', 
+        alignItems: 'center',
+       // backgroundColor: 'white',
+       shadowOpacity: 0.27
+       
+        
+    },
     imageLayout: {
-        alignItems: "center",
-        width: ITEM_WIDTH,
-        height: ITEM_HEIGHT,
-        resizeMode: 'cover',
+        width:250,
+        height: 250,
+        borderRadius: 5,
+        alignItems: 'center',
+        resizeMode: 'contain',
+       
     },
-    pagination: {
-        position: 'absolute',
-        top: ITEM_HEIGHT /2,
-        left: 20,
-    },
-    dot: {
-        width: DOT_SIZE,
-        height: DOT_SIZE,
-        borderRadius: DOT_SIZE,
-        backgroundColor: 'blue',
-        marginBottom: DOT_SPACING,
-    },
+    text: {
+        textAlign: 'center',
+        marginTop: 5,
+    }
+   
 });
 
 export default JayShopCarousel;

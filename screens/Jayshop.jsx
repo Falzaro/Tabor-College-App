@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import Main from "../components/Main";
 
 import JayShopCarousel from '../components/Jay_Shop/Carousel';
@@ -27,7 +27,7 @@ export default Jayshop;
 const styles = StyleSheet.create({
     center: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        //justifyContent: "center",
+        //alignItems: "center",
     },
 });

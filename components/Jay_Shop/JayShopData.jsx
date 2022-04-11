@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react';
-import { View, FlatList, Text, Linking} from 'react-native';
+import { View, FlatList, Text, Linking, StyleSheet} from 'react-native';
 import { Card, List, Title, Subheading } from 'react-native-paper';
 
 // import Firebase Relative
@@ -7,7 +7,6 @@ import { db } from '../../firebase/config';
 import { doc, getDoc } from 'firebase/firestore';
 
 // import StyleSheet 
-import styles from '../HelpfulHoursTab/styles';
 
 
 const JayShopData = () => {
@@ -53,9 +52,6 @@ const JayShopData = () => {
                         <Subheading 
                             onPress = {() => Linking.openURL(`mailto:${section.email}`)}
                             style = {styles.contact}>Email: {section.email}</Subheading>
-                         <Subheading 
-                            onPress = {() => Linking.openURL(`tel:${section.phone}`)}
-                            style = {styles.contact}>Phone: {section.phone}</Subheading>
                     </Card>
                 )}
             />
@@ -67,4 +63,48 @@ const JayShopData = () => {
     );
 };
 
+const styles = StyleSheet.create({
+    contentContainer: {
+        paddingTop: 5,
+        width: "100%",
+        paddingHorizontal: 18,
+    },
+    accordion:{
+       backgroundColor: 'white',
+       borderRadius: 5,
+       overflow: 'hidden',
+       paddingLeft: 0,
+    },
+    card: {
+        marginTop: 5,
+        alignItems: 'center',
+        marginBottom: 5,
+    },
+    header: {
+        textAlign: 'center',
+        fontSize: 17,
+        fontWeight: 'bold',
+        paddingTop: 5,
+    },
+    item: {
+        alignItems: 'center',
+        marginTop: 5,
+    },
+    location: {
+        textAlign: 'center',
+    },
+    contact: {
+        textAlign: 'center',
+        color: '#003082',
+    },
+    dormContact:{
+        textAlign: 'auto',
+        color: '#003082',
+        fontSize: 13,
+    },
+    ext:{
+        textAlign: 'center',
+    }
+
+})
 export default JayShopData;
