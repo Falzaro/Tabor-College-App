@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, FlatList } from "react-native";
 import Main from "../components/Main";
 
 import JayShopCarousel from '../components/Jay_Shop/Carousel';
@@ -14,10 +14,15 @@ function Jayshop({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>
-                <JayShopData />
-                <JayShopCarousel />
-            </View>
+            <FlatList style={styles.center}
+                showsVerticalScrollIndicator = {false}
+                ListFooterComponent={
+                    <View>
+                        <JayShopData />
+                        <JayShopCarousel />
+                    </View>
+                }
+            />
         </Main>
     );
 }

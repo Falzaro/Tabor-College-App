@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     },
     header: {
         textAlign: 'center',
-        fontSize: 17,
+        //fontSize: 17,
         fontWeight: 'bold',
         paddingTop: 5,
     },
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     contact: {
         textAlign: 'center',
         color: '#003082',
+        paddingBottom: 5,
     },
     dormContact:{
         textAlign: 'auto',
