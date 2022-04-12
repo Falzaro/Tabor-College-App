@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Image, Animated, FlatList, View, Linking, Alert, StyleSheet, Text, SafeAreaView, TouchableOpacity } from 'react-native';
-import Carousel, { ParallaxImage, Pagination } from 'react-native-snap-carousel';
-import { Card, List, Title, Subheading } from 'react-native-paper';
+import { Image, View, Linking,  StyleSheet, Text,  TouchableOpacity } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+import { Card, Title, } from 'react-native-paper';
 
 
 
