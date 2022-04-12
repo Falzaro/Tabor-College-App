@@ -44,7 +44,7 @@ function CafeMenu({ route }) {
                 activeDay={activeDay}
                 setActiveDay={setActiveDay}
             />
-            {/* Render if there cafe menu is empty even after the data is done loading */}
+            {/* Only render if cafe menu is empty even after the data is done Loading */}
             {cafeMenu.length === 0 && !loadingData && (
                 <View style={{ paddingHorizontal: 18 }}>
                     <Card style={styles.card}>

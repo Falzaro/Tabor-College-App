@@ -20,7 +20,7 @@ function ButtonDaysGroup({ activeDay, setActiveDay }) {
 
     const handleDayChange = (day) => {
         // Clicking on the same day will give a null value
-        // So we want to set the active day only if it is not null
+        // So we only want to set the active day if the day value is not null
         if (day) {
             setActiveDay(day);
         }
@@ -34,6 +34,7 @@ function ButtonDaysGroup({ activeDay, setActiveDay }) {
             {days.map((day, index) => {
                 const isActive = day === activeDay;
                 return (
+                    // Make the toggle button blue if it is the active day
                     <ToggleButton
                         style={
                             isActive
