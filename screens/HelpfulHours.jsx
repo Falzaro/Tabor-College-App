@@ -37,6 +37,7 @@ function HelpfulHours({ route }) {
         <Main name={name} coverImage={coverImage}>
             <View style={styles.center}>
                 <FlatList 
+                    backgroundColor="transparent"
                     showsVerticalScrollIndicator = {false}
                     data={helpfulHoursTab}
                     listKey={(item, index) => `_key${index.toString()}`}

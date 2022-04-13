@@ -17,7 +17,7 @@ const DropDownTab = ({section}) => {
                     {primary: "#003082" , 
                     overflow: "hidden", 
                     animation: "scale", 
-                    font: 'medium'
+                    
                     }
                 
                 }} // this changes the Text when press to blue
@@ -66,12 +66,14 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 5,
         width: "100%",
+        backgroundColor: "transparent",
     },
     accordion:{
         backgroundColor: 'white',
         borderRadius: 5,
         overflow: 'hidden',
         paddingLeft: 0,
+        padding: 8,
      },
     card: {
         marginTop: 5,
