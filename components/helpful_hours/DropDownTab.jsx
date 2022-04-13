@@ -26,6 +26,7 @@ const DropDownTab = ({section}) => {
                 <Title style = {styles.title}>Hours:</Title>
                 <Text style = {styles.location}>({section.location})</Text>
                 <FlatList
+                    style = {{marginBottom: 5}}
                     showsVerticalScrollIndicator = {false}
                     listKey={(item, index) => `_key${index.toString()}`}
                     keyExtractor={(item, index) => `_key${index.toString()}`}
@@ -39,7 +40,7 @@ const DropDownTab = ({section}) => {
                 </Card>
 
                 {/* This section is still working, wondering how i can call in contact information in a good way */}
-                <List.Section>
+             
                 <Card>
                     <Title style = {styles.title}>Contact Information:</Title>
                     <Subheading 
@@ -58,8 +59,12 @@ const DropDownTab = ({section}) => {
                         onPress = {() => Linking.openURL(`mailto:${section.email2}`)}
                         style = {styles.contact}> {section.email2}
                     </Subheading>
+                    <Subheading 
+                        onPress = {() => Linking.openURL(section.url)}
+                        style ={{fontSize: 13, color: '#003082', textAlign: 'center'}}>
+                            {section.url}
+                    </Subheading>
                     </Card>
-                </List.Section>
             </List.Accordion>
         </View>
     );
