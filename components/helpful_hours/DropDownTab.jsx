@@ -17,15 +17,14 @@ const DropDownTab = ({section}) => {
                     {primary: "#003082" , 
                     overflow: "hidden", 
                     animation: "scale", 
-                    
                     }
-                
                 }} // this changes the Text when press to blue
                 expanded = {expanded}
                 onPress={handlePress} 
                 >
                 <Card style = { styles.card}>
                 <Title style = {styles.title}>Hours:</Title>
+                <Text style = {styles.location}>({section.location})</Text>
                 <FlatList
                     showsVerticalScrollIndicator = {false}
                     listKey={(item, index) => `_key${index.toString()}`}
@@ -37,11 +36,16 @@ const DropDownTab = ({section}) => {
                         </View>
                     )}
                 />
+                </Card>
+
+                {/* This section is still working, wondering how i can call in contact information in a good way */}
+                <List.Section>
+                <Card>
                     <Title style = {styles.title}>Contact Information:</Title>
                     <Subheading 
                         onPress = {() => Linking.openURL(`tel:${section.phone}`)}
                         style = {styles.contact}> {section.phone}
-                    </Subheading>
+                    </Subheading> 
                     <Subheading 
                         onPress = {() => Linking.openURL(`mailto:${section.email}`)}
                         style = {styles.contact}> {section.email}
@@ -54,7 +58,8 @@ const DropDownTab = ({section}) => {
                         onPress = {() => Linking.openURL(`mailto:${section.email2}`)}
                         style = {styles.contact}> {section.email2}
                     </Subheading>
-                </Card>
+                    </Card>
+                </List.Section>
             </List.Accordion>
         </View>
     );
@@ -96,7 +101,10 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center',
-    }
+    },
+    location: {
+        textAlign: 'center',
+    },
 })
 
 export default DropDownTab;
