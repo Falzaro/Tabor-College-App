@@ -24,7 +24,9 @@ const DropDownTab = ({section}) => {
                 >
                 <Card style = { styles.card}>
                 <Title style = {styles.title}>Hours:</Title>
+                {section.location &&
                 <Text style = {styles.location}>({section.location})</Text>
+                }
                 <FlatList
                     style = {{marginBottom: 5}}
                     showsVerticalScrollIndicator = {false}
@@ -41,29 +43,42 @@ const DropDownTab = ({section}) => {
 
                 {/* This section is still working, wondering how i can call in contact information in a good way */}
              
-                <Card>
-                    <Title style = {styles.title}>Contact Information:</Title>
+                <Card style ={{ marginBottom: 5}}>
+                    {section.contact &&
+                    <Title style = {styles.title}>{section.contact}</Title>
+                    }
+                    {section.phone &&
                     <Subheading 
                         onPress = {() => Linking.openURL(`tel:${section.phone}`)}
                         style = {styles.contact}> {section.phone}
-                    </Subheading> 
+                    </Subheading>
+                    }
+                    {section.email &&
                     <Subheading 
                         onPress = {() => Linking.openURL(`mailto:${section.email}`)}
                         style = {styles.contact}> {section.email}
                     </Subheading>
+                    }
+                    {section.email1 &&
                     <Subheading 
                         onPress = {() => Linking.openURL(`mailto:${section.email1}`)}
                         style = {styles.contact} > {section.email1}
                     </Subheading>
+                    }
+                    {section.email2 &&
                     <Subheading 
                         onPress = {() => Linking.openURL(`mailto:${section.email2}`)}
                         style = {styles.contact}> {section.email2}
                     </Subheading>
+                    }
+                    {section.url &&
                     <Subheading 
                         onPress = {() => Linking.openURL(section.url)}
                         style ={{fontSize: 13, color: '#003082', textAlign: 'center'}}>
                             {section.url}
                     </Subheading>
+                     }
+                    
                     </Card>
             </List.Accordion>
         </View>
