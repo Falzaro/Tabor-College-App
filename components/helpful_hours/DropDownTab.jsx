@@ -20,7 +20,8 @@ const DropDownTab = ({section}) => {
                     }
                 }} // this changes the Text when press to blue
                 expanded = {expanded}
-                onPress={handlePress} 
+                onPress={handlePress}                     //alarm-multiple or bell-ring-outline or clock-alert-outline or clock-fast
+                left={props => <List.Icon {...props} icon="hours-24" />}
                 >
                 <Card style = { styles.card}>
                 <Title style = {styles.title}>Hours:</Title>
