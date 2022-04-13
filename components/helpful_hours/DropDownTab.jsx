@@ -90,7 +90,7 @@ const DropDownTab = ({section}) => {
 const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
-        paddingTop: 5,
+        paddingTop: 10,
         width: "100%",
         backgroundColor: "transparent",
     },
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         overflow: 'hidden',
         paddingLeft: 0,
-        padding: 8,
+        //padding: 8,
      },
     card: {
         marginTop: 5,
