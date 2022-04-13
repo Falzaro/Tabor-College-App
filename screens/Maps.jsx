@@ -1,8 +1,10 @@
-import { StyleSheet, View } from "react-native";
-import MapView from "react-native-maps";
+import { useRef } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import MapView, { Marker, Callout } from "react-native-maps";
 import Main from "../components/Main";
 
 function Maps({ route }) {
+    const markerRef = useRef(null);
     const { name } = route;
     const mapsCover = require("../assets/coverImage/maps.jpg");
     const coverImage = {
@@ -14,6 +16,11 @@ function Maps({ route }) {
         <Main name={name} coverImage={coverImage}>
             <View style={styles.center}>
                 <MapView
+                    onRegionChangeComplete={() => {
+                        if (markerRef.current) {
+                            markerRef.current.showCallout();
+                        }
+                    }}
                     style={styles.map}
                     initialRegion={{
                         latitude: 38.34851,
@@ -22,7 +29,30 @@ function Maps({ route }) {
                         longitudeDelta: 0.0011,
                     }}
                     provider="google"
-                />
+                    showsCompass
+                >
+                    <Marker
+                        coordinate={{
+                            latitude: 38.34851,
+                            longitude: -97.20017,
+                        }}
+                        ref={markerRef}
+                    >
+                        <Callout>
+                            <Text>I'm here</Text>
+                        </Callout>
+                    </Marker>
+                    <Marker
+                        coordinate={{
+                            latitude: 38.34882,
+                            longitude: -97.201,
+                        }}
+                    >
+                        <Callout>
+                            <Text>Tabor College Library</Text>
+                        </Callout>
+                    </Marker>
+                </MapView>
             </View>
         </Main>
     );
@@ -38,6 +68,6 @@ const styles = StyleSheet.create({
     map: {
         height: 280,
         width: "100%",
-        marginVertical: 10,
+        marginBottom: 15,
     },
 });
