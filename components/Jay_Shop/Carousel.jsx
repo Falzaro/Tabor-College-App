@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image, View, Linking,  StyleSheet, Text,  TouchableOpacity } from 'react-native';
+import { Image, View, Linking,  StyleSheet, Text,  TouchableOpacity, Button } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Card, Title, } from 'react-native-paper';
 
@@ -52,12 +52,11 @@ const JayShopCarousel = () => {
             )}
             />
         </View>
-            <TouchableOpacity
+            <Button
                 style={styles.button}
-                onPress={() => Linking.openURL('https://tabor.edu/shop/')}>
-                        
-                <Text style = {{color: '#003082', fontSize: 20}}>Official Shop</Text>
-            </TouchableOpacity>
+                title = {'Offical Shop'}
+                onPress={() => Linking.openURL('https://tabor.edu/shop/')}/>
+            
          </View>
     );
 }
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
     },
     button:{
         paddingTop: 15,
-       marginBottom: 15
+        marginBottom: 15
     },
     card:{
         width: 300, 
