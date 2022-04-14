@@ -1,6 +1,6 @@
 // Module Imports
 import { useRef, useEffect, useState } from "react";
-import { StyleSheet, View, Text, FlatList, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 
 // Relative Imports
@@ -11,6 +11,7 @@ import { Chip, Title } from "react-native-paper";
 
 function Maps({ route }) {
     const [locations, setLocations] = useState([]);
+    const [activeLocation, setActiveLocation] = useState();
     const markerRef = useRef(null);
     const { name } = route;
     const mapsCover = require("../assets/coverImage/maps.jpg");
@@ -25,6 +26,7 @@ function Maps({ route }) {
         const docRef = doc(db, "maps", "Buildings on Campus");
         getDoc(docRef).then((doc) => {
             setLocations(doc.data().locations);
+            setActiveLocation(doc.data().locations[0]);
         });
     }, []);
 
@@ -76,7 +78,12 @@ function Maps({ route }) {
                     <View style={styles.locationsContainer}>
                         {locations.map((location) => (
                             <View key={location} style={styles.location}>
-                                <Chip style={styles.chip} mode="outlined">
+                                <Chip
+                                    onPress={() => console.log(location)}
+                                    style={styles.chip}
+                                    mode="outlined"
+                                    textStyle={styles.chipText}
+                                >
                                     {location}
                                 </Chip>
                             </View>
@@ -106,14 +113,25 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
     },
     locationsTitle: {
-        marginBottom: 15,
+        marginBottom: 12,
     },
     location: {
-        marginBottom: 10,
-        marginRight: 12,
+        marginBottom: 8,
+        marginRight: 10,
     },
+    // chip: {
+    //     backgroundColor: "rgb(226, 237, 248)",
+    //     borderColor: "rgb(0, 127, 255)",
+    // },
     chip: {
         backgroundColor: "rgba(0, 0, 0, 0.05)",
         borderColor: "black",
+    },
+    chipText: {
+        // color: "#0057B2",
+        // color: "rgb(0, 127, 255)",
+    },
+    chipText: {
+        color: "black",
     },
 });
