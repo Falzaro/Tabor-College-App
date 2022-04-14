@@ -1,5 +1,5 @@
 // Module Imports
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, createRef } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 
@@ -11,8 +11,12 @@ import { Chip, Title } from "react-native-paper";
 
 function Maps({ route }) {
     const [locations, setLocations] = useState([]);
-    const [activeLocation, setActiveLocation] = useState();
-    const markerRef = useRef(null);
+    const [activeLocation, setActiveLocation] = useState({
+        latitude: 38.34851,
+        longitude: -97.20017,
+    });
+    let regionRef = useRef();
+    let markerRef = useRef();
     const { name } = route;
     const mapsCover = require("../assets/coverImage/maps.jpg");
     const coverImage = {
@@ -25,50 +29,55 @@ function Maps({ route }) {
         // Get maps Locations from Firestore
         const docRef = doc(db, "maps", "Buildings on Campus");
         getDoc(docRef).then((doc) => {
-            setLocations(doc.data().locations);
-            setActiveLocation(doc.data().locations[0]);
+            const data = doc.data();
+            setLocations(data.locations);
+            setActiveLocation(data.locations[0]);
         });
     }, []);
+    const handleMarkerPress = (location, i) => {
+        setActiveLocation(location);
+        regionRef.current.animateToRegion({
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.0012,
+            longitudeDelta: 0.0011,
+        });
+    };
 
     return (
         <Main name={name} coverImage={coverImage} imageSize="small">
             <MapView
-                onRegionChangeComplete={() => {
-                    if (markerRef.current) {
-                        markerRef.current.showCallout();
-                    }
-                }}
                 style={styles.map}
                 initialRegion={{
-                    latitude: 38.34851,
-                    longitude: -97.20017,
+                    latitude: activeLocation.latitude,
+                    longitude: activeLocation.longitude,
                     latitudeDelta: 0.0012,
                     longitudeDelta: 0.0011,
                 }}
+                onRegionChangeComplete={() => {
+                    console.log(markerRef);
+                    markerRef?.current?.showCallout();
+                }}
                 provider="google"
                 showsCompass
+                ref={(ref) => {
+                    regionRef.current = ref;
+                }}
             >
-                <Marker
-                    coordinate={{
-                        latitude: 38.34851,
-                        longitude: -97.20017,
-                    }}
-                    ref={markerRef}
-                >
-                    <Callout>
-                        <Text>I'm here</Text>
-                    </Callout>
-                </Marker>
-                <Marker
-                    coordinate={{
-                        latitude: 38.34882,
-                        longitude: -97.201,
-                    }}
-                >
-                    <Callout>
-                        <Text>Tabor College Library</Text>
-                    </Callout>
-                </Marker>
+                {locations.map((location, i) => (
+                    <Marker
+                        key={location.name}
+                        coordinate={{
+                            latitude: location.latitude,
+                            longitude: location.longitude,
+                        }}
+                        ref={(ref) => (markerRef.current = ref)}
+                    >
+                        <Callout tooltip>
+                            <Text>{location.name}</Text>
+                        </Callout>
+                    </Marker>
+                ))}
             </MapView>
             <ScrollView style={styles.center}>
                 <View style={styles.buildingsOnCampus}>
@@ -76,15 +85,17 @@ function Maps({ route }) {
                         Buildings on Campus
                     </Title>
                     <View style={styles.locationsContainer}>
-                        {locations.map((location) => (
-                            <View key={location} style={styles.location}>
+                        {locations.map((location, i) => (
+                            <View key={location.name} style={styles.location}>
                                 <Chip
-                                    onPress={() => console.log(location)}
+                                    onPress={() =>
+                                        handleMarkerPress(location, i)
+                                    }
                                     style={styles.chip}
                                     mode="outlined"
                                     textStyle={styles.chipText}
                                 >
-                                    {location}
+                                    {location.name}
                                 </Chip>
                             </View>
                         ))}
@@ -116,22 +127,24 @@ const styles = StyleSheet.create({
         marginBottom: 12,
     },
     location: {
-        marginBottom: 8,
+        marginBottom: 9,
         marginRight: 10,
     },
-    // chip: {
-    //     backgroundColor: "rgb(226, 237, 248)",
-    //     borderColor: "rgb(0, 127, 255)",
-    // },
     chip: {
-        backgroundColor: "rgba(0, 0, 0, 0.05)",
-        borderColor: "black",
+        backgroundColor: "rgb(226, 237, 248)",
+        borderColor: "rgb(0, 127, 255)",
+        // color: "rgb(0, 106, 213)",
     },
+    // chip: {
+    //     backgroundColor: "rgba(0, 0, 0, 0.05)",
+    //     borderColor: "black",
+    // },
     chipText: {
         // color: "#0057B2",
         // color: "rgb(0, 127, 255)",
+        color: "rgb(0, 106, 213)",
     },
-    chipText: {
-        color: "black",
-    },
+    // chipText: {
+    //     color: "black",
+    // },
 });

@@ -15,7 +15,6 @@ const Main = ({ children, name, coverImage, imageSize }) => {
     const imageHeight =
         imageSize === "small" ? { height: 140 } : { height: 180 };
 
-    console.log(imageHeight);
     return (
         <>
             {/* Setting up Image Header */}
