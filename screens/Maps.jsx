@@ -12,6 +12,16 @@ function Maps({ route }) {
         darkness: "rgba(0, 0, 0, 0.12)",
         blurRadius: 0,
     };
+
+    sections = {
+        data: [
+            { days: "Monday", time: "8:00 AM - 5:00 PM" },
+            { days: "Tuesday - Thursday", time: "1:30 AM - 3:00 PM" },
+        ],
+        email: "denise@tabor.edu",
+        phone: "316-867-5309",
+    };
+
     return (
         <Main name={name} coverImage={coverImage}>
             <View style={styles.center}>
