@@ -1,9 +1,16 @@
-import { useRef } from "react";
+// Module Imports
+import { useRef, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
+
+// Relative Imports
 import Main from "../components/Main";
+import { db } from "../firebase/config";
+import { doc, getDoc } from "firebase/firestore";
+import { Chip, Title } from "react-native-paper";
 
 function Maps({ route }) {
+    const [locations, setLocations] = useState([]);
     const markerRef = useRef(null);
     const { name } = route;
     const mapsCover = require("../assets/coverImage/maps.jpg");
@@ -13,14 +20,13 @@ function Maps({ route }) {
         blurRadius: 0,
     };
 
-    sections = {
-        data: [
-            { days: "Monday", time: "8:00 AM - 5:00 PM" },
-            { days: "Tuesday - Thursday", time: "1:30 AM - 3:00 PM" },
-        ],
-        email: "denise@tabor.edu",
-        phone: "316-867-5309",
-    };
+    useEffect(() => {
+        // Get maps Locations from Firestore
+        const docRef = doc(db, "maps", "Buildings on Campus");
+        getDoc(docRef).then((doc) => {
+            setLocations(doc.data().locations);
+        });
+    }, []);
 
     return (
         <Main name={name} coverImage={coverImage}>
@@ -63,6 +69,14 @@ function Maps({ route }) {
                         </Callout>
                     </Marker>
                 </MapView>
+                <View style={styles.buildingsOnCampus}>
+                    <Title>Buildings on Campus</Title>
+                    {locations.map((location) => (
+                        <View key={location}>
+                            <Chip mode="outlined">{location}</Chip>
+                        </View>
+                    ))}
+                </View>
             </View>
         </Main>
     );
@@ -78,6 +92,10 @@ const styles = StyleSheet.create({
     map: {
         height: 280,
         width: "100%",
-        marginBottom: 15,
+        // marginBottom: 15,
+    },
+    buildingsOnCampus: {
+        padding: 15,
+        width: "100%",
     },
 });
