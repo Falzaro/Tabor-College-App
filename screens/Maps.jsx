@@ -1,6 +1,6 @@
 // Module Imports
 import { useRef, useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, FlatList, ScrollView } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 
 // Relative Imports
@@ -29,55 +29,61 @@ function Maps({ route }) {
     }, []);
 
     return (
-        <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>
-                <MapView
-                    onRegionChangeComplete={() => {
-                        if (markerRef.current) {
-                            markerRef.current.showCallout();
-                        }
-                    }}
-                    style={styles.map}
-                    initialRegion={{
+        <Main name={name} coverImage={coverImage} imageSize="small">
+            <MapView
+                onRegionChangeComplete={() => {
+                    if (markerRef.current) {
+                        markerRef.current.showCallout();
+                    }
+                }}
+                style={styles.map}
+                initialRegion={{
+                    latitude: 38.34851,
+                    longitude: -97.20017,
+                    latitudeDelta: 0.0012,
+                    longitudeDelta: 0.0011,
+                }}
+                provider="google"
+                showsCompass
+            >
+                <Marker
+                    coordinate={{
                         latitude: 38.34851,
                         longitude: -97.20017,
-                        latitudeDelta: 0.0012,
-                        longitudeDelta: 0.0011,
                     }}
-                    provider="google"
-                    showsCompass
+                    ref={markerRef}
                 >
-                    <Marker
-                        coordinate={{
-                            latitude: 38.34851,
-                            longitude: -97.20017,
-                        }}
-                        ref={markerRef}
-                    >
-                        <Callout>
-                            <Text>I'm here</Text>
-                        </Callout>
-                    </Marker>
-                    <Marker
-                        coordinate={{
-                            latitude: 38.34882,
-                            longitude: -97.201,
-                        }}
-                    >
-                        <Callout>
-                            <Text>Tabor College Library</Text>
-                        </Callout>
-                    </Marker>
-                </MapView>
+                    <Callout>
+                        <Text>I'm here</Text>
+                    </Callout>
+                </Marker>
+                <Marker
+                    coordinate={{
+                        latitude: 38.34882,
+                        longitude: -97.201,
+                    }}
+                >
+                    <Callout>
+                        <Text>Tabor College Library</Text>
+                    </Callout>
+                </Marker>
+            </MapView>
+            <ScrollView style={styles.center}>
                 <View style={styles.buildingsOnCampus}>
-                    <Title>Buildings on Campus</Title>
-                    {locations.map((location) => (
-                        <View key={location}>
-                            <Chip mode="outlined">{location}</Chip>
-                        </View>
-                    ))}
+                    <Title style={styles.locationsTitle}>
+                        Buildings on Campus
+                    </Title>
+                    <View style={styles.locationsContainer}>
+                        {locations.map((location) => (
+                            <View key={location} style={styles.location}>
+                                <Chip style={styles.chip} mode="outlined">
+                                    {location}
+                                </Chip>
+                            </View>
+                        ))}
+                    </View>
                 </View>
-            </View>
+            </ScrollView>
         </Main>
     );
 }
@@ -87,15 +93,27 @@ export default Maps;
 const styles = StyleSheet.create({
     center: {
         flex: 1,
-        alignItems: "center",
     },
     map: {
         height: 280,
         width: "100%",
-        // marginBottom: 15,
     },
     buildingsOnCampus: {
         padding: 15,
-        width: "100%",
+    },
+    locationsContainer: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
+    locationsTitle: {
+        marginBottom: 15,
+    },
+    location: {
+        marginBottom: 10,
+        marginRight: 12,
+    },
+    chip: {
+        backgroundColor: "rgba(0, 0, 0, 0.05)",
+        borderColor: "black",
     },
 });

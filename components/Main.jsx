@@ -2,7 +2,7 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
-const Main = ({ children, name, coverImage }) => {
+const Main = ({ children, name, coverImage, imageSize }) => {
     const coverImageStyles = StyleSheet.create({
         backgroundOverlay: {
             flex: 1,
@@ -11,10 +11,15 @@ const Main = ({ children, name, coverImage }) => {
             backgroundColor: coverImage.darkness,
         },
     });
+
+    const imageHeight =
+        imageSize === "small" ? { height: 140 } : { height: 180 };
+
+    console.log(imageHeight);
     return (
         <>
             {/* Setting up Image Header */}
-            <View style={styles.coverImage}>
+            <View style={{ ...styles.coverImage, ...imageHeight }}>
                 <ImageBackground
                     style={styles.imgBackground}
                     blurRadius={coverImage.blurRadius}
