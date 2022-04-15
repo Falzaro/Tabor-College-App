@@ -1,13 +1,14 @@
 // Module Imports
-import { useRef, useEffect, useState, createRef } from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
-import MapView, { Marker, Callout } from "react-native-maps";
+import { useRef, useEffect, useState } from "react";
+import { StyleSheet, ScrollView } from "react-native";
+import MapView from "react-native-maps";
 
 // Relative Imports
 import Main from "../components/Main";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
-import { Chip, Title } from "react-native-paper";
+import LocationMarkers from "../components/maps/locationMarkers";
+import BuildingsOnCampus from "../components/maps/BuildingsOnCampus";
 
 function Maps({ route }) {
     const [locations, setLocations] = useState([]);
@@ -31,18 +32,10 @@ function Maps({ route }) {
         getDoc(docRef).then((doc) => {
             const data = doc.data();
             setLocations(data.locations);
+            // Set the first location as the active location
             setActiveLocation(data.locations[0]);
         });
     }, []);
-    const handleMarkerPress = (location, i) => {
-        setActiveLocation(location);
-        regionRef.current.animateToRegion({
-            latitude: location.latitude,
-            longitude: location.longitude,
-            latitudeDelta: 0.0012,
-            longitudeDelta: 0.0011,
-        });
-    };
 
     return (
         <Main name={name} coverImage={coverImage} imageSize="small">
@@ -55,8 +48,7 @@ function Maps({ route }) {
                     longitudeDelta: 0.0011,
                 }}
                 onRegionChangeComplete={() => {
-                    console.log(markerRef);
-                    markerRef?.current?.showCallout();
+                    // console.log(markerRef);
                 }}
                 provider="google"
                 showsCompass
@@ -64,43 +56,15 @@ function Maps({ route }) {
                     regionRef.current = ref;
                 }}
             >
-                {locations.map((location, i) => (
-                    <Marker
-                        key={location.name}
-                        coordinate={{
-                            latitude: location.latitude,
-                            longitude: location.longitude,
-                        }}
-                        ref={(ref) => (markerRef.current = ref)}
-                    >
-                        <Callout tooltip>
-                            <Text>{location.name}</Text>
-                        </Callout>
-                    </Marker>
-                ))}
+                <LocationMarkers locations={locations} />
             </MapView>
+            {/* Content below the map */}
             <ScrollView style={styles.center}>
-                <View style={styles.buildingsOnCampus}>
-                    <Title style={styles.locationsTitle}>
-                        Buildings on Campus
-                    </Title>
-                    <View style={styles.locationsContainer}>
-                        {locations.map((location, i) => (
-                            <View key={location.name} style={styles.location}>
-                                <Chip
-                                    onPress={() =>
-                                        handleMarkerPress(location, i)
-                                    }
-                                    style={styles.chip}
-                                    mode="outlined"
-                                    textStyle={styles.chipText}
-                                >
-                                    {location.name}
-                                </Chip>
-                            </View>
-                        ))}
-                    </View>
-                </View>
+                <BuildingsOnCampus
+                    locations={locations}
+                    setActiveLocation={setActiveLocation}
+                    regionRef={regionRef}
+                />
             </ScrollView>
         </Main>
     );
@@ -133,18 +97,8 @@ const styles = StyleSheet.create({
     chip: {
         backgroundColor: "rgb(226, 237, 248)",
         borderColor: "rgb(0, 127, 255)",
-        // color: "rgb(0, 106, 213)",
     },
-    // chip: {
-    //     backgroundColor: "rgba(0, 0, 0, 0.05)",
-    //     borderColor: "black",
-    // },
     chipText: {
-        // color: "#0057B2",
-        // color: "rgb(0, 127, 255)",
         color: "rgb(0, 106, 213)",
     },
-    // chipText: {
-    //     color: "black",
-    // },
 });
