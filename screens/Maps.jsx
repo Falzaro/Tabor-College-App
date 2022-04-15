@@ -9,6 +9,7 @@ import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import LocationMarkers from "../components/maps/locationMarkers";
 import BuildingsOnCampus from "../components/maps/BuildingsOnCampus";
+import Classrooms from "../components/maps/Classrooms";
 
 function Maps({ route }) {
     const [locations, setLocations] = useState([]);
@@ -17,7 +18,6 @@ function Maps({ route }) {
         longitude: -97.20017,
     });
     let regionRef = useRef();
-    let markerRef = useRef();
     const { name } = route;
     const mapsCover = require("../assets/coverImage/maps.jpg");
     const coverImage = {
@@ -47,9 +47,7 @@ function Maps({ route }) {
                     latitudeDelta: 0.0012,
                     longitudeDelta: 0.0011,
                 }}
-                onRegionChangeComplete={() => {
-                    // console.log(markerRef);
-                }}
+                onRegionChangeComplete={() => {}}
                 provider="google"
                 showsCompass
                 ref={(ref) => {
@@ -65,6 +63,7 @@ function Maps({ route }) {
                     setActiveLocation={setActiveLocation}
                     regionRef={regionRef}
                 />
+                {/* <Classrooms /> */}
             </ScrollView>
         </Main>
     );
@@ -79,26 +78,5 @@ const styles = StyleSheet.create({
     map: {
         height: 280,
         width: "100%",
-    },
-    buildingsOnCampus: {
-        padding: 15,
-    },
-    locationsContainer: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-    },
-    locationsTitle: {
-        marginBottom: 12,
-    },
-    location: {
-        marginBottom: 9,
-        marginRight: 10,
-    },
-    chip: {
-        backgroundColor: "rgb(226, 237, 248)",
-        borderColor: "rgb(0, 127, 255)",
-    },
-    chipText: {
-        color: "rgb(0, 106, 213)",
     },
 });

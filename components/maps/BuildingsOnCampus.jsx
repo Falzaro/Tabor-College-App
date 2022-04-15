@@ -45,7 +45,10 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
     },
     locationsTitle: {
-        marginBottom: 12,
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#000",
+        marginBottom: 15,
     },
     location: {
         marginBottom: 9,
