@@ -13,7 +13,7 @@ const JayShopCarousel = () => {
     const [getImage, setImage] = useState([]);
     useEffect(() => {
         // Get the  from firebase version 9
-        const docRef = doc(db, "products", "testing data2");
+        const docRef = doc(db, "products", "testing data3");
         getDoc(docRef)
            
             .then((doc) => {
@@ -29,7 +29,7 @@ const JayShopCarousel = () => {
     return (
         <View style={styles.center}>
             <View>
-                <Title style ={{fontWeight: "bold", paddingBottom: 10}}>Products on Sales:</Title>
+                <Title style ={{fontWeight: "bold", paddingBottom: 10}}>Available Products:</Title>
             </View>
         <View style={styles.carouselLayout}>
 
@@ -54,7 +54,7 @@ const JayShopCarousel = () => {
         </View>
             <Button
                 style={styles.button}
-                title = {'Offical Shop'}
+                title = {'View More'}
                 onPress={() => Linking.openURL('https://tabor.edu/shop/')}/>
             
          </View>
@@ -67,11 +67,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         marginTop: 5,
-       
         borderRadius: 5,
         overflow: 'hidden',
-      
-
     },
     carouselLayout: {
         flexDirection:'row', 

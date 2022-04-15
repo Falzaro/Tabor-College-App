@@ -18,8 +18,9 @@ function Jayshop({ route }) {
                 showsVerticalScrollIndicator = {false}
                 ListFooterComponent={
                     <View>
-                        <JayShopData />
+                        
                         <JayShopCarousel />
+                        <JayShopData />
                     </View>
                 }
             />

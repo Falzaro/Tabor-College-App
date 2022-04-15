@@ -17,7 +17,7 @@ const JayShopData = () => {
 
     useEffect(() => {
         // get AcademicOffice data from firestore
-        const docRef = doc(db, "helpful hours" , "Jay Shop");
+        const docRef = doc(db, "helpful hours" , "jay shop");
         getDoc(docRef) // get the document
             .then((doc) => {
                 setJayShopData(doc.data().sections);
@@ -36,23 +36,33 @@ const JayShopData = () => {
                 keyExtractor={(item, index) => `_key${index.toString()}`}
                 bounces = {false}
                 renderItem={({item: section}) => (
-                    <Card style = { styles.card} >
-                        <Title style = {styles.header}>{section.title}</Title>
-                        <Text style = {styles.location}>({section.location})</Text>
-                        <FlatList 
-                            keyExtractor={(item) => item}
-                            data={section.data}
-                            renderItem={({item}) => (
-                                <View style = {styles.item}>
-                                    <Subheading>{item}</Subheading>
-                                </View>
-                            )}
-                        />
-                        <Title style = {styles.header}>Contact Information:</Title>
+                    <View style = {{backgroundColor: 'white', paddingHorizontal: 18 , borderRadius: 5, }} >
+                        {section.title && 
+                        <Title style ={styles.title}>{section.title}</Title>}
+
+                        <View style ={styles.centerNav}>
+                            {section.days &&
+                            <Text style = {styles.days}>{section.days}</Text>
+                            }
+                            { section.hours &&
+                            <Text style = {styles.hours}>{section.hours}</Text>
+                            }
+                        </View>
+                         
+                         {section.contactTitle &&
+                        <Title style = {styles.title}>{section.contactTitle}</Title>
+                         }
+                        {section.email &&
                         <Subheading 
                             onPress = {() => Linking.openURL(`mailto:${section.email}`)}
-                            style = {styles.contact}>Email: {section.email}</Subheading>
-                    </Card>
+                            style = {styles.contact}>{section.email}</Subheading>
+                        }
+                        {section.phone &&
+                        <Subheading 
+                            onPress = {() => Linking.openURL(`tel:${section.phone}`)}
+                            style = {styles.contact}>{section.phone}</Subheading>
+                        }
+                    </View>
                 )}
             />
 
@@ -69,33 +79,16 @@ const styles = StyleSheet.create({
         width: "100%",
        
     },
-    accordion:{
-       backgroundColor: 'white',
-       borderRadius: 5,
-       overflow: 'hidden',
-       paddingLeft: 0,
-    },
-    card: {
-        marginTop: 5,
-        alignItems: 'center',
-        marginBottom: 5,
-    },
-    header: {
-        textAlign: 'center',
+    title: {
+        //textAlign: 'center',
         //fontSize: 17,
         fontWeight: 'bold',
-        paddingTop: 5,
+        //paddingTop: 5,
+       
         
     },
-    item: {
-        alignItems: 'center',
-        marginTop: 5,
-    },
-    location: {
-        textAlign: 'center',
-    },
     contact: {
-        textAlign: 'center',
+        textAlign: 'left',
         color: '#003082',
         paddingBottom: 5,
     },
@@ -106,7 +99,28 @@ const styles = StyleSheet.create({
     },
     ext:{
         textAlign: 'center',
-    }
+    },
+    hours :{
+        fontSize: 17,
+        //textAlign: 'right',
+        alignSelf: 'flex-end',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+
+    },
+    days: {
+        fontSize: 18,
+        //textAlign: 'left',
+        alignSelf: 'flex-start',
+        flexDirection: 'row',
+
+
+    },
+    centerNav: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 10
+    },
 
 })
 export default JayShopData;
