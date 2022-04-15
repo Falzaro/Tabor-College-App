@@ -36,7 +36,7 @@ const JayShopData = () => {
                 keyExtractor={(item, index) => `_key${index.toString()}`}
                 bounces = {false}
                 renderItem={({item: section}) => (
-                    <View style = {{backgroundColor: 'white', paddingHorizontal: 18 , borderRadius: 5, }} >
+                    <View style = {{backgroundColor: 'white', paddingHorizontal: 18 , }} >
                         {section.title && 
                         <Title style ={styles.title}>{section.title}</Title>}
 
@@ -75,6 +75,7 @@ const JayShopData = () => {
 
 const styles = StyleSheet.create({
     contentContainer: {
+        flex: 1,
         paddingTop: 5,
         width: "100%",
        
@@ -119,7 +120,6 @@ const styles = StyleSheet.create({
     centerNav: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 10
     },
 
 })
