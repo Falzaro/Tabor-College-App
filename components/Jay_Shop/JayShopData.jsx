@@ -53,14 +53,14 @@ const JayShopData = () => {
                         <Title style = {styles.title}>{section.contactTitle}</Title>
                          }
                         {section.email &&
-                        <Subheading 
+                        <Text 
                             onPress = {() => Linking.openURL(`mailto:${section.email}`)}
-                            style = {styles.contact}>{section.email}</Subheading>
+                            style = {styles.contact}>{section.email}</Text>
                         }
                         {section.phone &&
-                        <Subheading 
+                        <Text 
                             onPress = {() => Linking.openURL(`tel:${section.phone}`)}
-                            style = {styles.contact}>{section.phone}</Subheading>
+                            style = {styles.contact}>{section.phone}</Text>
                         }
                     </View>
                 )}
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
         //fontSize: 17,
         fontWeight: 'bold',
         //paddingTop: 5,
+        paddingBottom: 10
        
         
     },
