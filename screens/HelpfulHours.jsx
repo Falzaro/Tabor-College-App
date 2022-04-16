@@ -21,7 +21,7 @@ function HelpfulHours({ route }) {
 
     const item = [];
     useEffect(() => { 
-        getDocs(collection(db, "test data"))
+        getDocs(collection(db, "helpful hours example"))
             .then((snapshot) =>{
                 const helpfulHours = snapshot.docs.map((doc) => doc.data());
                 setHelpfulHoursTab(helpfulHours);

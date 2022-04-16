@@ -36,6 +36,7 @@ const DropDownTab = ({section}) => {
                     data={section.data}
                     renderItem={({item}) => (
                         <View style = {styles.items}>
+                           
                             <Subheading style = {styles.text}>{item}</Subheading>
                         </View>
                     )}
