@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     carouselLayout: {
         flexDirection:'row', 
         alignItems: 'center',
-       // backgroundColor: 'white',
        shadowOpacity: 0.5,
        justifyContent: "center",
        
@@ -101,9 +100,6 @@ const styles = StyleSheet.create({
         width: 300, 
         height:350, 
         backgroundColor: 'white', 
-       // alignItems: 'center', 
-       // resizeMode: 'contain', 
-       // justifyContent: 'center'
     }
    
 });
