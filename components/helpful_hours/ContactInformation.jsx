@@ -2,7 +2,6 @@ import { Linking, StyleSheet } from "react-native";
 import { Card, Title, Subheading } from "react-native-paper";
 
 const ContactInformation = ({ contactInfo }) => {
-    contactInfo.url && console.log(contactInfo);
     return (
         <Card style={styles.card}>
             <Title style={styles.title}>Contact Information</Title>
@@ -70,11 +69,5 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "bold",
         paddingTop: 5,
-    },
-    text: {
-        textAlign: "center",
-    },
-    location: {
-        textAlign: "center",
     },
 });
