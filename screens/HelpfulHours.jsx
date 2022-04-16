@@ -7,10 +7,9 @@ import { getDocs, collection } from "firebase/firestore";
 
 import DropDownTab from "../components/helpful_hours/DropDownTab";
 
-
 function HelpfulHours({ route }) {
     const [helpfulHoursTab, setHelpfulHoursTab] = useState([]);
-   
+
     const { name } = route;
     const helpfulHoursCover = require("../assets/coverImage/helpfulHours.jpg");
     const coverImage = {
@@ -20,25 +19,23 @@ function HelpfulHours({ route }) {
     };
 
     const item = [];
-    useEffect(() => { 
+    useEffect(() => {
         getDocs(collection(db, "helpful hours example"))
-            .then((snapshot) =>{
+            .then((snapshot) => {
                 const helpfulHours = snapshot.docs.map((doc) => doc.data());
                 setHelpfulHoursTab(helpfulHours);
             })
             .catch((err) => {
                 console.log(err);
             });
-          
-        
     }, []);
 
     return (
         <Main name={name} coverImage={coverImage}>
             <View style={styles.center}>
-                <FlatList 
+                <FlatList
                     backgroundColor="transparent"
-                    showsVerticalScrollIndicator = {false}
+                    showsVerticalScrollIndicator={false}
                     data={helpfulHoursTab}
                     listKey={(item, index) => `_key${index.toString()}`}
                     keyExtractor={(item, index) => `_key${index.toString()}`}
@@ -51,8 +48,6 @@ function HelpfulHours({ route }) {
     );
 }
 
-    
-
 export default HelpfulHours;
 
 const styles = StyleSheet.create({
@@ -60,6 +55,5 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 18,
         justifyContent: "center",
-        //alignItems: "center",
     },
 });
