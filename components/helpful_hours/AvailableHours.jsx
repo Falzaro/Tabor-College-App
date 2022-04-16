@@ -11,8 +11,8 @@ const AvailableHours = ({ openHours, section }) => {
             <FlatList
                 style={{ marginBottom: 5 }}
                 showsVerticalScrollIndicator={false}
-                listKey={(_, index) => `_key${index.toString()}`}
-                keyExtractor={(_, index) => `_key${index.toString()}`}
+                listKey={(_, index) => `_key${index}`}
+                keyExtractor={(_, index) => `_key${index}`}
                 data={openHours}
                 renderItem={({ item }) => (
                     <View style={styles.item}>
