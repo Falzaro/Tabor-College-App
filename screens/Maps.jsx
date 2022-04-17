@@ -30,10 +30,13 @@ function Maps({ route }) {
         // Get maps Locations from Firestore
         const docRef = doc(db, "maps", "Buildings on Campus");
         getDoc(docRef).then((doc) => {
-            const data = doc.data();
-            setLocations(data.locations);
+            // Sort the locations by name
+            const sortedLocations = doc
+                .data()
+                .locations.sort((a, b) => a.name.length > b.name.length);
+            setLocations(sortedLocations);
             // Set the first location as the active location
-            setActiveLocation(data.locations[0]);
+            setActiveLocation(sortedLocations[0]);
         });
     }, []);
 

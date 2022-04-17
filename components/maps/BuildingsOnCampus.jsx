@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import { Chip, Title } from "react-native-paper";
+import { Chip, Title, Card } from "react-native-paper";
 
 function BuildingsOnCampus({ locations, setActiveLocation, regionRef }) {
     const handleMarkerPress = (location) => {
@@ -12,8 +12,9 @@ function BuildingsOnCampus({ locations, setActiveLocation, regionRef }) {
             longitudeDelta: 0.0011,
         });
     };
+
     return (
-        <View style={styles.buildingsOnCampus}>
+        <Card style={styles.buildingsOnCampus}>
             <Title style={styles.locationsTitle}>Buildings on Campus</Title>
             <View style={styles.locationsContainer}>
                 {/* Map out clickable chips with location data  */}
@@ -30,7 +31,7 @@ function BuildingsOnCampus({ locations, setActiveLocation, regionRef }) {
                     </View>
                 ))}
             </View>
-        </View>
+        </Card>
     );
 }
 
@@ -38,17 +39,19 @@ export default BuildingsOnCampus;
 
 const styles = StyleSheet.create({
     buildingsOnCampus: {
+        flex: 1,
         padding: 15,
-    },
-    locationsContainer: {
-        flexDirection: "row",
-        flexWrap: "wrap",
+        margin: 15,
     },
     locationsTitle: {
         fontSize: 20,
         fontWeight: "bold",
         color: "#000",
         marginBottom: 15,
+    },
+    locationsContainer: {
+        flexDirection: "row",
+        flexWrap: "wrap",
     },
     location: {
         marginBottom: 9,
