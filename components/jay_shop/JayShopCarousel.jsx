@@ -31,7 +31,9 @@ const JayShopCarousel = () => {
     }, []);
 
     return (
+
         <View style = {styles.container}>
+        
             <Title style ={styles.title}>Available Products:</Title>
 
             <Carousel 
@@ -43,18 +45,17 @@ const JayShopCarousel = () => {
                 itemWidth={ITEM_WIDTH}
                 renderItem={({ item: section }) => (
                     <View style ={styles.card}>  
-                    
                     <Image style = {styles.imageLayout} source = {{uri: section.image}} />
                     <Subheading style={styles.price}>{section.price}</Subheading>
                     <Subheading style ={styles.name}>{section.name}</Subheading>
-                   
                     </View>
+                   
                 )}
             />
             <TouchableOpacity style = {styles.button}   onPress={() => Linking.openURL('https://tabor.edu/shop/')}>
                 <Subheading style = {styles.buttonText}>View More</Subheading>
             </TouchableOpacity>
-           
+       
         </View>
     )
 }
@@ -68,12 +69,14 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     imageLayout:{
-        width:150,
-        height: 150,
+        width:200,
+        height: 200,
         borderRadius: 5,
-        shadowOpacity: 0.5,
         justifyContent: 'center',
-     
+        marginTop: 5,
+        borderColor: "#f7d117",
+        borderWidth: 1,
+
     },
     title:{
         textAlign: "center",
@@ -85,13 +88,15 @@ const styles = StyleSheet.create({
     price:{
         alignItems: "center",
         paddingHorizontal: 10,
+        color: 'white',
     },
     card:{
         alignItems: "center",
         justifyContent: "center",
-        shadowOpacity: 0.5,
         borderRadius: 5,
-       // paddingRight: 18,
+        backgroundColor: "#003082",
+        borderColor: "#f7d117",
+        borderWidth: 1,
       
     },
     button: {
@@ -100,12 +105,16 @@ const styles = StyleSheet.create({
         
     },
     buttonText:{
-        color: 'blue',
+        color: '#003082',
         fontSize: 20,
     },
    name:{
-       textAlign: "center",
-   }
+        textAlign: "center",
+        color: 'white',
+        paddingHorizontal: 10,
+   },
+  
+   
    
 
 })

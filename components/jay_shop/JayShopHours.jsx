@@ -17,7 +17,6 @@ const JayShopHours = () => {
             .then((doc) => {
                 const data = doc.data();
                 setJayShop(data);
-                console.log(data);
             })
             .catch((err) => {
                 console.log(err);
@@ -39,7 +38,7 @@ const JayShopHours = () => {
                         keyExtractor={(_, index) => `_key${index}`}
                         data={openHours}
                         renderItem={({ item }) => (
-                            <Card style = {styles.alignSideBySide}>
+                            <View style = {styles.alignSideBySide}>
                                 {/* Show days */}
                                 <Subheading styles ={styles.days} >{item.days}</Subheading>
                                 {/* Map out the hours */}
@@ -52,7 +51,7 @@ const JayShopHours = () => {
                                         <Subheading styles = {styles.hours} >{hours}</Subheading>
                                     )}
                                 />
-                            </Card>
+                            </View>
                         )}
                     />
             </Card>
