@@ -1,8 +1,9 @@
 // Module Imports
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import { Card, Divider, Subheading, Title, Chip } from "react-native-paper";
 import { doc, getDoc } from "firebase/firestore";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // Relative Imports
 import { db } from "../../firebase/config";
@@ -10,6 +11,14 @@ import { db } from "../../firebase/config";
 function Classrooms({ setFocusMode, focusMode, scrollRef }) {
     const [classrooms, setClassrooms] = useState([]);
     const [searchValue, setSearchValue] = useState("");
+    const filteredClassrooms = classrooms.filter((classroom) => {
+        if (searchValue === "") {
+            return true;
+        }
+        return (
+            classroom?.building?.slice(0, searchValue.length) === searchValue
+        );
+    });
 
     useEffect(() => {
         const docRef = doc(
@@ -22,14 +31,11 @@ function Classrooms({ setFocusMode, focusMode, scrollRef }) {
         });
     }, []);
 
-    const filteredClassrooms = classrooms.filter((classroom) => {
-        if (searchValue === "") {
-            return true;
+    useEffect(() => {
+        if (filteredClassrooms.length <= 2) {
+            scrollRef.current.scrollToEnd();
         }
-        return (
-            classroom?.building?.slice(0, searchValue.length) === searchValue
-        );
-    });
+    }, [focusMode]);
 
     const handleSearch = (text) => {
         setSearchValue(text);
@@ -37,12 +43,11 @@ function Classrooms({ setFocusMode, focusMode, scrollRef }) {
 
     const handleFocus = () => {
         setFocusMode(true);
-        scrollRef.current.scrollTo({ x: 0, y: 200 });
     };
 
     const handleBlur = () => {
         setFocusMode(false);
-        if (filteredClassrooms.length <= 2) scrollRef.current.scrollToEnd();
+        // if (filteredClassrooms.length <= 2) scrollRef.current.scrollToEnd();
     };
 
     return (
@@ -69,26 +74,32 @@ function Classrooms({ setFocusMode, focusMode, scrollRef }) {
                 />
             </View>
             {filteredClassrooms.map((classroom, i) => (
-                <View
-                    style={{
-                        ...styles.classroom,
-                    }}
-                    key={`_key${i}`}
-                >
-                    <View style={styles.row}>
-                        <Subheading>Building:</Subheading>
-                        <Chip style={styles.chip}>{classroom.building}</Chip>
+                <View style={styles.classroom} key={`_key${i}`}>
+                    <View style={{ width: "87%" }}>
+                        <View style={styles.row}>
+                            <Subheading>Building:</Subheading>
+                            <Chip style={styles.chip}>
+                                {classroom.building}
+                            </Chip>
+                        </View>
+                        <View style={styles.row}>
+                            <Subheading style={styles.subheading}>
+                                Room: {classroom.room}
+                            </Subheading>
+                            <Subheading>
+                                Capacity: {classroom.capacity}
+                            </Subheading>
+                        </View>
+                        {Boolean(classroom.note) && (
+                            <Subheading>Note: {classroom.note}</Subheading>
+                        )}
+                        <Divider style={styles.divider} />
                     </View>
-                    <View style={styles.row}>
-                        <Subheading style={styles.subheading}>
-                            Room: {classroom.room}
-                        </Subheading>
-                        <Subheading>Capacity: {classroom.capacity}</Subheading>
-                    </View>
-                    {Boolean(classroom.note) && (
-                        <Subheading>Note: {classroom.note}</Subheading>
-                    )}
-                    <Divider style={styles.divider} />
+                    <MaterialCommunityIcons
+                        name="map-marker-right-outline"
+                        size={23}
+                        color="#747474"
+                    />
                 </View>
             ))}
         </Card>
@@ -119,6 +130,10 @@ const styles = StyleSheet.create({
     },
     classroom: {
         paddingVertical: 5,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginRight: 15,
     },
     row: {
         width: "100%",
