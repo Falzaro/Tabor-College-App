@@ -19,6 +19,7 @@ function Maps({ route }) {
         longitude: -97.20017,
     });
     let regionRef = useRef();
+    let scrollRef = useRef();
     const { name } = route;
     const mapsCover = require("../assets/coverImage/maps.jpg");
     const coverImage = {
@@ -61,13 +62,17 @@ function Maps({ route }) {
                 <LocationMarkers locations={locations} />
             </MapView>
             {/* Content below the map */}
-            <ScrollView style={styles.center}>
+            <ScrollView ref={scrollRef} style={styles.center}>
                 <BuildingsOnCampus
                     locations={locations}
                     setActiveLocation={setActiveLocation}
                     regionRef={regionRef}
                 />
-                <Classrooms setFocusMode={setFocusMode} focusMode={focusMode} />
+                <Classrooms
+                    setFocusMode={setFocusMode}
+                    focusMode={focusMode}
+                    scrollRef={scrollRef}
+                />
             </ScrollView>
         </Main>
     );

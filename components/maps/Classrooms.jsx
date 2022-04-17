@@ -7,10 +7,9 @@ import { doc, getDoc } from "firebase/firestore";
 // Relative Imports
 import { db } from "../../firebase/config";
 
-function Classrooms({ setFocusMode, focusMode }) {
+function Classrooms({ setFocusMode, focusMode, scrollRef }) {
     const [classrooms, setClassrooms] = useState([]);
     const [searchValue, setSearchValue] = useState("");
-    let searchRef = useRef();
 
     useEffect(() => {
         const docRef = doc(
@@ -23,18 +22,6 @@ function Classrooms({ setFocusMode, focusMode }) {
         });
     }, []);
 
-    const handleSearch = (text) => {
-        setSearchValue(text);
-    };
-
-    const handleFocus = () => {
-        setFocusMode(true);
-    };
-
-    const handleBlur = (e) => {
-        setFocusMode(false);
-    };
-
     const filteredClassrooms = classrooms.filter((classroom) => {
         if (searchValue === "") {
             return true;
@@ -44,11 +31,25 @@ function Classrooms({ setFocusMode, focusMode }) {
         );
     });
 
+    const handleSearch = (text) => {
+        setSearchValue(text);
+    };
+
+    const handleFocus = () => {
+        setFocusMode(true);
+        scrollRef.current.scrollTo({ x: 0, y: 200 });
+    };
+
+    const handleBlur = () => {
+        setFocusMode(false);
+        if (filteredClassrooms.length <= 2) scrollRef.current.scrollToEnd();
+    };
+
     return (
         <Card
             style={{
                 ...styles.classrooms,
-                // ...{ marginBottom: focusMode ? 240 : 30 },
+                ...{ marginBottom: focusMode ? 250 : 30 },
             }}
         >
             <View style={{ ...styles.row, justifyContent: "space-between" }}>
