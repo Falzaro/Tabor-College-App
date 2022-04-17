@@ -1,7 +1,28 @@
-import { StyleSheet, View } from "react-native";
+import React, { useState, useEffect} from 'react';
+import { StyleSheet, View, FlatList, Linking,  } from "react-native";
 import Main from "../components/Main";
 
+import { Card, List, Title, Subheading, } from 'react-native-paper';
+// import firebase 
+import {db} from '../firebase/config';
+import { doc, getDoc } from 'firebase/firestore';
+
 function Jayshop({ route }) {
+
+    const [jayShop, setJayShop] = useState([]);
+
+    useEffect(() => {
+        // get Jay Shop data from Firestore
+        const docRef = doc (db, "helpful hours", "jay shop");
+        getDoc(docRef)
+            .then((doc) => {
+                setJayShop(doc.data().sections);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    })
+
     const { name } = route;
     const jayshopCover = require("../assets/coverImage/jayshop.png");
     const coverImage = {
@@ -11,7 +32,18 @@ function Jayshop({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+            <View style={styles.center}>
+                <FlatList 
+                    data = {jayShop}
+                    listKey = {(item, index) => index.toString()}
+                    bounces = {false}
+                    renderItem ={({item:section}) => (
+                        <View> 
+                            
+                        </View>
+                    )}
+                />
+            </View>
         </Main>
     );
 }
