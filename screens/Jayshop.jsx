@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, FlatList, Linking,  } from "react-native";
+import { StyleSheet, View, FlatList, Linking, Text } from "react-native";
 import Main from "../components/Main";
 
 import { Card, List, Title, Subheading, } from 'react-native-paper';
@@ -13,15 +13,20 @@ function Jayshop({ route }) {
 
     useEffect(() => {
         // get Jay Shop data from Firestore
-        const docRef = doc (db, "helpful hours", "jay shop");
+        const docRef = doc(db, "helpful hours example", "jay shop hours");
         getDoc(docRef)
             .then((doc) => {
-                setJayShop(doc.data().sections);
+                const data = doc.data();
+                setJayShop(data);
+                console.log(data);
             })
             .catch((err) => {
                 console.log(err);
             })
-    })
+    }, []);
+
+    const { "Contact information": contactInfo, "open hours": openHours } =
+    jayShop;
 
     const { name } = route;
     const jayshopCover = require("../assets/coverImage/jayshop.png");
@@ -32,17 +37,34 @@ function Jayshop({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>
-                <FlatList 
-                    data = {jayShop}
-                    listKey = {(item, index) => index.toString()}
-                    bounces = {false}
-                    renderItem ={({item:section}) => (
-                        <View> 
-                            
+            <View style={styles.container}>
+                <Card style={styles.card}>
+                    <Text>{jayShop.title}</Text>
+                    <Text>{jayShop.location}</Text>
+                    <FlatList
+                    style={{ marginBottom: 5, }}
+                    showsVerticalScrollIndicator={false}
+                    listKey={(_, index) => `_key${index}`}
+                    keyExtractor={(_, index) => `_key${index}`}
+                    data={openHours}
+                    renderItem={({ item }) => (
+                        <View style={styles.item}>
+                            {/* Show days */}
+                            <Subheading style={styles.days}>{item.days}</Subheading>
+                            {/* Map out the hours */}
+                            <FlatList
+                                showsVerticalScrollIndicator={false}
+                                listKey={(_, index) => `_key${index}`}
+                                keyExtractor={(_, index) => `_key${index}`}
+                                data={item.hours}
+                                renderItem={({ item: hours }) => (
+                                    <Text style={styles.hours}>{hours}</Text>
+                                )}
+                            />
                         </View>
                     )}
                 />
+            </Card>
             </View>
         </Main>
     );
@@ -51,9 +73,14 @@ function Jayshop({ route }) {
 export default Jayshop;
 
 const styles = StyleSheet.create({
-    center: {
+    container: {
         flex: 1,
-        justifyContent: "center",
+        //justifyContent: "center",
+        //alignItems: "center",
+    },
+    card:{
+        paddingHorizontal: 18,
         alignItems: "center",
+        backgroundColor: 'white'
     },
 });
