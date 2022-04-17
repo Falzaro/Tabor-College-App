@@ -10,7 +10,7 @@ function LocationMarkers({ locations }) {
                 longitude: location.longitude,
             }}
         >
-            <Callout tooltip>
+            <Callout>
                 <Text>{location.name}</Text>
             </Callout>
         </Marker>

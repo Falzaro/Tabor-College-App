@@ -1,16 +1,36 @@
 // Module Imports
 import { useState, useEffect } from "react";
-import { StyleSheet, View, TextInput } from "react-native";
-import { Card, Divider, Subheading, Title, Chip } from "react-native-paper";
+import {
+    StyleSheet,
+    View,
+    TextInput,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+} from "react-native";
+import {
+    Card,
+    Divider,
+    Subheading,
+    Title,
+    Chip,
+    TouchableRipple,
+} from "react-native-paper";
 import { doc, getDoc } from "firebase/firestore";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // Relative Imports
 import { db } from "../../firebase/config";
 
-function Classrooms({ setTextFocusMode, textFocusMode, scrollRef }) {
+function Classrooms({
+    locations,
+    setTextFocusMode,
+    textFocusMode,
+    scrollRef,
+    regionRef,
+}) {
     const [classrooms, setClassrooms] = useState([]);
     const [searchValue, setSearchValue] = useState("");
+    // Filter classrooms by building name
     const filteredClassrooms = classrooms.filter((classroom) => {
         if (searchValue === "") return true;
         return (
@@ -30,6 +50,7 @@ function Classrooms({ setTextFocusMode, textFocusMode, scrollRef }) {
     }, []);
 
     useEffect(() => {
+        // If there are 3 or less classroom results, then scroll down to the bottom
         if (filteredClassrooms.length <= 3) {
             scrollRef.current.scrollToEnd();
         }
@@ -39,18 +60,35 @@ function Classrooms({ setTextFocusMode, textFocusMode, scrollRef }) {
         setSearchValue(text);
     };
 
+    // What happens when the user is searching by building name
     const handleFocus = () => {
         setTextFocusMode(true);
     };
 
+    // What happens when the user is done searching
     const handleBlur = () => {
         setTextFocusMode(false);
+    };
+
+    const handleClassroomPress = (classroom) => {
+        const foundLocation = locations.find(
+            (location) => location.building === classroom.building
+        );
+        console.log(classroom);
+        if (foundLocation)
+            regionRef.current.animateToRegion({
+                latitude: foundLocation.latitude,
+                longitude: foundLocation.longitude,
+                latitudeDelta: 0.0012,
+                longitudeDelta: 0.0011,
+            });
     };
 
     return (
         <Card
             style={{
                 ...styles.classrooms,
+                // Push the card up if the user is searching
                 ...{ marginBottom: textFocusMode ? 250 : 30 },
             }}
         >
@@ -71,11 +109,18 @@ function Classrooms({ setTextFocusMode, textFocusMode, scrollRef }) {
                 />
             </View>
             {filteredClassrooms.map((classroom, i) => (
+                // <TouchableWithoutFeedback
+                //     onPress={() => handleClassroomPress(classroom)}
+                //     key={`_key${i}`}
+                // >
                 <View style={styles.classroom} key={`_key${i}`}>
                     <View style={{ width: "87%" }}>
                         <View style={styles.row}>
                             <Subheading>Building:</Subheading>
-                            <Chip style={styles.chip}>
+                            <Chip
+                                onPress={() => handleClassroomPress(classroom)}
+                                style={styles.chip}
+                            >
                                 {classroom.building}
                             </Chip>
                         </View>
@@ -92,12 +137,17 @@ function Classrooms({ setTextFocusMode, textFocusMode, scrollRef }) {
                         )}
                         <Divider style={styles.divider} />
                     </View>
-                    <MaterialCommunityIcons
-                        name="map-marker-right-outline"
-                        size={23}
-                        color="#747474"
-                    />
+                    <TouchableOpacity
+                        onPress={() => handleClassroomPress(classroom)}
+                    >
+                        <MaterialCommunityIcons
+                            name="map-marker-right-outline"
+                            size={23}
+                            color="#747474"
+                        />
+                    </TouchableOpacity>
                 </View>
+                // </TouchableWithoutFeedback>
             ))}
         </Card>
     );

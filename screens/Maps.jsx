@@ -48,6 +48,7 @@ function Maps({ route }) {
         setFullscreenMode(!fullscreenMode);
     };
 
+    // Set the height of the map depending on what mode the user is in
     let mapHeight;
     if (fullscreenMode) mapHeight = "100%";
     else if (textFocusMode) mapHeight = 0;
@@ -82,15 +83,22 @@ function Maps({ route }) {
                 <LocationMarkers locations={locations} />
             </MapView>
             {/* Content below the map */}
-            <ScrollView ref={scrollRef} style={styles.center}>
+            <ScrollView
+                // keyboardShouldPersistTaps="always"
+                // prevent ripple effect on scroll
+                ref={scrollRef}
+                style={styles.center}
+            >
                 <BuildingsOnCampus
                     locations={locations}
                     setActiveLocation={setActiveLocation}
                     regionRef={regionRef}
                 />
                 <Classrooms
+                    locations={locations}
                     setTextFocusMode={setTextFocusMode}
                     textFocusMode={textFocusMode}
+                    regionRef={regionRef}
                     scrollRef={scrollRef}
                 />
             </ScrollView>
