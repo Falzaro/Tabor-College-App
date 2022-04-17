@@ -17,10 +17,10 @@ const JayShopData = () => {
 
     useEffect(() => {
         // get AcademicOffice data from firestore
-        const docRef = doc(db, "helpful hours" , "jay shop");
+        const docRef = doc(db, "helpful hours example" , "jay shop hours");
         getDoc(docRef) // get the document
             .then((doc) => {
-                setJayShopData(doc.data().sections);
+                setJayShopData(doc.data());
             })
             .catch((err) => {
                 console.log(err);
@@ -29,42 +29,19 @@ const JayShopData = () => {
 
     return (
         <View style = {styles.contentContainer}>
-       
-            <FlatList
-                data={jayShopData}
-                listKey={(item, index) => `_key${index.toString()}`}
-                keyExtractor={(item, index) => `_key${index.toString()}`}
-                bounces = {false}
-                renderItem={({item: section}) => (
-                    <View style = {{backgroundColor: 'white', paddingHorizontal: 18 , }} >
-                        {section.title && 
-                        <Title style ={styles.title}>{section.title}</Title>}
-
-                        <View style ={styles.centerNav}>
-                            {section.days &&
-                            <Text style = {styles.days}>{section.days}</Text>
-                            }
-                            { section.hours &&
-                            <Text style = {styles.hours}>{section.hours}</Text>
-                            }
-                        </View>
-                         
-                         {section.contactTitle &&
-                        <Title style = {styles.title}>{section.contactTitle}</Title>
-                         }
-                        {section.email &&
-                        <Text 
-                            onPress = {() => Linking.openURL(`mailto:${section.email}`)}
-                            style = {styles.contact}>{section.email}</Text>
-                        }
-                        {section.phone &&
-                        <Text 
-                            onPress = {() => Linking.openURL(`tel:${section.phone}`)}
-                            style = {styles.contact}>{section.phone}</Text>
-                        }
-                    </View>
-                )}
-            />
+        <Text>JLSKDJFLKSDJF</Text>
+       <FlatList
+                    backgroundColor="transparent"
+                    showsVerticalScrollIndicator={false}
+                    data={jayShopData}
+                    listKey={(item, index) => `_key${index.toString()}`}
+                    keyExtractor={(item, index) => `_key${index.toString()}`}
+                    renderItem={({ item: section }) => (
+                        <Card>
+                            <Title>TEXT</Title>
+                        </Card>
+                    )}
+                />
 
            
             
