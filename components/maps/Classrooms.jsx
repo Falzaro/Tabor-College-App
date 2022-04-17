@@ -8,13 +8,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 // Relative Imports
 import { db } from "../../firebase/config";
 
-function Classrooms({ setFocusMode, focusMode, scrollRef }) {
+function Classrooms({ setTextFocusMode, textFocusMode, scrollRef }) {
     const [classrooms, setClassrooms] = useState([]);
     const [searchValue, setSearchValue] = useState("");
     const filteredClassrooms = classrooms.filter((classroom) => {
-        if (searchValue === "") {
-            return true;
-        }
+        if (searchValue === "") return true;
         return (
             classroom?.building?.slice(0, searchValue.length) === searchValue
         );
@@ -32,29 +30,28 @@ function Classrooms({ setFocusMode, focusMode, scrollRef }) {
     }, []);
 
     useEffect(() => {
-        if (filteredClassrooms.length <= 2) {
+        if (filteredClassrooms.length <= 3) {
             scrollRef.current.scrollToEnd();
         }
-    }, [focusMode]);
+    }, [textFocusMode]);
 
     const handleSearch = (text) => {
         setSearchValue(text);
     };
 
     const handleFocus = () => {
-        setFocusMode(true);
+        setTextFocusMode(true);
     };
 
     const handleBlur = () => {
-        setFocusMode(false);
-        // if (filteredClassrooms.length <= 2) scrollRef.current.scrollToEnd();
+        setTextFocusMode(false);
     };
 
     return (
         <Card
             style={{
                 ...styles.classrooms,
-                ...{ marginBottom: focusMode ? 250 : 30 },
+                ...{ marginBottom: textFocusMode ? 250 : 30 },
             }}
         >
             <View style={{ ...styles.row, justifyContent: "space-between" }}>

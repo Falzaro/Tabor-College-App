@@ -1,7 +1,8 @@
 // Module Imports
 import { useRef, useEffect, useState } from "react";
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import MapView from "react-native-maps";
+import { MaterialIcons } from "@expo/vector-icons";
 
 // Relative Imports
 import Main from "../components/Main";
@@ -13,7 +14,8 @@ import Classrooms from "../components/maps/Classrooms";
 
 function Maps({ route }) {
     const [locations, setLocations] = useState([]);
-    const [focusMode, setFocusMode] = useState(false);
+    const [textFocusMode, setTextFocusMode] = useState(false);
+    const [fullscreenMode, setFullscreenMode] = useState(false);
     const [activeLocation, setActiveLocation] = useState({
         latitude: 38.34851,
         longitude: -97.20017,
@@ -42,23 +44,41 @@ function Maps({ route }) {
         });
     }, []);
 
+    const handleFullscreenPress = () => {
+        setFullscreenMode(!fullscreenMode);
+    };
+
+    let mapHeight;
+    if (fullscreenMode) mapHeight = "100%";
+    else if (textFocusMode) mapHeight = 0;
+    else mapHeight = 280;
+
     return (
         <Main name={name} coverImage={coverImage} imageSize="small">
             <MapView
-                style={{ ...styles.map, ...{ height: focusMode ? 0 : 280 } }}
+                style={{
+                    ...styles.map,
+                    height: mapHeight,
+                }}
                 initialRegion={{
                     latitude: activeLocation.latitude,
                     longitude: activeLocation.longitude,
                     latitudeDelta: 0.0012,
                     longitudeDelta: 0.0011,
                 }}
-                onRegionChangeComplete={() => {}}
                 provider="google"
                 showsCompass
                 ref={(ref) => {
                     regionRef.current = ref;
                 }}
             >
+                {/* Add vector icon to top right of the map */}
+                <TouchableOpacity
+                    onPress={handleFullscreenPress}
+                    style={styles.fullscreenButton}
+                >
+                    <MaterialIcons name="fullscreen" size={30} color="black" />
+                </TouchableOpacity>
                 <LocationMarkers locations={locations} />
             </MapView>
             {/* Content below the map */}
@@ -69,8 +89,8 @@ function Maps({ route }) {
                     regionRef={regionRef}
                 />
                 <Classrooms
-                    setFocusMode={setFocusMode}
-                    focusMode={focusMode}
+                    setTextFocusMode={setTextFocusMode}
+                    textFocusMode={textFocusMode}
                     scrollRef={scrollRef}
                 />
             </ScrollView>
@@ -87,5 +107,24 @@ const styles = StyleSheet.create({
     map: {
         height: 280,
         width: "100%",
+    },
+    fullscreenButton: {
+        backgroundColor: "#fff",
+        position: "absolute",
+        padding: 8,
+        borderRadius: 40,
+        height: 45,
+        width: 45,
+        right: 20,
+        top: 20,
+        elevation: 5,
+        // shadow
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
     },
 });
