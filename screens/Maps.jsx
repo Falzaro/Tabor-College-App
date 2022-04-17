@@ -7,7 +7,7 @@ import MapView from "react-native-maps";
 import Main from "../components/Main";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
-import LocationMarkers from "../components/maps/locationMarkers";
+import LocationMarkers from "../components/maps/LocationMarkers";
 import BuildingsOnCampus from "../components/maps/BuildingsOnCampus";
 import Classrooms from "../components/maps/Classrooms";
 
