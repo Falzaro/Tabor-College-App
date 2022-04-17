@@ -1,6 +1,6 @@
 // Module Imports
 import { useRef, useEffect, useState } from "react";
-import { StyleSheet, ScrollView } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import MapView from "react-native-maps";
 
 // Relative Imports
@@ -13,6 +13,7 @@ import Classrooms from "../components/maps/Classrooms";
 
 function Maps({ route }) {
     const [locations, setLocations] = useState([]);
+    const [focusMode, setFocusMode] = useState(false);
     const [activeLocation, setActiveLocation] = useState({
         latitude: 38.34851,
         longitude: -97.20017,
@@ -43,7 +44,7 @@ function Maps({ route }) {
     return (
         <Main name={name} coverImage={coverImage} imageSize="small">
             <MapView
-                style={styles.map}
+                style={{ ...styles.map, ...{ height: focusMode ? 0 : 280 } }}
                 initialRegion={{
                     latitude: activeLocation.latitude,
                     longitude: activeLocation.longitude,
@@ -66,7 +67,7 @@ function Maps({ route }) {
                     setActiveLocation={setActiveLocation}
                     regionRef={regionRef}
                 />
-                {/* <Classrooms /> */}
+                <Classrooms setFocusMode={setFocusMode} focusMode={focusMode} />
             </ScrollView>
         </Main>
     );
