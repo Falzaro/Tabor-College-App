@@ -46,6 +46,17 @@ const ContactInformation = ({ contactInfo }) => {
                     {contactInfo.email2}
                 </Subheading>
             )}
+             {/* Email 3 */}
+             {Boolean(contactInfo.email3) && (
+                <Subheading
+                    onPress={() =>
+                        Linking.openURL(`mailto:${contactInfo.email3}`)
+                    }
+                    style={styles.contact}
+                >
+                    {contactInfo.email3}
+                </Subheading>
+            )}
             {/* Url */}
             {Boolean(contactInfo.url) && (
                 <Subheading
