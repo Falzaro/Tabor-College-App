@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, FlatList, Linking, ImageBackground } from "react-native";
+import { StyleSheet, View, FlatList, Linking, ImageBackground , } from "react-native";
 import Main from "../components/Main";
 
 import { Card, List, Title, Subheading, } from 'react-native-paper';
