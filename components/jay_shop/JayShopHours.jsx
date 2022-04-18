@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { StyleSheet, View, FlatList, Linking, Text } from "react-native";
 
-import { Card, List, Title, Subheading, } from 'react-native-paper';
+import { Card, Title, Subheading, } from 'react-native-paper';
 // import firebase 
 
 import {db} from '../../firebase/config';
@@ -23,7 +23,7 @@ const JayShopHours = () => {
             })
     }, []);
 
-    const { "Contact information": contactInfo, "open hours": openHours } =
+    const { "Contact information": contactInfo, "open hours": openHours } = 
     jayShop;
 
     return (
@@ -31,30 +31,30 @@ const JayShopHours = () => {
                 <Card style = {styles.card} >
                     <Title style ={styles.title}>{jayShop.title}</Title>
                     <Text style = {styles.location}>{jayShop.location}</Text>
-                    <FlatList
-                        style={{ marginBottom: 5, }}
-                        showsVerticalScrollIndicator={false}
-                        listKey={(_, index) => `_key${index}`}
-                        keyExtractor={(_, index) => `_key${index}`}
-                        data={openHours}
-                        renderItem={({ item }) => (
-                            <View style = {styles.alignSideBySide}>
-                                {/* Show days */}
-                                <Subheading styles ={styles.days} >{item.days}</Subheading>
-                                {/* Map out the hours */}
-                                <FlatList
-                                    showsVerticalScrollIndicator={false}
-                                    listKey={(_, index) => `_key${index}`}
-                                    keyExtractor={(_, index) => `_key${index}`}
-                                    data={item.hours}
-                                    renderItem={({ item: hours }) => (
-                                        <Subheading styles = {styles.hours} >{hours}</Subheading>
-                                    )}
-                                />
-                            </View>
-                        )}
-                    />
-            </Card>
+                        <FlatList
+                            style={{ marginBottom: 5, }}
+                            showsVerticalScrollIndicator={false}
+                            listKey={(_, index) => `_key${index}`}
+                            keyExtractor={(_, index) => `_key${index}`}
+                            data={openHours}
+                            renderItem={({ item }) => (
+                                <View style = {styles.alignSideBySide}>
+                                    {/* Show days */}
+                                    <Subheading styles ={styles.days} >{item.days}</Subheading>
+                                    {/* Map out the hours */}
+                                    <FlatList
+                                        showsVerticalScrollIndicator={false}
+                                        listKey={(_, index) => `_key${index}`}
+                                        keyExtractor={(_, index) => `_key${index}`}
+                                        data={item.hours}
+                                        renderItem={({ item: hours }) => (
+                                            <Subheading styles = {styles.hours} >{hours}</Subheading>
+                                        )}
+                                    />
+                                </View>
+                            )}
+                        />
+                </Card>
             </View>
     );
 }

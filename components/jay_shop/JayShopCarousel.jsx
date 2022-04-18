@@ -33,9 +33,7 @@ const JayShopCarousel = () => {
     return (
 
         <View style = {styles.container}>
-        
             <Title style ={styles.title}>Available Products:</Title>
-
             <Carousel 
                 layout = {'default'}
                 data = {getImage}
@@ -48,9 +46,9 @@ const JayShopCarousel = () => {
                 itemWidth={ITEM_WIDTH}
                 renderItem={({ item: section }) => (
                     <View style ={styles.card}>  
-                    <Image style = {styles.imageLayout} source = {{uri: section.image}} />
-                    <Subheading style={styles.price}>{section.price}</Subheading>
-                    <Subheading style ={styles.name}>{section.name}</Subheading>
+                        <Image style = {styles.imageLayout} source = {{uri: section.image}} />
+                        <Subheading style={styles.price}>{section.price}</Subheading>
+                        <Subheading style ={styles.name}>{section.name}</Subheading>
                     </View>
                    
                 )}
@@ -100,7 +98,7 @@ const styles = StyleSheet.create({
         paddingBottom: 5
       
     },
-   name:{
+    name:{
         textAlign: "center",
         color: 'white',
         paddingHorizontal: 10,
