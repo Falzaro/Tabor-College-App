@@ -76,19 +76,27 @@ function Maps({ route }) {
                 {/* Add vector icon to top right of the map */}
                 <LocationMarkers locations={locations} />
             </MapView>
-            <TouchableOpacity
-                onPress={handleFullscreenPress}
-                style={styles.fullscreenButton}
-            >
-                <MaterialIcons name="fullscreen" size={30} color="#373737" />
-            </TouchableOpacity>
-            <View
-                style={{
-                    height: 1,
-                    width: "100%",
-                    backgroundColor: "rgba(0, 0, 0, 0.12)",
-                }}
-            />
+            {!textFocusMode && (
+                <TouchableOpacity
+                    onPress={handleFullscreenPress}
+                    style={styles.fullscreenButton}
+                >
+                    <MaterialIcons
+                        name="fullscreen"
+                        size={30}
+                        color="#373737"
+                    />
+                </TouchableOpacity>
+            )}
+            {!textFocusMode && (
+                <View
+                    style={{
+                        height: 1,
+                        width: "100%",
+                        backgroundColor: "rgba(0, 0, 0, 0.11)",
+                    }}
+                />
+            )}
             {/* Content below the map */}
             <ScrollView ref={scrollRef} style={styles.center}>
                 <BuildingsOnCampus
@@ -117,8 +125,6 @@ const styles = StyleSheet.create({
     map: {
         height: 280,
         width: "100%",
-        borderBottomWidth: 3,
-        borderBottomColor: "red",
     },
     fullscreenButton: {
         backgroundColor: "#fff",
