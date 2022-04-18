@@ -11,10 +11,10 @@ const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.5);
 const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 4);
 
-const image = {uri: "https://tabor.edu/wp-content/plugins/phastpress/phast.php?service=images&src=https%3A%2F%2Ftabor.edu%2Fwp-content%2Fthemes%2Ftabor-theme%2Fassets%2Fimg%2Fhome-footer.jpg&cacheMarker=1554954396-93644&token=ac3057f43d6d5d49"};
+const linkUrl =  'https://tabor.edu/shop/' 
 
 const JayShopCarousel = () => {
-    const [getImage, setImage] = useState();
+    const [getImage, setImage] = useState([]);
 
     useEffect(() => {
         // Get the  from firebase version 9
@@ -22,7 +22,8 @@ const JayShopCarousel = () => {
         getDoc(docRef)
            
             .then((doc) => {
-                setImage(doc.data().sections);
+                const data = doc.data().sections;
+                setImage(data);
                 
             })
             .catch((err) => {
@@ -38,7 +39,7 @@ const JayShopCarousel = () => {
 
             <Carousel 
                 layout = {'default'}
-                data={getImage}
+                data = {getImage}
                 decelerationRate = 'fast'
                 useScrollView={true}
                 sliderWidth={SLIDER_WIDTH}
@@ -52,7 +53,7 @@ const JayShopCarousel = () => {
                    
                 )}
             />
-            <TouchableOpacity style = {styles.button}   onPress={() => Linking.openURL('https://tabor.edu/shop/')}>
+            <TouchableOpacity style = {styles.button}   onPress={() => Linking.openURL(linkUrl)}>
                 <Subheading style = {styles.buttonText}>View More</Subheading>
             </TouchableOpacity>
        
@@ -101,17 +102,26 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: "center",
+        marginTop: 5,
         marginBottom: 5,
+        backgroundColor: "#003082",
+        borderRadius: 5,
         
     },
     buttonText:{
         color: '#003082',
         fontSize: 20,
+        color: 'white',
+        marginTop: 5,
+        marginBottom: 5,
+        marginRight: 5,
+        marginLeft: 5,
     },
    name:{
         textAlign: "center",
         color: 'white',
         paddingHorizontal: 10,
+        
    },
   
    
