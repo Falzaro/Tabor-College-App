@@ -63,11 +63,14 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         marginTop: 5,
+        paddingTop: 50,
        
        paddingHorizontal: 18,
     },
     card:{
-        paddingHorizontal: 10, 
+        paddingHorizontal: 10,
+        borderColor: '#003082',
+        borderWidth: 1,
     },
     hours:{  // align the hours to the -> right 
         alignSelf: 'flex-end',

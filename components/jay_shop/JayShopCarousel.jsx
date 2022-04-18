@@ -11,7 +11,6 @@ const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.5);
 const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 4);
 
-const linkUrl =  'https://tabor.edu/shop/' 
 
 const JayShopCarousel = () => {
     const [getImage, setImage] = useState([]);
@@ -56,10 +55,7 @@ const JayShopCarousel = () => {
                    
                 )}
             />
-            <TouchableOpacity style = {styles.button}   onPress={() => Linking.openURL(linkUrl)}>
-                <Subheading style = {styles.buttonText}>View More</Subheading>
-            </TouchableOpacity>
-       
+           
         </View>
     )
 }
@@ -101,24 +97,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#003082",
         borderColor: "#f7d117",
         borderWidth: 1,
+        paddingBottom: 5
       
-    },
-    button: {
-        alignItems: "center",
-        marginTop: 5,
-        marginBottom: 5,
-        backgroundColor: "#003082",
-        borderRadius: 5,
-        
-    },
-    buttonText:{
-        color: '#003082',
-        fontSize: 20,
-        color: 'white',
-        marginTop: 5,
-        marginBottom: 5,
-        marginRight: 5,
-        marginLeft: 5,
     },
    name:{
         textAlign: "center",
