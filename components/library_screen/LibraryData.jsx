@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, FlatList, Linking, Text } from "react-native";
+import { StyleSheet, View, FlatList, Image, Text } from "react-native";
 
 import { Card, Title, Subheading, } from 'react-native-paper';
 // import firebase 
@@ -30,6 +30,8 @@ const LibraryData = () => {
         <View  style = {styles.container}>
                 <Card style = {styles.card} >
                     <Title style ={styles.title}>{libraryData.title}</Title>
+                    {/* extracting Image from firestore */}
+                    <Image style = {styles.image} source = {{uri: libraryData.image}}/>
                     <Text style = {styles.location}>{libraryData.memo}</Text>
                         <FlatList
                             style={{ marginBottom: 5, }}
@@ -81,6 +83,7 @@ const styles = StyleSheet.create({
     alignSideBySide:{ // this align the Days and Hours next to each other but space-between 
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginBottom: 5,
     },
     title:{
         textAlign: "center",
@@ -93,6 +96,11 @@ const styles = StyleSheet.create({
         fontStyle: "italic",
         marginBottom: 7,
     },
+    image: {
+        width: "100%",
+        height:"50%",
+        marginBottom: 5
+    }
 
 });
 
