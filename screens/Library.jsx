@@ -1,7 +1,9 @@
 import { StyleSheet, View, Text, TouchableOpacity, Linking } from "react-native";
 import Main from "../components/Main";
 import { Card, Title, Subheading} from 'react-native-paper';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
+
+import LibraryData from '../components/library_screen/LibraryData';
 
 const latitude = "38.34882";
 const longitude = "-97.201";
@@ -27,11 +29,12 @@ function Library({ route }) {
                     <Title style = {styles.title}>Welcome to Tabor Library</Title>
                     <View>
                     <TouchableOpacity style={styles.buttonPress} onPress = {() => Linking.openURL(url)}>
-                        <FontAwesome5 style ={styles.icons} size={20} color = "#003082" name ="search-location"/> 
+                        <EvilIcons style ={styles.icons} size={30} color = "#003082" name ="location"/> 
                         <Subheading style = {styles.textLocation}>Location</Subheading>
                     </TouchableOpacity>
                     </View>
                 </Card>
+                <LibraryData />
             </View>
         </Main>
     );
@@ -55,8 +58,9 @@ const styles = StyleSheet.create({
         
     },
     textLocation:{
-        marginLeft: 5,
         color: "#003082",
+        //fontSize: 18,
+        fontStyle: "italic",
     },
     title: {
         marginLeft: 10,
