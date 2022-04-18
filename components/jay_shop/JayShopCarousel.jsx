@@ -62,7 +62,7 @@ const JayShopCarousel = () => {
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: 'white',
+        backgroundColor: 'transparent',
         marginTop: 5,
         overflow: 'hidden',
         alignItems: "center",

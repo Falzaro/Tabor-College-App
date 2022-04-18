@@ -37,7 +37,7 @@ export default Jayshop;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 18,
+        //paddingHorizontal: 18,
     },
     image: {
         width: "100%",
