@@ -1,6 +1,6 @@
 // Module Imports
 import { useRef, useEffect, useState } from "react";
-import { StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, ScrollView, TouchableOpacity, View } from "react-native";
 import MapView from "react-native-maps";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -68,27 +68,29 @@ function Maps({ route }) {
                     longitudeDelta: 0.0011,
                 }}
                 provider="google"
-                showsCompass
+                showsCompass={false}
                 ref={(ref) => {
                     regionRef.current = ref;
                 }}
             >
                 {/* Add vector icon to top right of the map */}
-                <TouchableOpacity
-                    onPress={handleFullscreenPress}
-                    style={styles.fullscreenButton}
-                >
-                    <MaterialIcons name="fullscreen" size={30} color="black" />
-                </TouchableOpacity>
                 <LocationMarkers locations={locations} />
             </MapView>
-            {/* Content below the map */}
-            <ScrollView
-                // keyboardShouldPersistTaps="always"
-                // prevent ripple effect on scroll
-                ref={scrollRef}
-                style={styles.center}
+            <TouchableOpacity
+                onPress={handleFullscreenPress}
+                style={styles.fullscreenButton}
             >
+                <MaterialIcons name="fullscreen" size={30} color="#373737" />
+            </TouchableOpacity>
+            <View
+                style={{
+                    height: 1,
+                    width: "100%",
+                    backgroundColor: "rgba(0, 0, 0, 0.12)",
+                }}
+            />
+            {/* Content below the map */}
+            <ScrollView ref={scrollRef} style={styles.center}>
                 <BuildingsOnCampus
                     locations={locations}
                     setActiveLocation={setActiveLocation}
@@ -115,13 +117,17 @@ const styles = StyleSheet.create({
     map: {
         height: 280,
         width: "100%",
+        borderBottomWidth: 3,
+        borderBottomColor: "red",
     },
     fullscreenButton: {
         backgroundColor: "#fff",
+        flex: 0,
         position: "absolute",
         padding: 8,
         borderRadius: 40,
-        height: 45,
+        justifyContent: "center",
+        alignItems: "center",
         width: 45,
         right: 20,
         top: 20,

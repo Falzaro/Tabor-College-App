@@ -1,20 +1,7 @@
 // Module Imports
 import { useState, useEffect } from "react";
-import {
-    StyleSheet,
-    View,
-    TextInput,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-} from "react-native";
-import {
-    Card,
-    Divider,
-    Subheading,
-    Title,
-    Chip,
-    TouchableRipple,
-} from "react-native-paper";
+import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
+import { Card, Divider, Subheading, Title, Chip } from "react-native-paper";
 import { doc, getDoc } from "firebase/firestore";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -39,6 +26,7 @@ function Classrooms({
     });
 
     useEffect(() => {
+        // Fetch and store the locations in the state
         const docRef = doc(
             db,
             "maps",
@@ -50,7 +38,7 @@ function Classrooms({
     }, []);
 
     useEffect(() => {
-        // If there are 3 or less classroom results, then scroll down to the bottom
+        // If there are 3 or fewer classroom results, then scroll down to the bottom
         if (filteredClassrooms.length <= 3) {
             scrollRef.current.scrollToEnd();
         }
@@ -71,11 +59,12 @@ function Classrooms({
     };
 
     const handleClassroomPress = (classroom) => {
+        // Find the location that matches with the classroom building
         const foundLocation = locations.find(
             (location) => location.building === classroom.building
         );
-        console.log(classroom);
         if (foundLocation)
+            // Navigate to the location building
             regionRef.current.animateToRegion({
                 latitude: foundLocation.latitude,
                 longitude: foundLocation.longitude,
@@ -109,12 +98,9 @@ function Classrooms({
                 />
             </View>
             {filteredClassrooms.map((classroom, i) => (
-                // <TouchableWithoutFeedback
-                //     onPress={() => handleClassroomPress(classroom)}
-                //     key={`_key${i}`}
-                // >
                 <View style={styles.classroom} key={`_key${i}`}>
                     <View style={{ width: "87%" }}>
+                        {/* Building */}
                         <View style={styles.row}>
                             <Subheading>Building:</Subheading>
                             <Chip
@@ -124,19 +110,23 @@ function Classrooms({
                                 {classroom.building}
                             </Chip>
                         </View>
+                        {/* Room */}
                         <View style={styles.row}>
                             <Subheading style={styles.subheading}>
                                 Room: {classroom.room}
                             </Subheading>
+                            {/* Capacity */}
                             <Subheading>
                                 Capacity: {classroom.capacity}
                             </Subheading>
                         </View>
+                        {/* Note */}
                         {Boolean(classroom.note) && (
                             <Subheading>Note: {classroom.note}</Subheading>
                         )}
                         <Divider style={styles.divider} />
                     </View>
+                    {/* Button that navigates to a new region */}
                     <TouchableOpacity
                         onPress={() => handleClassroomPress(classroom)}
                     >
@@ -147,7 +137,6 @@ function Classrooms({
                         />
                     </TouchableOpacity>
                 </View>
-                // </TouchableWithoutFeedback>
             ))}
         </Card>
     );
