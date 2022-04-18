@@ -5,10 +5,12 @@ import { EvilIcons } from '@expo/vector-icons';
 
 import LibraryData from '../components/library_screen/LibraryData';
 
+// set Locations
 const latitude = "38.34882";
 const longitude = "-97.201";
 const label = "Tabor College Library, 400 S Jefferson St, Hillsboro, KS 67063";
 
+// this detect if Phones installed Maps and open Automatically 
 const url = Platform.select({
   ios: "maps:" + latitude + "," + longitude + "?q=" + label,
   android: "geo:" + latitude + "," + longitude + "?q=" + label
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     card: {
-        borderColor: '#003082',
+        //borderColor: '#003082',
         borderWidth: 1
     }
 });
