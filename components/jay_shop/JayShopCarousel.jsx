@@ -40,7 +40,10 @@ const JayShopCarousel = () => {
             <Carousel 
                 layout = {'default'}
                 data = {getImage}
+                enableSnap = {true} // this must be true for " loop " to work
+                loop // this set item in a loop 
                 decelerationRate = 'fast'
+                autoplay	  // item will automatically play
                 useScrollView={true}
                 sliderWidth={SLIDER_WIDTH}
                 itemWidth={ITEM_WIDTH}
