@@ -1,7 +1,7 @@
 import { StyleSheet, Text } from "react-native";
 import { Marker, Callout } from "react-native-maps";
 
-function locationMarkers({ locations }) {
+function LocationMarkers({ locations }) {
     return locations.map((location) => (
         <Marker
             key={location.name}
@@ -10,11 +10,11 @@ function locationMarkers({ locations }) {
                 longitude: location.longitude,
             }}
         >
-            <Callout tooltip>
+            <Callout>
                 <Text>{location.name}</Text>
             </Callout>
         </Marker>
     ));
 }
 
-export default locationMarkers;
+export default LocationMarkers;
