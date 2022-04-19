@@ -32,7 +32,7 @@ const LibraryData = () => {
                     <Title style ={styles.title}>{libraryData.title}</Title>
                     {/* extracting Image from firestore */}
                     <Image style = {styles.image} source = {{uri: libraryData.image}}/>
-                    <Text style = {styles.location}>{libraryData.memo}</Text>
+                    <Text style = {styles.memo}>{libraryData.memo}</Text>
                         <FlatList
                             style={{ marginBottom: 5, }}
                             showsVerticalScrollIndicator={false}
@@ -64,21 +64,19 @@ const LibraryData = () => {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        marginTop: 5,
-        paddingTop: 10,
-       
+        //marginTop: 5,
+        paddingTop: 5,
     },
     card:{
         paddingHorizontal: 10,
        // borderColor: '#003082',
-        borderWidth: 1,
+       // borderWidth: 1,
     },
     hours:{  // align the hours to the -> right 
         alignSelf: 'flex-end',
     },
     days:{ // align to the start -> left
         alignSelf: 'flex-start',
-
     },
     alignSideBySide:{ // this align the Days and Hours next to each other but space-between 
         flexDirection: 'row',
@@ -91,17 +89,19 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         paddingTop: 5,
     },
-    location:{
+    memo:{
         textAlign: "center",
         fontStyle: "italic",
-        marginBottom: 7,
+        marginTop: 5,
+        marginBottom: 5,
+        color: "#003082",
+        fontSize: 15,
     },
     image: {
         width: "100%",
         height:"50%",
         marginBottom: 5
-    }
-
+    },
 });
 
 export default LibraryData;
