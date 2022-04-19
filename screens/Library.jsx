@@ -5,6 +5,7 @@ import { EvilIcons } from '@expo/vector-icons';
 
 import LibraryData from '../components/library_screen/LibraryData';
 
+const libraryLink = "https://taborcollege.libguides.com/library"
 // set Locations
 const latitude = "38.34882";
 const longitude = "-97.201";
@@ -31,10 +32,14 @@ function Library({ route }) {
                 <Card style = {styles.card}>
                     <Title style = {styles.title}>Welcome to Tabor Library</Title>
                     <View>
-                    <TouchableOpacity style={styles.buttonPress} onPress = {() => Linking.openURL(url)}>
-                        <EvilIcons style ={styles.icons} size={30} color = "#003082" name ="location"/> 
-                        <Subheading style = {styles.textLocation}>Location</Subheading>
-                    </TouchableOpacity>
+                        <TouchableOpacity style ={styles.visitUs} onPress = {() => Linking.openURL(libraryLink)}>
+                            <Subheading style = {{color: "#003082", paddingBottom: 5}}>Visit Website!</Subheading>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.buttonPress} onPress = {() => Linking.openURL(url)}>
+                            <EvilIcons style ={styles.icons} size={30} color = "#003082" name ="location"/> 
+                            <Subheading style = {styles.textLocation}>Location</Subheading>
+                        </TouchableOpacity>
                     </View>
                 </Card>
                 <LibraryData />
@@ -51,6 +56,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 18,
         marginTop: 10, 
+      //  paddingBottom: 10
     },
     buttonPress:{
         flexDirection: 'row',
@@ -73,5 +79,8 @@ const styles = StyleSheet.create({
     card: {
         //borderColor: '#003082',
        // borderWidth: 1
+    },
+    visitUs:{
+        alignItems: 'center',
     }
 });
