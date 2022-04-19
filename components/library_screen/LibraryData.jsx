@@ -1,11 +1,13 @@
 import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, FlatList, Image, Text } from "react-native";
+import { StyleSheet, View, FlatList, Image, Text, ScrollView} from "react-native";
 
 import { Card, Title, Subheading, } from 'react-native-paper';
 // import firebase 
 
 import {db} from '../../firebase/config';
 import { doc, getDoc } from 'firebase/firestore';
+
+import LibraryContactInformation from './LibraryContactInformation';
 
 const LibraryData = () => {
     const [libraryData, setLibraryData] = useState([]);
@@ -23,8 +25,8 @@ const LibraryData = () => {
             })
     }, []);
 
-    const { "Contact information": contactInfo, "open hours": openHours } = 
-    libraryData;
+    const { "Contact information": contactInfo , "open hours": openHours } = 
+        libraryData;
 
     return (
         <View  style = {styles.container}>
@@ -53,11 +55,14 @@ const LibraryData = () => {
                                             <Subheading styles = {styles.hours} >{hours}</Subheading>
                                         )}
                                     />
+                                    
                                 </View>
                             )}
                         />
+                       
                 </Card>
-            </View>
+        </View>
+           
     );
 }
 
@@ -102,6 +107,7 @@ const styles = StyleSheet.create({
         height:"50%",
         marginBottom: 5
     },
+   
 });
 
 export default LibraryData;

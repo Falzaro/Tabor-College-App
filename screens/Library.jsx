@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity, Linking } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Linking, FlatList, SafeAreaView } from "react-native";
 import Main from "../components/Main";
 import { Card, Title, Subheading} from 'react-native-paper';
 import { EvilIcons } from '@expo/vector-icons';
@@ -25,6 +25,7 @@ function Library({ route }) {
         blurRadius: 1,
     };
     return (
+       
         <Main name={name} coverImage={coverImage}>
             <View style={styles.center}>
                 <Card style = {styles.card}>
@@ -39,6 +40,7 @@ function Library({ route }) {
                 <LibraryData />
             </View>
         </Main>
+      
     );
 }
 
