@@ -23,7 +23,7 @@ const JayShopHours = () => {
             })
     }, []);
 
-    const { "Contact information": contactInfo, "open hours": openHours } = 
+    const {"open hours": openHours } = 
     jayShop;
 
     return (
