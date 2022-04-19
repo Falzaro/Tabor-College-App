@@ -70,6 +70,6 @@ const styles = StyleSheet.create({
     },
     card: {
         //borderColor: '#003082',
-        borderWidth: 1
+       // borderWidth: 1
     }
 });
