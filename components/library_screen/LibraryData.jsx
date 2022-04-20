@@ -7,7 +7,6 @@ import { Card, Title, Subheading, } from 'react-native-paper';
 import {db} from '../../firebase/config';
 import { doc, getDoc } from 'firebase/firestore';
 
-import LibraryContactInformation from './LibraryContactInformation';
 
 const LibraryData = () => {
     const [libraryData, setLibraryData] = useState([]);
