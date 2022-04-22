@@ -1,6 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import Main from "../components/Main";
 
+import StudentLifeDrawer from '../components/student_life/Student_life_drawer';
+
 function StudentLife({ route }) {
     const { name } = route;
     const studentLifeCover = require("../assets/coverImage/studentLife.png");
@@ -11,7 +13,9 @@ function StudentLife({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+            <View style={styles.center}>
+                <StudentLifeDrawer />
+            </View>
         </Main>
     );
 }
@@ -21,7 +25,5 @@ export default StudentLife;
 const styles = StyleSheet.create({
     center: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
     },
 });
