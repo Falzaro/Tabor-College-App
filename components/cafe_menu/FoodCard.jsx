@@ -5,6 +5,7 @@ import { Card, Title, Caption } from "react-native-paper";
 
 function FoodCard({ section }) {
     // Render background image that matches with the food category
+    console.log(section);
     const getImage = (title) => {
         switch (title) {
             case "Breakfast":
