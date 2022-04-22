@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     },
     activeButton: {
         width: 48,
-        backgroundColor: "#1292F1",
+        backgroundColor: "#0969CD",
         color: "#fff",
     },
 });
