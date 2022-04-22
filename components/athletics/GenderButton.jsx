@@ -29,7 +29,6 @@ export default GenderButton;
 const styles = StyleSheet.create({
     button: {
         width: 110,
-        marginRight: 15,
         paddingVertical: 14,
         borderRadius: 50,
         justifyContent: "center",

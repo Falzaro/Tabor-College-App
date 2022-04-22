@@ -8,6 +8,9 @@ import GenderButton from "../components/athletics/GenderButton";
 import SeasonCard from "../components/athletics/SeasonCard";
 import Main from "../components/Main";
 import { db } from "../firebase/config";
+import CampusRecreationCenter from "../components/athletics/CampusRecreationCenter";
+import SportsBanner from "../components/athletics/SportsBanner";
+import SocialMedias from "../components/athletics/SocialMedias";
 
 function Athletics({ route }) {
     const [genderType, setGenderType] = useState("Men's");
@@ -32,12 +35,15 @@ function Athletics({ route }) {
     return (
         <Main name={name} coverImage={coverImage}>
             <ScrollView style={styles.container}>
+                <CampusRecreationCenter />
+                <SportsBanner />
                 <View style={styles.buttonsRow}>
                     <GenderButton
                         title="Men's"
                         onPress={() => setGenderType("Men's")}
                         value={genderType}
                     />
+                    <View style={{ width: 15 }} />
                     <GenderButton
                         title="Women's"
                         onPress={() => setGenderType("Women's")}
@@ -58,6 +64,7 @@ function Athletics({ route }) {
                         <SeasonCard sportsData={womens.spring} title="Spring" />
                     </View>
                 )}
+                <SocialMedias />
             </ScrollView>
         </Main>
     );
@@ -72,7 +79,8 @@ const styles = StyleSheet.create({
     },
     buttonsRow: {
         flexDirection: "row",
-        marginBottom: 20,
+        marginBottom: 25,
+        justifyContent: "center",
     },
     cards: {
         marginBottom: 20,
