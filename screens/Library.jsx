@@ -82,11 +82,12 @@ function Library({ route }) {
                         </Card.Content>
                         {/* using Card.Actions "Button" components. Please see doc for more information */}
                         <Card.Actions style = {{justifyContent: 'space-between'}}>
-                            <Button mode="contained" icon = "web" color ="#003082" title ="Visit Tabor Library"
+                            <Button  icon = "web" color ="#003082" title ="Visit Tabor Library"
                                 onPress={() => Linking.openURL(contactInfo.url)}>
                                 Visit Tabor Library
                             </Button>
-                            <Button mode="contained"  icon="map-marker-radius-outline" color= "#003082" title ="Location"  onPress = {() => Linking.openURL(url)}>
+                            <Button   icon="map-marker-radius-outline" color= "#003082" title ="Location"  
+                                onPress = {() => Linking.openURL(url)}>
                                 Location 
                             </Button>
                     </Card.Actions>
