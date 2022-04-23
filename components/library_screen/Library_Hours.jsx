@@ -34,7 +34,7 @@ const LibraryHours = () => {
     }, []);
 
     // Deconstruct Just to call the open hours
-    const {"open hours": openHours } = 
+    const {"Contact information":contactInfo,"open hours": openHours } = 
         libraryData;
 
     return (
