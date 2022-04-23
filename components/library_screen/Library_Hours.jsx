@@ -6,6 +6,17 @@ import { Card, Title, Subheading, Paragraph, Button } from 'react-native-paper';
 import {db} from '../../firebase/config';
 import { doc, getDoc } from 'firebase/firestore';
 
+// set Locations
+const latitude = "38.34882";
+const longitude = "-97.201";
+const label = "Tabor College Library, 400 S Jefferson St, Hillsboro, KS 67063";
+
+// this detect if Phones installed Maps and open Automatically 
+const url = Platform.select({
+  ios: "maps:" + latitude + "," + longitude + "?q=" + label,
+  android: "geo:" + latitude + "," + longitude + "?q=" + label
+});
+
 const LibraryHours = () => {
     const [libraryData, setLibraryData] = useState([]);
 
