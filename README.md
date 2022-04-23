@@ -43,7 +43,7 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 - Then checkout the supported icons to see which icons sets are available
 * * Here is another example: 
 - `import {Ionicons} from '@expo/vector-icons';`
-How to call? 
+- How to call? 
 - ` <Ionicons name="arrow-redo-sharp" size={14} color="#444444"  /> `
 - Please see the supported icons for available names to each icons
 
