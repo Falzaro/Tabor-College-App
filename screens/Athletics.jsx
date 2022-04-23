@@ -43,7 +43,7 @@ function Athletics({ route }) {
                         onPress={() => setGenderType("Men's")}
                         value={genderType}
                     />
-                    <View style={{ width: 15 }} />
+                    <View style={{ width: 20 }} />
                     <GenderButton
                         title="Women's"
                         onPress={() => setGenderType("Women's")}

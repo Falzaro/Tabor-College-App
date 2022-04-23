@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Headline, Divider } from "react-native-paper";
+import { StyleSheet, View } from "react-native";
+import { Headline } from "react-native-paper";
 
 const SportsBanner = ({ headline }) => {
     return (

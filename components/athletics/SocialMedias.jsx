@@ -1,34 +1,62 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import {
+    StyleSheet,
+    View,
+    Image,
+    TouchableOpacity,
+    Linking,
+} from "react-native";
 import SportsBanner from "./SportsBanner";
 
 const SocialMedias = () => {
+    const handleMediaPress = (mediaLink) => {
+        Linking.openURL(mediaLink);
+    };
+
     return (
         <View style={styles.socialMedias}>
             <SportsBanner headline="Social Medias" />
             <View style={styles.socialMediaContainer}>
-                <View style={styles.imageWrapper}>
+                <TouchableOpacity
+                    onPress={() =>
+                        handleMediaPress(
+                            "https://www.youtube.com/channel/UC5hEYiIzYABiMThMhPj12tQ/videos"
+                        )
+                    }
+                >
                     <Image
                         source={require("../../assets/athletics/social_medias/youtube_icon.png")}
                         style={styles.socialMediaIcon}
                         resizeMode="contain"
                     />
-                </View>
+                </TouchableOpacity>
                 <View style={styles.space} />
-                <View style={styles.imageWrapper}>
+                <TouchableOpacity
+                    onPress={() =>
+                        handleMediaPress(
+                            "https://twitter.com/gotaborbluejays?lang=en"
+                        )
+                    }
+                >
                     <Image
                         source={require("../../assets/athletics/social_medias/twitter.png")}
                         style={styles.socialMediaIcon}
                         resizeMode="contain"
                     />
-                </View>
+                </TouchableOpacity>
                 <View style={styles.space} />
-                <View style={styles.imageWrapper}>
+                <TouchableOpacity
+                    onPress={() =>
+                        handleMediaPress(
+                            "https://www.instagram.com/taborbluejays/?hl=en"
+                        )
+                    }
+                >
                     <Image
                         source={require("../../assets/athletics/social_medias/instagram_icon.png")}
                         style={styles.socialMediaIcon}
                         resizeMode="contain"
                     />
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     );
