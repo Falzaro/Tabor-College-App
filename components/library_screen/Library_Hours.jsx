@@ -58,7 +58,7 @@ const LibraryHours = () => {
                                             keyExtractor={(_, index) => `_key${index}`}
                                             data={item.hours}
                                             renderItem={({ item: hours }) => (
-                                                <Subheading styles = {styles.hours} >{hours}</Subheading>
+                                                <Subheading style = {styles.hours} >{hours}</Subheading>
                                             )}
                                         />
                                                         
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     alignSideBySide: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 10,
+        paddingHorizontal: 18,
         marginTop: 10,
     },
     memo: {
@@ -102,6 +102,9 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         color: "#003082",
         fontSize: 15,
+    },
+    hours:{
+        color: "#484e52",
     }
 })
 
