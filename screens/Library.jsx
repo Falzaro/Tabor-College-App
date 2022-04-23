@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, Text, Linking, FlatList, SafeAreaView } from "react-native";
+import { StyleSheet, View, Text, Linking, FlatList, ScrollView } from "react-native";
 import Main from "../components/Main";
 import { Card, Title, Subheading, Paragraph, Button } from 'react-native-paper';
 
@@ -49,8 +49,10 @@ function Library({ route }) {
     return (
        
         <Main name={name} coverImage={coverImage}>
-            <FlatList 
-            ListFooterComponent = {
+            <FlatList
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 250 }} // fix android View
+            ListFooterComponent= {
             <View  style = {styles.container}>
                 <Card style = {styles.card} >
                     <Title style ={styles.title}>{libraryData.title}</Title>
@@ -83,8 +85,8 @@ function Library({ route }) {
                             />
                             </Card.Content>
                             {/* using Card.Actions "Button" components. Please see doc for more information */}
-                            <View style = {styles.buttonLink}>
-                                <Button  icon = "web" color ="#003082" title ="Visit Tabor Library"
+                            <Card style = {styles.buttonLink}>
+                                <Button  icon = "web"  color ="#003082" title ="Visit Tabor Library"
                                     onPress={() => Linking.openURL(contactInfo.url)}>
                                     Visit Tabor Library
                                 </Button>
@@ -92,11 +94,11 @@ function Library({ route }) {
                                     onPress = {() => Linking.openURL(url)}>
                                     Location 
                                 </Button>
-                            </View>
+                            </Card>
                 </Card>
         </View>
-                }
-        />
+            }
+         />
         </Main>
       
     );
@@ -142,16 +144,13 @@ const styles = StyleSheet.create({
     image: {
         width: "100%",
         height:"50%",
-        //marginBottom: 5
     },
     hyperLink: {
         color: "#003082"
     },
     buttonLink:{
-        justifyContent: 'space-between',
         backgroundColor: "#fff",
         borderRadius: 5,
-        //borderWidth: 1
     }
    
 });
