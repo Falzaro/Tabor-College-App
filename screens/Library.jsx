@@ -49,50 +49,54 @@ function Library({ route }) {
     return (
        
         <Main name={name} coverImage={coverImage}>
+            <FlatList 
+            ListFooterComponent = {
             <View  style = {styles.container}>
                 <Card style = {styles.card} >
-                <Title style ={styles.title}>{libraryData.title}</Title>
+                    <Title style ={styles.title}>{libraryData.title}</Title>
                     <Card.Content>
-                    <Paragraph style = {styles.memo}>{libraryData.memo}</Paragraph>
-                    <Card.Cover style = {styles.image} source = {{uri: libraryData.image}}/>
-                        <FlatList
-                            style={{ marginBottom: 5, }}
-                            showsVerticalScrollIndicator={false}
-                            listKey={(_, index) => `_key${index}`}
-                            keyExtractor={(_, index) => `_key${index}`}
-                            data={openHours}
-                            renderItem={({ item }) => (
-                                <View style = {styles.alignSideBySide}>
-                                    {/* Show days */}
-                                    <Subheading styles ={styles.days} >{item.days}</Subheading>
-                                    {/* Map out the hours */}
-                                    <FlatList
-                                        showsVerticalScrollIndicator={false}
-                                        listKey={(_, index) => `_key${index}`}
-                                        keyExtractor={(_, index) => `_key${index}`}
-                                        data={item.hours}
-                                        renderItem={({ item: hours }) => (
-                                            <Subheading styles = {styles.hours} >{hours}</Subheading>
-                                        )}
-                                    />
-                                    
-                                </View>
-                            )}
-                        />
-                        </Card.Content>
-                        {/* using Card.Actions "Button" components. Please see doc for more information */}
-                        <Card.Actions style = {{justifyContent: 'space-between'}}>
-                            <Button  icon = "web" color ="#003082" title ="Visit Tabor Library"
-                                onPress={() => Linking.openURL(contactInfo.url)}>
-                                Visit Tabor Library
-                            </Button>
-                            <Button   icon="map-marker-radius-outline" color= "#003082" title ="Location"  
-                                onPress = {() => Linking.openURL(url)}>
-                                Location 
-                            </Button>
-                    </Card.Actions>
+                        <Paragraph style = {styles.memo}>{libraryData.memo}</Paragraph>
+                        <Card.Cover style = {styles.image} source = {{uri: libraryData.image}}/>
+                            <FlatList
+                                style={{ marginBottom: 5, }}
+                                showsVerticalScrollIndicator={false}
+                                listKey={(_, index) => `_key${index}`}
+                                keyExtractor={(_, index) => `_key${index}`}
+                                data={openHours}
+                                renderItem={({ item }) => (
+                                    <View style = {styles.alignSideBySide}>
+                                        {/* Show days */}
+                                        <Subheading styles ={styles.days} >{item.days}</Subheading>
+                                        {/* Map out the hours */}
+                                        <FlatList
+                                            showsVerticalScrollIndicator={false}
+                                            listKey={(_, index) => `_key${index}`}
+                                            keyExtractor={(_, index) => `_key${index}`}
+                                            data={item.hours}
+                                            renderItem={({ item: hours }) => (
+                                                <Subheading styles = {styles.hours} >{hours}</Subheading>
+                                            )}
+                                        />
+                                        
+                                    </View>
+                                )}
+                            />
+                            </Card.Content>
+                            {/* using Card.Actions "Button" components. Please see doc for more information */}
+                            <View style = {styles.buttonLink}>
+                                <Button  icon = "web" color ="#003082" title ="Visit Tabor Library"
+                                    onPress={() => Linking.openURL(contactInfo.url)}>
+                                    Visit Tabor Library
+                                </Button>
+                                <Button   icon="map-marker-radius-outline" color= "#003082" title ="Location"  
+                                    onPress = {() => Linking.openURL(url)}>
+                                    Location 
+                                </Button>
+                            </View>
                 </Card>
         </View>
+                }
+        />
         </Main>
       
     );
@@ -107,7 +111,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
     },
     card:{
-       borderWidth: 1,
+       //borderWidth: 1,
     },
     hours:{  // align the hours to the -> right 
         alignSelf: 'flex-end',
@@ -137,11 +141,17 @@ const styles = StyleSheet.create({
     },
     image: {
         width: "100%",
-        height:"45%",
+        height:"50%",
         //marginBottom: 5
     },
     hyperLink: {
         color: "#003082"
+    },
+    buttonLink:{
+        justifyContent: 'space-between',
+        backgroundColor: "#fff",
+        borderRadius: 5,
+        //borderWidth: 1
     }
    
 });
