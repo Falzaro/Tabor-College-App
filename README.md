@@ -41,7 +41,7 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 ### Example to import an Icon 
 - Type: `import {font-awesome} from '@expo/vector-icons';`
 - Then checkout the supported icons to see which icons sets are available
-Here is another example: 
+**Here is another example: 
 - `import {Ionicons} from '@expo/vector-icons';`
 How to call? 
 - ` <Ionicons name="arrow-redo-sharp" size={14} color="#444444"  /> `
