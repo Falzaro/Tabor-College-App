@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { StyleSheet, View, FlatList, Linking, ImageBackground , TouchableOpacity} from "react-native";
 import Main from "../components/Main";
 
-import { Card, List, Title, Subheading, } from 'react-native-paper';
+import { Card, List, Title, Subheading, Button } from 'react-native-paper';
 
 import JayShopCarousel from '../components/jay_shop/JayShopCarousel';
 import JayShopHours from '../components/jay_shop/JayShopHours';
@@ -30,9 +30,9 @@ function Jayshop({ route }) {
                         <JayShopHours />
                         <SalesItem />
                         <View style ={styles.buttonView}>
-                            <TouchableOpacity style = {styles.button}   onPress={() => Linking.openURL(linkUrl)}>
-                            <Subheading style = {styles.buttonText}>View More</Subheading>
-                            </TouchableOpacity>
+                        <Button icon="shopping-outline" color ="#003082" mode="contained" onPress={() => Linking.openURL(linkUrl)}>
+                            Shop Now!
+                        </Button>
                         </View>
                     </View>
                 }
@@ -72,6 +72,8 @@ const styles = StyleSheet.create({
     buttonView: {
         paddingHorizontal: 130,
         paddingTop: 10,
+        paddingBottom: 10,
+        
     },
 
 });
