@@ -6,7 +6,7 @@ import { Card, List, Title, Subheading, } from 'react-native-paper';
 
 import JayShopCarousel from '../components/jay_shop/JayShopCarousel';
 import JayShopHours from '../components/jay_shop/JayShopHours';
-
+import SalesItem from '../components/jay_shop/ExtractSaleItems';
 const image = {uri: "https://tabor.edu/wp-content/plugins/phastpress/phast.php?service=images&src=https%3A%2F%2Ftabor.edu%2Fwp-content%2Fthemes%2Ftabor-theme%2Fassets%2Fimg%2Fhome-footer.jpg&cacheMarker=1554954396-93644&token=ac3057f43d6d5d49"};
 
 const linkUrl =  'https://tabor.edu/shop/' 
@@ -28,6 +28,7 @@ function Jayshop({ route }) {
                     <View style={styles.container}>
                         <JayShopCarousel />
                         <JayShopHours />
+                        <SalesItem />
                         <View style ={styles.buttonView}>
                             <TouchableOpacity style = {styles.button}   onPress={() => Linking.openURL(linkUrl)}>
                             <Subheading style = {styles.buttonText}>View More</Subheading>
