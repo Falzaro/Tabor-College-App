@@ -19,8 +19,6 @@ const JayShopSocialMedia = () => {
                 onPress={() => Linking.openURL('https://www.instagram.com/tcjayshop/?hl=en')}>
                 Instagram
             </Button>
-           
-
         </View>
     );
 }

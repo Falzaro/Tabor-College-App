@@ -31,7 +31,12 @@ function Jayshop({ route }) {
                         <JayShopHours />
                         <SalesItem />
                         <View style ={styles.buttonView}>
-                        <Button icon="shopping-outline" color ="#003082" mode="contained" onPress={() => Linking.openURL(linkUrl)}>
+                        <Button
+                            icon="shopping-outline" 
+                            color ="#003082" 
+                            mode="contained" 
+                            dark
+                            onPress={() => Linking.openURL(linkUrl)}>
                             Shop Now!
                         </Button>
                         </View>
@@ -58,7 +63,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 5,
         marginBottom: 5,
-        backgroundColor: "#003082",
         borderRadius: 5,
         
     },
