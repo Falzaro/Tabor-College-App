@@ -1,8 +1,8 @@
-import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, FlatList, Linking, ImageBackground , TouchableOpacity} from "react-native";
+import React from 'react';
+import { StyleSheet, View, FlatList, Linking, ImageBackground , } from "react-native";
 import Main from "../components/Main";
 
-import { Card, List, Title, Subheading, Button } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 import JayShopCarousel from '../components/jay_shop/JayShopCarousel';
 import JayShopHours from '../components/jay_shop/JayShopHours';
