@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Image, View, Linking,  StyleSheet, ImageBackground,  TouchableOpacity, Button, Dimensions } from 'react-native';
+import { Image, View, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import { Card, Title, Subheading } from 'react-native-paper';
+import {  Title, Subheading } from 'react-native-paper';
 
 import styles from './styles';
 
