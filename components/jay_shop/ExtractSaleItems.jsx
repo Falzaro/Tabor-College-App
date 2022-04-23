@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image, View, Linking,  StyleSheet, ImageBackground,  TouchableOpacity, Button, Dimensions } from 'react-native';
+import { Image, View, Text,  StyleSheet, ImageBackground,  TouchableOpacity, Button, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Card, Title, Subheading } from 'react-native-paper';
 
@@ -34,7 +34,7 @@ const SalesItem = () => {
         <View>
             <Title style ={{textAlign: "center"}}>Items on Sales!</Title>
              <Carousel 
-                layout = {'tinder'}
+                layout = {'stack'}
                 data = {salesItem}
                 enableSnap = {true} // this must be true for " loop " to work
                 loop // this set item in a loop 
