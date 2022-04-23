@@ -20,7 +20,7 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 ## @expo/vector-icons
 - React Native Elements Icons Documentation [click here](https://docs.expo.dev/guides/icons/#expovector-icons)
 
-###### Available Icon Sets
+### Available Icon Sets
 - [antdesign](https://ant.design/components/icon/)
 - [entypo](http://www.entypo.com/)
 - [evilicon](http://evil-icons.io/)
@@ -38,7 +38,7 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 
 - To Check out all the supported icons, visit [react-native-vector-icons directory](https://oblador.github.io/react-native-vector-icons/)
 
-###### Example to import an Icon 
+### Example to import an Icon 
 - Type: `import {font-awesome} from '@expo/vector-icons';`
 - Then checkout the supported icons to see which icons sets are available
 * * Here is another example: 
