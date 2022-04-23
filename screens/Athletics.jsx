@@ -36,7 +36,7 @@ function Athletics({ route }) {
         <Main name={name} coverImage={coverImage}>
             <ScrollView style={styles.container}>
                 <CampusRecreationCenter />
-                <SportsBanner />
+                <SportsBanner headline="Sports" />
                 <View style={styles.buttonsRow}>
                     <GenderButton
                         title="Men's"
@@ -75,14 +75,11 @@ export default Athletics;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        paddingHorizontal: 15,
     },
     buttonsRow: {
         flexDirection: "row",
         marginBottom: 25,
         justifyContent: "center",
-    },
-    cards: {
-        marginBottom: 20,
     },
 });

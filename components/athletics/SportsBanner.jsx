@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Headline, Divider } from "react-native-paper";
 
-const SportsBanner = () => {
+const SportsBanner = ({ headline }) => {
     return (
         <View style={styles.sportsBanner}>
             <View style={styles.divider} />
-            <Headline style={styles.headline}>Sports</Headline>
+            <Headline style={styles.headline}>{headline}</Headline>
             <View style={styles.divider} />
         </View>
     );
@@ -15,8 +15,9 @@ export default SportsBanner;
 
 const styles = StyleSheet.create({
     sportsBanner: {
-        padding: 10,
-        marginBottom: 15,
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        marginBottom: 10,
         borderRadius: 10,
         flexDirection: "row",
         justifyContent: "center",
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     },
     divider: {
         flex: 1,
-        height: 1.5,
+        height: 1.3,
         backgroundColor: "#002d72",
     },
     headline: {

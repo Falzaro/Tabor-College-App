@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         padding: 10,
-        marginBottom: 15,
+        marginVertical: 15,
     },
     cardCover: {
         flex: 1,
