@@ -17,7 +17,43 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 2. On the left panel, change the connection from "LAN" to “Tunnel”. This is where you can view, test, and debug the mobile app. To see the app, make sure that you have "Expo Go" installed on your phone.
 3. On your iPhone, scan the QR code with your default camera. You can now view the UI of the app. If you are using an android phone, press "Scan QR Code" on the "Projects" tab of the Expo Go app and scan the QR code you see in the terminal or in Expo Dev Tools.
 
-### Dependencies
+## Dependencies
+### React Native Icons 
+### React Native Carousel
+Within this applications we have used this Caruousel Dependencies to layouts images. Please see the Officials docs and GitHub on How to Use.
+- Official Docs [click here](https://www.npmjs.com/package/react-native-snap-carousel)
+- GitHub Docs [click here](https://github.com/meliorence/react-native-snap-carousel)
+- Documentation for known Issues [click here](https://github.com/meliorence/react-native-snap-carousel/blob/master/doc/KNOWN_ISSUES.md)
+- How to Install: 
+    - Run : `$ npm install --save react-native-snap-carousel`
+    ```
+     <Carousel 
+                layout = {'default'}
+                data = {getImage}
+                enableSnap = {true} // this must be true for " loop " to work
+                loop // this set item in a loop 
+                decelerationRate = 'fast'
+                autoplay	  // item will automatically play
+                useScrollView={true}
+                sliderWidth={SLIDER_WIDTH}
+                itemWidth={ITEM_WIDTH}
+                renderItem={({ item: section }) => (
+                    <View style ={styles.card}>  
+                        <Image style = {styles.imageLayout} source = {{uri: section.image}} />
+                        <Subheading style={styles.price}>{section.price}</Subheading>
+                        <Subheading style ={styles.name}>{section.name}</Subheading>
+                    </View>
+                   
+                )}
+            />
+    ```
+How to use: This is an example from JayShopCarousel.jsx 
+1.  for the data to render you will need to state the `data` and the direct the data to where you want it to render the items. 
+2.  For the image to render you will need to specify the `sliderWidth = {} and itemWidth={}` a numeric value will still work.
+3.  Inorder to render the image you will need to call `renderItem` and specify the path for it.
+4.  Please see the Documentations for React native Snap Carousel for more examples.
+### React Native Paper
+### 
 ### @expo/vector-icons
 - React Native Elements Icons Documentation [click here](https://docs.expo.dev/guides/icons/#expovector-icons)
 
