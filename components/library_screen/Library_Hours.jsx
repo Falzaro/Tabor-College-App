@@ -105,6 +105,10 @@ const styles = StyleSheet.create({
     },
     hours:{
         color: "#484e52",
+    },
+    coverImage:{
+        width: "100%",
+        height: "40%"
     }
 })
 
