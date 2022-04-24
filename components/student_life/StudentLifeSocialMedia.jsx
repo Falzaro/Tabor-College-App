@@ -10,21 +10,18 @@ const StudentLifeSocialMedia = () => {
                 color = "#1DA1F2" 
                 uppercase = {false}
                 onPress={() => Linking.openURL('https://twitter.com/taborcollege')}>
-                Twitter
             </Button>
             <Button 
                 icon ="facebook" 
                 color = "#4267B2" 
                 uppercase = {false}
                 onPress={() => Linking.openURL('https://www.facebook.com/TaborCollege')}>
-                Facebook
             </Button>
             <Button 
                 icon ="instagram" 
                 color = "#C13584" 
                 uppercase = {false}
                 onPress={() => Linking.openURL('https://www.instagram.com/taborcollege/')}>
-                Instagram
             </Button>
            
         </View>
@@ -34,7 +31,7 @@ const StudentLifeSocialMedia = () => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
         alignItems: "center",
         marginTop: 5,
     }
