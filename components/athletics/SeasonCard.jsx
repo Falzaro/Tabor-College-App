@@ -1,5 +1,5 @@
 // Module Imports
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground, Linking } from "react-native";
 import { Card, Title } from "react-native-paper";
 import CustomChip from "../CustomChip";
 
@@ -57,7 +57,9 @@ function SeasonCard({ sportsData, season, genderType }) {
                             key={`_key${item.sport}`}
                             style={styles.sportItem}
                         >
-                            <CustomChip onPress={() => console.log(item.sport)}>
+                            <CustomChip
+                                onPress={() => Linking.openURL(item.url)}
+                            >
                                 {item.sport}
                             </CustomChip>
                         </View>
