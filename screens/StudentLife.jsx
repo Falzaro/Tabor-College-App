@@ -1,6 +1,6 @@
-import { StyleSheet, View , Text } from "react-native";
+import { StyleSheet, View , FlatList } from "react-native";
 import Main from "../components/Main";
-import {Card } from 'react-native-paper';
+
 
 import StudentLinks from '../components/student_life/Student_Links';
 import SocialMedia from '../components/student_life/StudentLifeSocialMedia';
@@ -14,10 +14,14 @@ function StudentLife({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>     
+            <FlatList style={styles.center} 
+            ListHeaderComponent={   
+                <View> 
                 <StudentLinks />
                 <SocialMedia />
-            </View>
+                </View>
+            }
+            />
         </Main>
     );
 }
