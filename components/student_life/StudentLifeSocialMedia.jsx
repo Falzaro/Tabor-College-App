@@ -7,21 +7,21 @@ const StudentLifeSocialMedia = () => {
         <View style ={styles.container}>
             <Button 
                 icon ="twitter" 
-                color = "#0071ce" 
+                color = "#1DA1F2" 
                 uppercase = {false}
                 onPress={() => Linking.openURL('https://twitter.com/taborcollege')}>
                 Twitter
             </Button>
             <Button 
                 icon ="facebook" 
-                color = "#0071ce" 
+                color = "#4267B2" 
                 uppercase = {false}
                 onPress={() => Linking.openURL('https://www.facebook.com/TaborCollege')}>
                 Facebook
             </Button>
             <Button 
                 icon ="instagram" 
-                color = "#0071ce" 
+                color = "#C13584" 
                 uppercase = {false}
                 onPress={() => Linking.openURL('https://www.instagram.com/taborcollege/')}>
                 Instagram
