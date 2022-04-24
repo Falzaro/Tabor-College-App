@@ -1,12 +1,13 @@
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
 
-const GenderButton = ({ title, onPress, value }) => {
+const GenderButton = ({ name, onPress, value }) => {
     return (
         <TouchableWithoutFeedback onPress={() => onPress()}>
             <View
                 style={[
                     styles.button,
-                    title === value
+                    // Check if it is the selected
+                    name === value
                         ? styles.activeButton
                         : styles.inActiveButton,
                 ]}
@@ -14,10 +15,12 @@ const GenderButton = ({ title, onPress, value }) => {
                 <Text
                     style={{
                         ...styles.buttonText,
-                        color: title === value ? "#fff" : "#A3A3A3",
+                        // Check if it is the selected
+                        color: name === value ? "#fff" : "#A3A3A3",
                     }}
                 >
-                    {title}
+                    {/* capitalize the first letter */}
+                    {name.charAt(0).toUpperCase() + name.slice(1)}
                 </Text>
             </View>
         </TouchableWithoutFeedback>

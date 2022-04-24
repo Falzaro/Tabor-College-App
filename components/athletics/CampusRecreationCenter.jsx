@@ -1,37 +1,24 @@
+// Module Imports
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { Card, Subheading, Title } from "react-native-paper";
+import { doc, getDoc } from "firebase/firestore";
+
+// Relative Imports
+import { db } from "../../firebase/config";
 
 const CampusRecreationCenter = () => {
-    const hoursOfOperation = {
-        title: "CRC Hours of Operation",
-        openHours: [
-            {
-                days: "Monday - Friday",
-                hours: ["6 A.M - 11 P.M"],
-            },
-            {
-                days: "Saturday - Sunday",
-                hours: ["7 A.M - 11 P.M"],
-            },
-        ],
-    };
-    const weightRoom = {
-        title: "Weight Room",
-        openHours: [
-            {
-                days: "Monday - Friday",
-                hours: ["8 A.M - 10 P.M"],
-            },
-            {
-                days: "Saturday",
-                hours: ["1 P.M - 5 P.M"],
-            },
-            {
-                days: "Sunday",
-                hours: ["7 P.M - 10 P.M"],
-            },
-        ],
-    };
+    const [hoursOfOperation, setHoursOfOperation] = useState();
+    const [weightRoom, setWeightRoom] = useState();
+
+    useEffect(() => {
+        const crcRef = doc(db, "athletics", "campus recreation center");
+        getDoc(crcRef).then((doc) => {
+            setHoursOfOperation(doc.data()["hours of operation"]);
+            setWeightRoom(doc.data()["weight room"]);
+        });
+    }, []);
+
     return (
         <Card style={styles.campusRecreationCenter}>
             <ImageBackground
@@ -45,9 +32,10 @@ const CampusRecreationCenter = () => {
             <View style={styles.crcContainer}>
                 {/* CRC Hours of Operation */}
                 <Subheading style={styles.title}>
-                    {hoursOfOperation.title}
+                    {hoursOfOperation?.title}
                 </Subheading>
-                {hoursOfOperation.openHours.map((item, i) => (
+                {/* Hours of Operation */}
+                {hoursOfOperation?.["open hours"].map((item, i) => (
                     <View style={styles.item} key={`_key${i}`}>
                         {/* Show days */}
                         <Text style={[styles.itemText, { marginRight: 25 }]}>
@@ -62,8 +50,10 @@ const CampusRecreationCenter = () => {
                     </View>
                 ))}
                 {/* Weight Room */}
-                <Subheading style={styles.title}>{weightRoom.title}</Subheading>
-                {weightRoom.openHours.map((item, i) => (
+                <Subheading style={styles.title}>
+                    {weightRoom?.title}
+                </Subheading>
+                {weightRoom?.["open hours"].map((item, i) => (
                     <View style={styles.item} key={`_key_hours${i}`}>
                         {/* Show days */}
                         <Text style={[styles.itemText, { marginRight: 25 }]}>
@@ -89,7 +79,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         padding: 10,
-        marginBottom: 15,
+        marginVertical: 15,
     },
     cardCover: {
         flex: 1,
