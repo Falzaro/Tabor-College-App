@@ -17,6 +17,7 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 2. On the left panel, change the connection from "LAN" to “Tunnel”. This is where you can view, test, and debug the mobile app. To see the app, make sure that you have "Expo Go" installed on your phone.
 3. On your iPhone, scan the QR code with your default camera. You can now view the UI of the app. If you are using an android phone, press "Scan QR Code" on the "Projects" tab of the Expo Go app and scan the QR code you see in the terminal or in Expo Dev Tools.
 
+### Dependencies
 ### Install Icons Component
 - React Native Elements Icons Documentation [click here](https://reactnativeelements.com/docs/icon)
 1. Run : `npm install react-native-vector-icons`
