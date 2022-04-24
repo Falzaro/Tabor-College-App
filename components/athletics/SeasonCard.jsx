@@ -4,7 +4,7 @@ import { Card, Title } from "react-native-paper";
 
 function SeasonCard({ sportsData, title }) {
     // Render background image that matches with the food category
-    const getImage = (title) => {
+    const getMensImage = (title) => {
         switch (title) {
             case "Fall":
                 return require("../../assets/athletics/football.jpg");
@@ -20,7 +20,7 @@ function SeasonCard({ sportsData, title }) {
     return (
         <Card style={styles.card}>
             <ImageBackground
-                source={getImage(title)}
+                source={getMenImage(title)}
                 style={styles.cardCover}
                 imageStyle={{
                     borderRadius: 4,
