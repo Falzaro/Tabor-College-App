@@ -7,14 +7,14 @@ const JayShopSocialMedia = () => {
         <View style ={styles.container}>
             <Button 
                 icon ="facebook" 
-                color = "#003082" 
+                color = "#4267B2" 
                 uppercase = {false}
                 onPress={() => Linking.openURL('https://www.facebook.com/TaborCollegeJayShop/')}>
                 Facebook
             </Button>
              <Button 
                 icon ="instagram" 
-                color = "#003082" 
+                color = "#C13584" 
                 uppercase = {false}
                 onPress={() => Linking.openURL('https://www.instagram.com/tcjayshop/?hl=en')}>
                 Instagram
