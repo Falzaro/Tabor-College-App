@@ -21,7 +21,7 @@ const StudentLifeContact = () => {
             })
     }, []);
 
-  const {"Contact information": contactInfos} = getContactInfo;
+  const {"Contact information": contactInfo} = getContactInfo;
 
     return (
         <View style ={styles.container}>
@@ -33,8 +33,8 @@ const StudentLifeContact = () => {
                 contentStyle = {styles.button}
                 color = "#0071ce" 
                 icon="email" 
-                onPress={() => Linking.openURL(`mailto:${contactInfos?.email2}`)}>
-                    {contactInfos?.email2}
+                onPress={() => Linking.openURL(`mailto:${contactInfo?.email2}`)}>
+                    {contactInfo?.email2}
             </Button>
           
             <Button 
@@ -43,8 +43,8 @@ const StudentLifeContact = () => {
                 contentStyle = {styles.button}
                 color = "#0071ce" 
                 icon="phone" 
-                onPress={() => Linking.openURL(`tel:${contactInfos?.phone}`)}>
-                    {contactInfos?.phone}
+                onPress={() => Linking.openURL(`tel:${contactInfo?.phone}`)}>
+                    {contactInfo?.phone}
             </Button>
                            
         </View>
