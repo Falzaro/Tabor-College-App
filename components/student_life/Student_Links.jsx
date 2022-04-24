@@ -21,11 +21,7 @@ const StudentLinks = () => {
     }, []);
     return (
         <Card style = {styles.container}>
-        <View style={styles.studentBanner}>
-            <View style={styles.divider} />
-            <Title style={styles.headline}>Student Life</Title>
-            <View style={styles.divider} />
-        </View>
+
            <FlatList  
                     showsVerticalScrollIndicator={false}
                     listKey={(_, index) => `_key${index}`}
@@ -61,27 +57,9 @@ const styles = StyleSheet.create({
         
     },
     buttonsRow: {
-     //   flexDirection: "row",
-     marginBottom: 5,
+     paddingTop: 10,
      paddingHorizontal: 18,
         
-    },
-    divider: {
-        flex: 1,
-        height: 1.5,
-        backgroundColor: "#0071ce",
-    },
-    studentBanner: {
-        padding: 10,
-        marginBottom: 15,
-        borderRadius: 10,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    headline: {
-        color: "#0071ce",
-        marginHorizontal: 20,
     },
     button: {
         flexDirection: "row-reverse",
