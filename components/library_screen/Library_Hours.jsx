@@ -43,29 +43,35 @@ const LibraryHours = () => {
                 <Card.Cover style = {styles.coverImage} source = {{uri: libraryData.image}}/>
                 <Paragraph style = {styles.memo}>{libraryData.memo}</Paragraph>
                     <FlatList 
-                            showsVerticalScrollIndicator={false}
-                            listKey={(_, index) => `_key${index}`}
-                            keyExtractor={(_, index) => `_key${index}`}
-                            data={openHours}
-                            renderItem={({ item }) => (
-                                <View style = {styles.alignSideBySide}>
-                                {/* Show days */}
-                                    <Subheading styles ={styles.days} >{item.days}</Subheading>
-                                        {/* Map out the hours */}
-                                        <FlatList
-                                            showsVerticalScrollIndicator={false}
-                                            listKey={(_, index) => `_key${index}`}
-                                            keyExtractor={(_, index) => `_key${index}`}
-                                            data={item.hours}
-                                            renderItem={({ item: hours }) => (
-                                                <Subheading style = {styles.hours} >{hours}</Subheading>
-                                            )}
-                                        />
+
+                        showsVerticalScrollIndicator={false}
+                        listKey={(_, index) => `_key${index}`}
+                        keyExtractor={(_, index) => `_key${index}`}
+                        data={openHours}
+                        renderItem={({ item }) => (
+                            <View style = {styles.alignSideBySide}>
+                            {/* Show days */}
+                                 <Subheading styles ={styles.days} >{item.days}</Subheading>
+                                    {/* Map out the hours */}
+                                    <FlatList
+                                        showsVerticalScrollIndicator={false}
+                                        listKey={(_, index) => `_key${index}`}
+                                        keyExtractor={(_, index) => `_key${index}`}
+                                        data={item.hours}
+                                        renderItem={({ item: hours }) => (
+                                            <Subheading style = {styles.hours} >{hours}</Subheading>
+                                        )}
+                                    />
                                                         
                                 </View>
                             )}
+                            
                     />
-                    <Card.Actions style = {{justifyContent: 'space-between'}}>
+                    <Card.Actions style = {styles.button}>
+                        <Button  icon = "phone" color ="#003082" title ="Visit Tabor Library"
+                            onPress={() => Linking.openURL(contactInfo.phone)}>
+                            {contactInfo.phone} {contactInfo.ext}
+                        </Button>
                         <Button  icon = "web" color ="#003082" title ="Visit Tabor Library"
                             onPress={() => Linking.openURL(contactInfo.url)}>
                             Visit Tabor Library
@@ -93,7 +99,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 18,
-        marginTop: 10,
+        paddingTop: 15,
+
     },
     memo: {
         textAlign: "center",
@@ -109,6 +116,9 @@ const styles = StyleSheet.create({
     coverImage:{
         width: "100%",
         height: "40%"
+    },
+    button: {
+        flexDirection: 'column-reverse',
     }
 })
 
