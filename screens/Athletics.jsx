@@ -13,9 +13,10 @@ import SportsBanner from "../components/athletics/SportsBanner";
 import SocialMedias from "../components/athletics/SocialMedias";
 
 function Athletics({ route }) {
-    const [genderType, setGenderType] = useState("Men's");
-    const [mens, setMens] = useState({});
-    const [womens, setWomens] = useState({});
+    const [genderType, setGenderType] = useState("men's");
+    // const [mens, setMens] = useState({});
+    // const [womens, setWomens] = useState({});
+    const [sports, setSports] = useState([]);
     const { name } = route;
     const sportsCover = require("../assets/coverImage/sports.jpeg");
     const coverImage = {
@@ -27,10 +28,13 @@ function Athletics({ route }) {
     useEffect(() => {
         const sportsRef = doc(db, "athletics", "sports");
         getDoc(sportsRef).then((doc) => {
-            setMens(doc.data()["men's"]);
-            setWomens(doc.data()["women's"]);
+            // setMens(doc.data()["men's"]);
+            // setWomens(doc.data()["women's"]);
+            setSports(doc.data());
         });
     }, []);
+
+    console.log(sports[genderType]);
 
     return (
         <Main name={name} coverImage={coverImage}>
@@ -39,18 +43,18 @@ function Athletics({ route }) {
                 <SportsBanner headline="Sports" />
                 <View style={styles.buttonsRow}>
                     <GenderButton
-                        title="Men's"
-                        onPress={() => setGenderType("Men's")}
+                        name="men's"
+                        onPress={() => setGenderType("men's")}
                         value={genderType}
                     />
                     <View style={{ width: 20 }} />
                     <GenderButton
-                        title="Women's"
-                        onPress={() => setGenderType("Women's")}
+                        name="women's"
+                        onPress={() => setGenderType("women's")}
                         value={genderType}
                     />
                 </View>
-                {genderType === "Men's" && (
+                {/* {genderType === "Men's" && (
                     <View style={styles.cards}>
                         <SeasonCard sportsData={mens.fall} title="Fall" />
                         <SeasonCard sportsData={mens.winter} title="Winter" />
@@ -63,7 +67,22 @@ function Athletics({ route }) {
                         <SeasonCard sportsData={womens.winter} title="Winter" />
                         <SeasonCard sportsData={womens.spring} title="Spring" />
                     </View>
-                )}
+                )} */}
+                <SeasonCard
+                    sportsData={sports[genderType]?.fall}
+                    season="Fall"
+                    genderType={genderType}
+                />
+                <SeasonCard
+                    sportsData={sports[genderType]?.winter}
+                    season="Winter"
+                    genderType={genderType}
+                />
+                <SeasonCard
+                    sportsData={sports[genderType]?.spring}
+                    season="Spring"
+                    genderType={genderType}
+                />
                 <SocialMedias />
             </ScrollView>
         </Main>

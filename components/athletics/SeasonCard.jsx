@@ -2,10 +2,11 @@
 import { View, StyleSheet, ImageBackground, Text } from "react-native";
 import { Card, Title } from "react-native-paper";
 
-function SeasonCard({ sportsData, title }) {
+function SeasonCard({ sportsData, season, genderType }) {
+    console.log("sportsData", sportsData);
     // Render background image that matches with the food category
-    const getMensImage = (title) => {
-        switch (title) {
+    const getMensImage = (season) => {
+        switch (season) {
             case "Fall":
                 return require("../../assets/athletics/football.jpg");
             case "Winter":
@@ -17,19 +18,36 @@ function SeasonCard({ sportsData, title }) {
         }
     };
 
+    const getWomensImage = (season) => {
+        switch (season) {
+            case "Fall":
+                return require("../../assets/athletics/volleyball.jpg");
+            case "Winter":
+                return require("../../assets/athletics/cheerleading.jpg");
+            case "Spring":
+                return require("../../assets/athletics/cross_country.jpg");
+            default:
+                return require("../../assets/athletics/volleyball.jpg");
+        }
+    };
+
     return (
         <Card style={styles.card}>
             <ImageBackground
-                source={getMenImage(title)}
+                source={
+                    genderType === "men's"
+                        ? getMensImage(season)
+                        : getWomensImage(season)
+                }
                 style={styles.cardCover}
                 imageStyle={{
                     borderRadius: 4,
                 }}
             />
-            {/* Card title with underline */}
+            {/* Card season with underline */}
             <View style={styles.cardContent}>
                 <View style={styles.titleWrapper}>
-                    <Title style={styles.cardTitle}>{title}</Title>
+                    <Title style={styles.cardTitle}>{season}</Title>
                     <View style={styles.titleUnderline} />
                 </View>
                 {/* List of food items */}
