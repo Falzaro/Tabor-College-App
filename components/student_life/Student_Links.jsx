@@ -1,15 +1,13 @@
-import React from 'react';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Linking, StyleSheet, View, FlatList } from "react-native";
-import { Card, Divider, Title, Button, Headline  } from "react-native-paper";
+import { Card, Title, Button  } from "react-native-paper";
 
 import { db } from "../../firebase/config";
 import { getDoc, doc } from "firebase/firestore";
 
-
+import ContactInfo from './ContactInfo';
 const StudentLinks = () => {
     const [studentLinks, setStudentLinks] = useState([]);
-    const [value, setValue] = React.useState('left');
     useEffect(() => { 
        const docRef = doc(db, "student life links", "student life links");
          getDoc(docRef)
@@ -52,6 +50,7 @@ const StudentLinks = () => {
                         </View>
                     )}
                 />
+                <ContactInfo />
         </Card>
     )
 }
