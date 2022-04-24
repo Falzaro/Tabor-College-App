@@ -14,8 +14,6 @@ import SocialMedias from "../components/athletics/SocialMedias";
 
 function Athletics({ route }) {
     const [genderType, setGenderType] = useState("men's");
-    // const [mens, setMens] = useState({});
-    // const [womens, setWomens] = useState({});
     const [sports, setSports] = useState([]);
     const { name } = route;
     const sportsCover = require("../assets/coverImage/sports.jpeg");
@@ -28,13 +26,9 @@ function Athletics({ route }) {
     useEffect(() => {
         const sportsRef = doc(db, "athletics", "sports");
         getDoc(sportsRef).then((doc) => {
-            // setMens(doc.data()["men's"]);
-            // setWomens(doc.data()["women's"]);
             setSports(doc.data());
         });
     }, []);
-
-    console.log(sports[genderType]);
 
     return (
         <Main name={name} coverImage={coverImage}>
@@ -54,20 +48,6 @@ function Athletics({ route }) {
                         value={genderType}
                     />
                 </View>
-                {/* {genderType === "Men's" && (
-                    <View style={styles.cards}>
-                        <SeasonCard sportsData={mens.fall} title="Fall" />
-                        <SeasonCard sportsData={mens.winter} title="Winter" />
-                        <SeasonCard sportsData={mens.spring} title="Spring" />
-                    </View>
-                )}
-                {genderType === "Women's" && (
-                    <View style={styles.cards}>
-                        <SeasonCard sportsData={womens.fall} title="Fall" />
-                        <SeasonCard sportsData={womens.winter} title="Winter" />
-                        <SeasonCard sportsData={womens.spring} title="Spring" />
-                    </View>
-                )} */}
                 <SeasonCard
                     sportsData={sports[genderType]?.fall}
                     season="Fall"
