@@ -1,11 +1,7 @@
-import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, Text, Linking, FlatList, ScrollView } from "react-native";
+import React from 'react';
+import { StyleSheet, View } from "react-native";
 import Main from "../components/Main";
-import { Card, Title, Subheading, Paragraph, Button } from 'react-native-paper';
 import LibraryHours from '../components/library_screen/Library_Hours';
-
-
-
 
 function Library({ route }) {
     const { name } = route;
