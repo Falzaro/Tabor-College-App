@@ -1,10 +1,10 @@
 // Module Imports
-import { View, StyleSheet, ImageBackground, Text } from "react-native";
-import { Card, Title, Chip } from "react-native-paper";
+import { View, StyleSheet, ImageBackground } from "react-native";
+import { Card, Title } from "react-native-paper";
+import CustomChip from "../CustomChip";
 
 function SeasonCard({ sportsData, season, genderType }) {
-    console.log("sportsData", sportsData);
-    // Render background image that matches with the food category
+    // Render background image that matches with the season
     const getMensImage = (season) => {
         switch (season) {
             case "Fall":
@@ -57,16 +57,9 @@ function SeasonCard({ sportsData, season, genderType }) {
                             key={`_key${item.sport}`}
                             style={styles.sportItem}
                         >
-                            <Text style={styles.itemText} key={item.sport}>
-                                <Chip
-                                    onPress={() => console.log(item.sport)}
-                                    style={styles.chip}
-                                    mode="outlined"
-                                    textStyle={styles.chipText}
-                                >
-                                    {item.sport}
-                                </Chip>
-                            </Text>
+                            <CustomChip onPress={() => console.log(item.sport)}>
+                                {item.sport}
+                            </CustomChip>
                         </View>
                     ))}
                 </View>
@@ -113,16 +106,7 @@ const styles = StyleSheet.create({
     sportItem: {
         marginBottom: 4,
         paddingHorizontal: 4,
-    },
-    itemText: {
         fontSize: 16,
-        marginBottom: 8,
-    },
-    chip: {
-        backgroundColor: "rgb(226, 237, 248)",
-        borderColor: "rgb(0, 127, 255)",
-    },
-    chipText: {
-        color: "rgb(0, 106, 213)",
+        marginBottom: 12,
     },
 });
