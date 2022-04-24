@@ -1,19 +1,17 @@
 // Module Imports
-import React from "react";
-import {
-    View,
-    StyleSheet,
-    ScrollView,
-    Dimensions,
-    FlatList,
-} from "react-native";
+import { useState } from "react";
+import { View, StyleSheet, Dimensions, FlatList } from "react-native";
 
 // Relative Imports
 import { buttonsData } from "../data/buttonsData";
 import MainButton from "../components/MainButton";
 import Main from "../components/Main";
+import MainCircles from "../components/tabor_college/MainCircles";
+
+const WIDTH = Dimensions.get("window").width;
 
 const TaborCollege = ({ route }) => {
+    const [mainButtonsIndex, setMainButtonsIndex] = useState(0);
     const { name } = route;
     const taborCollegeCover = require("../assets/coverImage/taborCollege.jpg");
     const coverImage = {
@@ -21,32 +19,51 @@ const TaborCollege = ({ route }) => {
         darkness: "rgba(0, 0, 0, 0.0)",
         blurRadius: 1,
     };
-    const WIDTH = Dimensions.get("window").width;
+
+    const buttonsContainers = [
+        buttonsData,
+        buttonsData,
+        buttonsData.slice(0, 5),
+    ];
 
     return (
         <Main name={name} coverImage={coverImage}>
             <View style={styles.screenContainer}>
                 <View style={styles.buttonsBackCover}>
                     <FlatList
-                        // Width minus all horizontal spacings.
+                        // Width minus all horizontal paddings and margins.
                         snapToInterval={WIDTH - 50}
                         decelerationRate="fast"
+                        disableIntervalMomentum
                         horizontal
                         showsHorizontalScrollIndicator={false}
-                        data={[buttonsData, buttonsData, buttonsData]}
-                        renderItem={({ item }) => (
-                            <View style={styles.buttonsContainer}>
-                                {item.map(({ label, link, Image }) => (
-                                    <MainButton
-                                        key={label}
-                                        label={label}
-                                        link={link}
-                                        Image={Image}
-                                        name={name}
-                                    />
-                                ))}
-                            </View>
-                        )}
+                        data={buttonsContainers}
+                        keyExtractor={(_, index) => `_key_mainButton${index}`}
+                        onScroll={(event) => {
+                            // Get index for each swipe
+                            const x = event.nativeEvent.contentOffset.x;
+                            const index = Math.round(x / (WIDTH - 50));
+                            setMainButtonsIndex(index);
+                        }}
+                        renderItem={({ item }) => {
+                            return (
+                                <View style={styles.buttonsContainer}>
+                                    {item.map(({ label, link, Image }) => (
+                                        <MainButton
+                                            key={label}
+                                            label={label}
+                                            link={link}
+                                            Image={Image}
+                                            name={name}
+                                        />
+                                    ))}
+                                </View>
+                            );
+                        }}
+                    />
+                    <MainCircles
+                        mainButtonsIndex={mainButtonsIndex}
+                        buttonsContainers={buttonsContainers}
                     />
                 </View>
             </View>
@@ -66,13 +83,11 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     buttonsContainer: {
-        // flex: 1,
-        // flexDirection: "row",
-        // justifyContent: "center",
+        flexDirection: "row",
         alignItems: "center",
         flexWrap: "wrap",
-        marginTop: 25,
-        // backgroundColor: "red",
+        marginTop: 20,
+        width: WIDTH - 50,
     },
 });
 
