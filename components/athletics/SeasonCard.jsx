@@ -1,6 +1,6 @@
 // Module Imports
 import { View, StyleSheet, ImageBackground, Text } from "react-native";
-import { Card, Title } from "react-native-paper";
+import { Card, Title, Chip } from "react-native-paper";
 
 function SeasonCard({ sportsData, season, genderType }) {
     console.log("sportsData", sportsData);
@@ -50,14 +50,26 @@ function SeasonCard({ sportsData, season, genderType }) {
                     <Title style={styles.cardTitle}>{season}</Title>
                     <View style={styles.titleUnderline} />
                 </View>
-                {/* List of food items */}
-                {sportsData?.map((item) => (
-                    <View key={`_key${item.sport}`} style={styles.sportItem}>
-                        <Text style={styles.itemText} key={item.sport}>
-                            {item.sport}
-                        </Text>
-                    </View>
-                ))}
+                {/* List of sports */}
+                <View style={styles.sportsList}>
+                    {sportsData?.map((item) => (
+                        <View
+                            key={`_key${item.sport}`}
+                            style={styles.sportItem}
+                        >
+                            <Text style={styles.itemText} key={item.sport}>
+                                <Chip
+                                    onPress={() => console.log(item.sport)}
+                                    style={styles.chip}
+                                    mode="outlined"
+                                    textStyle={styles.chipText}
+                                >
+                                    {item.sport}
+                                </Chip>
+                            </Text>
+                        </View>
+                    ))}
+                </View>
             </View>
         </Card>
     );
@@ -70,6 +82,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginBottom: 15,
         padding: 10,
+        paddingBottom: 5,
     },
     cardCover: {
         flex: 1,
@@ -89,15 +102,27 @@ const styles = StyleSheet.create({
     titleUnderline: {
         height: 1.5,
         backgroundColor: "#6c757d",
-        marginBottom: 5,
+        marginBottom: 10,
+    },
+    sportsList: {
+        width: "80%",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "center",
     },
     sportItem: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
+        marginBottom: 4,
+        paddingHorizontal: 4,
     },
     itemText: {
         fontSize: 16,
         marginBottom: 8,
+    },
+    chip: {
+        backgroundColor: "rgb(226, 237, 248)",
+        borderColor: "rgb(0, 127, 255)",
+    },
+    chipText: {
+        color: "rgb(0, 106, 213)",
     },
 });
