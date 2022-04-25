@@ -68,6 +68,7 @@ export const buttonsData = [
         link: "https://tabor.edu/undergraduate/student-life/",
         Image: <Ionicons name="people-outline" size={SIZE} color={COLOR} />,
     },
+    // External buttons
     {
         label: "News",
         link: "https://tabor.edu/news",
