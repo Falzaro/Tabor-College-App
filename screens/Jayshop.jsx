@@ -6,6 +6,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Main from "../components/Main";
 import { db } from "../firebase/config";
 import MainButton from "../components/MainButton";
+import { getButtonsData } from "../data/buttonsData";
 
 function Jayshop({ route }) {
     const [externalButtons, setExternalButtons] = useState([]);
@@ -32,6 +33,11 @@ function Jayshop({ route }) {
             );
         };
         getExternalButtons().then((data) => setExternalButtons(data));
+    }, []);
+
+    useEffect(() => {
+        // getButtonsData().then((data) => setExternalButtons(data));
+        getButtonsData();
     }, []);
 
     return (
