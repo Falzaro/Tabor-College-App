@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { View, StyleSheet, Dimensions, FlatList } from "react-native";
 
 // Relative Imports
-import { buttonsData, getButtonsData } from "../data/buttonsData";
+import { getButtonsData, getScreenButtons } from "../data/buttonsData";
 import MainButton from "../components/MainButton";
 import Main from "../components/Main";
 import MainCircles from "../components/tabor_college/MainCircles";
@@ -13,6 +13,7 @@ const WIDTH = Dimensions.get("window").width;
 const TaborCollege = ({ route }) => {
     const [buttonsContainersIndex, setButtonsContainersIndex] = useState(0);
     const [buttonsContainers, setButtonsContainers] = useState([]);
+    const [screenButtonNames, setScreenButtonNames] = useState([]);
     const { name } = route;
     const taborCollegeCover = require("../assets/coverImage/taborCollege.jpg");
     const coverImage = {
@@ -23,9 +24,19 @@ const TaborCollege = ({ route }) => {
 
     useEffect(() => {
         getButtonsData().then((buttonsData) =>
-            setButtonsContainers([...buttonsData, ...buttonsData])
+            setButtonsContainers([
+                ...buttonsData,
+                ...buttonsData,
+                buttonsData[0].slice(0, 5),
+            ])
         );
     }, [buttonsContainers]);
+
+    useEffect(() => {
+        getScreenButtons().then((screenButtons) =>
+            setScreenButtonNames(screenButtons.map((button) => button.name))
+        );
+    }, [screenButtonNames]);
 
     return (
         <Main name={name} coverImage={coverImage}>
@@ -53,10 +64,12 @@ const TaborCollege = ({ route }) => {
                                         ({ name, url, image }) => (
                                             <MainButton
                                                 key={`_key${name}`}
-                                                label={name}
-                                                link={url}
-                                                image={image}
                                                 name={name}
+                                                url={url}
+                                                image={image}
+                                                screenButtonNames={
+                                                    screenButtonNames
+                                                }
                                             />
                                         )
                                     )}
