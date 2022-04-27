@@ -70,10 +70,10 @@ const LibraryHours = () => {
                     <Card.Actions style = {styles.button}>
                         <Button  icon = "phone" color ="#003082" title ="Visit Tabor Library"
                             onPress={() => Linking.openURL(contactInfo.phone)}>
-                            {contactInfo.phone} {contactInfo.ext}
+                            {contactInfo?.phone} {contactInfo?.ext}
                         </Button>
                         <Button  icon = "web" color ="#003082" title ="Visit Tabor Library"
-                            onPress={() => Linking.openURL(contactInfo.url)}>
+                            onPress={() => Linking.openURL(contactInfo?.url)}>
                             Visit Tabor Library
                         </Button>
                         <Button   icon="map-marker-radius-outline" color= "#003082" title ="Location"  
