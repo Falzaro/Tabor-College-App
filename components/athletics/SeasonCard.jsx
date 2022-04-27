@@ -1,11 +1,12 @@
 // Module Imports
-import { View, StyleSheet, ImageBackground, Text } from "react-native";
+import { View, StyleSheet, ImageBackground, Linking } from "react-native";
 import { Card, Title } from "react-native-paper";
+import CustomChip from "../CustomChip";
 
-function SeasonCard({ sportsData, title }) {
-    // Render background image that matches with the food category
-    const getImage = (title) => {
-        switch (title) {
+function SeasonCard({ sportsData, season, genderType }) {
+    // Render background image that matches with the season
+    const getMensImage = (season) => {
+        switch (season) {
             case "Fall":
                 return require("../../assets/athletics/football.jpg");
             case "Winter":
@@ -17,29 +18,53 @@ function SeasonCard({ sportsData, title }) {
         }
     };
 
+    const getWomensImage = (season) => {
+        switch (season) {
+            case "Fall":
+                return require("../../assets/athletics/volleyball.jpg");
+            case "Winter":
+                return require("../../assets/athletics/cheerleading.jpg");
+            case "Spring":
+                return require("../../assets/athletics/cross_country.jpg");
+            default:
+                return require("../../assets/athletics/volleyball.jpg");
+        }
+    };
+
     return (
         <Card style={styles.card}>
             <ImageBackground
-                source={getImage(title)}
+                source={
+                    genderType === "men's"
+                        ? getMensImage(season)
+                        : getWomensImage(season)
+                }
                 style={styles.cardCover}
                 imageStyle={{
                     borderRadius: 4,
                 }}
             />
-            {/* Card title with underline */}
+            {/* Card season with underline */}
             <View style={styles.cardContent}>
                 <View style={styles.titleWrapper}>
-                    <Title style={styles.cardTitle}>{title}</Title>
+                    <Title style={styles.cardTitle}>{season}</Title>
                     <View style={styles.titleUnderline} />
                 </View>
-                {/* List of food items */}
-                {sportsData?.map((item) => (
-                    <View key={`_key${item.sport}`} style={styles.sportItem}>
-                        <Text style={styles.itemText} key={item.sport}>
-                            {item.sport}
-                        </Text>
-                    </View>
-                ))}
+                {/* List of sports */}
+                <View style={styles.sportsList}>
+                    {sportsData?.map((item) => (
+                        <View
+                            key={`_key${item.sport}`}
+                            style={styles.sportItem}
+                        >
+                            <CustomChip
+                                onPress={() => Linking.openURL(item.url)}
+                            >
+                                {item.sport}
+                            </CustomChip>
+                        </View>
+                    ))}
+                </View>
             </View>
         </Card>
     );
@@ -52,6 +77,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginBottom: 15,
         padding: 10,
+        paddingBottom: 5,
     },
     cardCover: {
         flex: 1,
@@ -71,15 +97,18 @@ const styles = StyleSheet.create({
     titleUnderline: {
         height: 1.5,
         backgroundColor: "#6c757d",
-        marginBottom: 5,
+        marginBottom: 10,
     },
-    sportItem: {
+    sportsList: {
+        width: "80%",
         flexDirection: "row",
-        alignItems: "center",
+        flexWrap: "wrap",
         justifyContent: "center",
     },
-    itemText: {
+    sportItem: {
+        marginBottom: 4,
+        paddingHorizontal: 4,
         fontSize: 16,
-        marginBottom: 8,
+        marginBottom: 12,
     },
 });

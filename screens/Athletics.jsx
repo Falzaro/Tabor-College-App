@@ -13,9 +13,8 @@ import SportsBanner from "../components/athletics/SportsBanner";
 import SocialMedias from "../components/athletics/SocialMedias";
 
 function Athletics({ route }) {
-    const [genderType, setGenderType] = useState("Men's");
-    const [mens, setMens] = useState({});
-    const [womens, setWomens] = useState({});
+    const [genderType, setGenderType] = useState("men's");
+    const [sports, setSports] = useState([]);
     const { name } = route;
     const sportsCover = require("../assets/coverImage/sports.jpeg");
     const coverImage = {
@@ -27,8 +26,7 @@ function Athletics({ route }) {
     useEffect(() => {
         const sportsRef = doc(db, "athletics", "sports");
         getDoc(sportsRef).then((doc) => {
-            setMens(doc.data()["men's"]);
-            setWomens(doc.data()["women's"]);
+            setSports(doc.data());
         });
     }, []);
 
@@ -36,34 +34,35 @@ function Athletics({ route }) {
         <Main name={name} coverImage={coverImage}>
             <ScrollView style={styles.container}>
                 <CampusRecreationCenter />
-                <SportsBanner />
+                <SportsBanner headline="Sports" />
                 <View style={styles.buttonsRow}>
                     <GenderButton
-                        title="Men's"
-                        onPress={() => setGenderType("Men's")}
+                        name="men's"
+                        onPress={() => setGenderType("men's")}
                         value={genderType}
                     />
-                    <View style={{ width: 15 }} />
+                    <View style={{ width: 20 }} />
                     <GenderButton
-                        title="Women's"
-                        onPress={() => setGenderType("Women's")}
+                        name="women's"
+                        onPress={() => setGenderType("women's")}
                         value={genderType}
                     />
                 </View>
-                {genderType === "Men's" && (
-                    <View style={styles.cards}>
-                        <SeasonCard sportsData={mens.fall} title="Fall" />
-                        <SeasonCard sportsData={mens.winter} title="Winter" />
-                        <SeasonCard sportsData={mens.spring} title="Spring" />
-                    </View>
-                )}
-                {genderType === "Women's" && (
-                    <View style={styles.cards}>
-                        <SeasonCard sportsData={womens.fall} title="Fall" />
-                        <SeasonCard sportsData={womens.winter} title="Winter" />
-                        <SeasonCard sportsData={womens.spring} title="Spring" />
-                    </View>
-                )}
+                <SeasonCard
+                    sportsData={sports[genderType]?.fall}
+                    season="Fall"
+                    genderType={genderType}
+                />
+                <SeasonCard
+                    sportsData={sports[genderType]?.winter}
+                    season="Winter"
+                    genderType={genderType}
+                />
+                <SeasonCard
+                    sportsData={sports[genderType]?.spring}
+                    season="Spring"
+                    genderType={genderType}
+                />
                 <SocialMedias />
             </ScrollView>
         </Main>
@@ -75,14 +74,11 @@ export default Athletics;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        paddingHorizontal: 15,
     },
     buttonsRow: {
         flexDirection: "row",
         marginBottom: 25,
         justifyContent: "center",
-    },
-    cards: {
-        marginBottom: 20,
     },
 });
