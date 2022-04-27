@@ -1,9 +1,9 @@
 // Module Imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, StyleSheet, Dimensions, FlatList } from "react-native";
 
 // Relative Imports
-import { buttonsData } from "../data/buttonsData";
+import { buttonsData, getButtonsData } from "../data/buttonsData";
 import MainButton from "../components/MainButton";
 import Main from "../components/Main";
 import MainCircles from "../components/tabor_college/MainCircles";
@@ -11,7 +11,8 @@ import MainCircles from "../components/tabor_college/MainCircles";
 const WIDTH = Dimensions.get("window").width;
 
 const TaborCollege = ({ route }) => {
-    const [mainButtonsIndex, setMainButtonsIndex] = useState(0);
+    const [buttonsContainersIndex, setButtonsContainersIndex] = useState(0);
+    const [buttonsContainers, setButtonsContainers] = useState([]);
     const { name } = route;
     const taborCollegeCover = require("../assets/coverImage/taborCollege.jpg");
     const coverImage = {
@@ -20,11 +21,11 @@ const TaborCollege = ({ route }) => {
         blurRadius: 1,
     };
 
-    const buttonsContainers = [
-        buttonsData,
-        buttonsData,
-        buttonsData.slice(0, 5),
-    ];
+    useEffect(() => {
+        getButtonsData().then((buttonsData) =>
+            setButtonsContainers([...buttonsData, ...buttonsData])
+        );
+    }, [buttonsContainers]);
 
     return (
         <Main name={name} coverImage={coverImage}>
@@ -43,26 +44,28 @@ const TaborCollege = ({ route }) => {
                             // Get index for each swipe
                             const x = event.nativeEvent.contentOffset.x;
                             const index = Math.round(x / (WIDTH - 50));
-                            setMainButtonsIndex(index);
+                            setButtonsContainersIndex(index);
                         }}
-                        renderItem={({ item }) => {
+                        renderItem={({ item: buttonsContainer }) => {
                             return (
                                 <View style={styles.buttonsContainer}>
-                                    {item.map(({ label, link, Image }) => (
-                                        <MainButton
-                                            key={label}
-                                            label={label}
-                                            link={link}
-                                            Image={Image}
-                                            name={name}
-                                        />
-                                    ))}
+                                    {buttonsContainer.map(
+                                        ({ name, url, image }) => (
+                                            <MainButton
+                                                key={`_key${name}`}
+                                                label={name}
+                                                link={url}
+                                                image={image}
+                                                name={name}
+                                            />
+                                        )
+                                    )}
                                 </View>
                             );
                         }}
                     />
                     <MainCircles
-                        mainButtonsIndex={mainButtonsIndex}
+                        buttonsContainersIndex={buttonsContainersIndex}
                         buttonsContainers={buttonsContainers}
                     />
                 </View>

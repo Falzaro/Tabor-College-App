@@ -5,12 +5,13 @@ import {
     TouchableOpacity,
     Linking,
     View,
+    Image,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
 // Buttons for the main screen
-function MainButton({ label, link, Image }) {
+function MainButton({ label, link, image }) {
     const navigation = useNavigation();
     const externalButtons = [
         "News",
@@ -31,7 +32,12 @@ function MainButton({ label, link, Image }) {
     return (
         <TouchableOpacity style={styles.button} onPress={handlePress}>
             <>
-                {Image}
+                <Image
+                    source={{ uri: image }}
+                    style={styles.icon}
+                    alt="random"
+                    resizeMode="contain"
+                />
                 <View style={styles.externalIconWrapper}>
                     {isButtonExternal && (
                         <Ionicons
@@ -74,5 +80,8 @@ const styles = StyleSheet.create({
         transform: [{ rotate: "-6deg" }],
         opacity: 0.84,
     },
-    externalIcon: {},
+    icon: {
+        height: 37,
+        aspectRatio: 1,
+    },
 });
