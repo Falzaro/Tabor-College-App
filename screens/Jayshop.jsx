@@ -1,9 +1,5 @@
-
 import React from 'react';
 import { StyleSheet, View, FlatList, Linking, ImageBackground , } from "react-native";
-import { StyleSheet, View } from "react-native";
-
-
 import Main from "../components/Main";
 
 import { Button } from 'react-native-paper';
