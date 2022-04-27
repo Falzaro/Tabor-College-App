@@ -1,5 +1,6 @@
 import { StyleSheet, View } from "react-native";
-import { Chip, Title, Card } from "react-native-paper";
+import { Title, Card } from "react-native-paper";
+import CustomChip from "../CustomChip";
 
 function BuildingsOnCampus({ locations, setActiveLocation, regionRef }) {
     const handleMarkerPress = (location) => {
@@ -20,14 +21,9 @@ function BuildingsOnCampus({ locations, setActiveLocation, regionRef }) {
                 {/* Map out clickable chips with location data  */}
                 {locations.map((location) => (
                     <View key={location.name} style={styles.location}>
-                        <Chip
-                            onPress={() => handleMarkerPress(location)}
-                            style={styles.chip}
-                            mode="outlined"
-                            textStyle={styles.chipText}
-                        >
+                        <CustomChip onPress={() => handleMarkerPress(location)}>
                             {location.name}
-                        </Chip>
+                        </CustomChip>
                     </View>
                 ))}
             </View>
@@ -56,12 +52,5 @@ const styles = StyleSheet.create({
     location: {
         marginBottom: 9,
         marginRight: 10,
-    },
-    chip: {
-        backgroundColor: "rgb(226, 237, 248)",
-        borderColor: "rgb(0, 127, 255)",
-    },
-    chipText: {
-        color: "rgb(0, 106, 213)",
     },
 });

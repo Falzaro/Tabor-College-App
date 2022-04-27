@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React from 'react';
 import { StyleSheet, View, FlatList, Linking, ImageBackground , } from "react-native";
+=======
+import { StyleSheet, View } from "react-native";
+
+>>>>>>> main
 import Main from "../components/Main";
 
 import { Button } from 'react-native-paper';
@@ -20,8 +25,10 @@ function Jayshop({ route }) {
         darkness: "rgba(0, 0, 0, 0.10)",
         blurRadius: 0.5,
     };
+
     return (
         <Main name={name} coverImage={coverImage}>
+<<<<<<< HEAD
             <ImageBackground source ={image} style={styles.image}  > 
             <FlatList 
                 showsVerticalScrollIndicator = {false}
@@ -45,6 +52,9 @@ function Jayshop({ route }) {
             />
                 <JayShopSocialMedia />
                 </ImageBackground>
+=======
+            <View style={styles.center}>{/* No content */}</View>
+>>>>>>> main
         </Main>
     );
 }

@@ -1,14 +1,14 @@
 // Module Imports
 import { useEffect, useState } from "react";
 import { StyleSheet, FlatList, View } from "react-native";
+import { doc, getDoc } from "firebase/firestore";
+import { Card, Subheading } from "react-native-paper";
 
 // Relative Imports
 import Main from "../components/Main";
 import { db } from "../firebase/config";
-import { doc, getDoc } from "firebase/firestore";
 import FoodCard from "../components/cafe_menu/FoodCard";
 import DaysButtonGroup from "../components/cafe_menu/DaysButtonGroup";
-import { Card, Subheading } from "react-native-paper";
 
 function CafeMenu({ route }) {
     const [cafeMenu, setCafeMenu] = useState([]);

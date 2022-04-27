@@ -1,13 +1,19 @@
 // Module Imports
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import { useState, useEffect } from "react";
+import { View, StyleSheet, Dimensions, FlatList } from "react-native";
 
 // Relative Imports
-import { buttonsData } from "../data/buttonsData";
+import { getButtonsData, getScreenButtons } from "../data/buttonsData";
 import MainButton from "../components/MainButton";
 import Main from "../components/Main";
+import MainCircles from "../components/tabor_college/MainCircles";
+
+const WIDTH = Dimensions.get("window").width;
 
 const TaborCollege = ({ route }) => {
+    const [buttonsContainersIndex, setButtonsContainersIndex] = useState(0);
+    const [buttonsContainers, setButtonsContainers] = useState([]);
+    const [screenButtonNames, setScreenButtonNames] = useState([]);
     const { name } = route;
     const taborCollegeCover = require("../assets/coverImage/taborCollege.jpg");
     const coverImage = {
@@ -15,22 +21,66 @@ const TaborCollege = ({ route }) => {
         darkness: "rgba(0, 0, 0, 0.0)",
         blurRadius: 1,
     };
+
+    useEffect(() => {
+        getButtonsData().then((buttonsData) =>
+            setButtonsContainers([
+                ...buttonsData,
+                ...buttonsData,
+                buttonsData[0].slice(0, 5),
+            ])
+        );
+    }, [buttonsContainers]);
+
+    useEffect(() => {
+        getScreenButtons().then((screenButtons) =>
+            setScreenButtonNames(screenButtons.map((button) => button.name))
+        );
+    }, [screenButtonNames]);
+
     return (
         <Main name={name} coverImage={coverImage}>
             <View style={styles.screenContainer}>
                 <View style={styles.buttonsBackCover}>
-                    {/* Map out the buttons */}
-                    <View style={styles.buttonContainer}>
-                        {buttonsData.map(({ label, link, Image }) => (
-                            <MainButton
-                                key={label}
-                                label={label}
-                                link={link}
-                                Image={Image}
-                                name={name}
-                            />
-                        ))}
-                    </View>
+                    <FlatList
+                        // Width minus all horizontal paddings and margins.
+                        snapToInterval={WIDTH - 50}
+                        decelerationRate="fast"
+                        disableIntervalMomentum
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        data={buttonsContainers}
+                        keyExtractor={(_, index) => `_key_mainButton${index}`}
+                        onScroll={(event) => {
+                            // Get index for each swipe
+                            const x = event.nativeEvent.contentOffset.x;
+                            const index = Math.round(x / (WIDTH - 50));
+                            setButtonsContainersIndex(index);
+                        }}
+                        renderItem={({ item: buttonsContainer }) => {
+                            return (
+                                <View style={styles.buttonsContainer}>
+                                    {buttonsContainer.map(
+                                        ({ name, url, image }) => (
+                                            <MainButton
+                                                key={`_key${name}`}
+                                                name={name}
+                                                url={url}
+                                                image={image}
+                                                screenButtonNames={
+                                                    screenButtonNames
+                                                }
+                                            />
+                                        )
+                                    )}
+                                </View>
+                            );
+                        }}
+                    />
+                    <MainCircles
+                        buttonsContainersIndex={buttonsContainersIndex}
+                        buttonsContainers={buttonsContainers}
+                    />
                 </View>
             </View>
         </Main>
@@ -44,17 +94,16 @@ const styles = StyleSheet.create({
     },
     buttonsBackCover: {
         height: "100%",
-        alignItems: "center",
         borderRadius: 20,
         backgroundColor: "#f8f8f8",
+        padding: 10,
     },
-    buttonContainer: {
-        flex: 1,
+    buttonsContainer: {
         flexDirection: "row",
-        justifyContent: "center",
         alignItems: "center",
         flexWrap: "wrap",
-        marginTop: 30,
+        marginTop: 20,
+        width: WIDTH - 50,
     },
 });
 
