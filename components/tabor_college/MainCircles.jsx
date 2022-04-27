@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 
-const MainCircles = ({ mainButtonsIndex, buttonsContainers }) => {
+const MainCircles = ({ buttonsContainersIndex, buttonsContainers }) => {
     return (
         <View style={styles.circlesRow}>
             {buttonsContainers.map((_, index) => (
@@ -9,7 +9,8 @@ const MainCircles = ({ mainButtonsIndex, buttonsContainers }) => {
                     style={[
                         styles.circle,
                         {
-                            opacity: mainButtonsIndex === index ? 0.4 : 0.15,
+                            opacity:
+                                buttonsContainersIndex === index ? 0.4 : 0.15,
                         },
                     ]}
                 />

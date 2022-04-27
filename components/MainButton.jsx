@@ -5,35 +5,37 @@ import {
     TouchableOpacity,
     Linking,
     View,
+    Image,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
 // Buttons for the main screen
-function MainButton({ label, link, Image }) {
+function MainButton({ name, url, image, screenButtonNames }) {
     const navigation = useNavigation();
-    const externalButtons = [
-        "News",
-        "Campus Cafe",
-        "Canvas",
-        "Calendar",
-        "Arts",
-    ];
-    const isButtonExternal = externalButtons.includes(label);
+    const isScreenButton = screenButtonNames.includes(name);
 
     const handlePress = () => {
-        // If the button is an external link, open it in the browser
-        if (isButtonExternal) Linking.openURL(link);
+        // If the button is not a screen type, open it in the browser
+        if (!isScreenButton) Linking.openURL(url);
         // Otherwise, navigate to the screen
-        else navigation.navigate(label);
+        else navigation.navigate(name);
     };
 
     return (
         <TouchableOpacity style={styles.button} onPress={handlePress}>
             <>
-                {Image}
+                {/* Do not render if there's no image */}
+                {Boolean(image) && (
+                    <Image
+                        source={{ uri: image }}
+                        style={styles.icon}
+                        alt="random"
+                        resizeMode="contain"
+                    />
+                )}
                 <View style={styles.externalIconWrapper}>
-                    {isButtonExternal && (
+                    {!isScreenButton && (
                         <Ionicons
                             name="arrow-redo-sharp"
                             size={14}
@@ -42,7 +44,7 @@ function MainButton({ label, link, Image }) {
                         />
                     )}
                 </View>
-                <Text style={styles.buttonText}>{label}</Text>
+                <Text style={styles.buttonText}>{name}</Text>
             </>
         </TouchableOpacity>
     );
@@ -74,5 +76,8 @@ const styles = StyleSheet.create({
         transform: [{ rotate: "-6deg" }],
         opacity: 0.84,
     },
-    externalIcon: {},
+    icon: {
+        height: 37,
+        aspectRatio: 1,
+    },
 });
