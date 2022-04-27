@@ -27,9 +27,9 @@ function Jayshop({ route }) {
                 showsVerticalScrollIndicator = {false}
                 ListFooterComponent={
                     <View style={styles.container}>
-                        <JayShopCarousel />
-                        <JayShopHours />
                         <SalesItem />
+                        <JayShopHours />
+                        <JayShopCarousel />
                         <View style ={styles.buttonView}>
                         <Button
                             icon="shopping-outline" 
