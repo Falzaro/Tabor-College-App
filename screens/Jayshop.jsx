@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native";
+
 import Main from "../components/Main";
 
 function Jayshop({ route }) {
@@ -9,9 +10,10 @@ function Jayshop({ route }) {
         darkness: "rgba(0, 0, 0, 0.10)",
         blurRadius: 0.5,
     };
+
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+            <View style={styles.center}>{/* No content */}</View>
         </Main>
     );
 }
