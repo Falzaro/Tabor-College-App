@@ -1,6 +1,6 @@
 // Module Imports
-import { useState, useEffect } from "react";
-import { View, StyleSheet, Dimensions, FlatList } from "react-native";
+import { useState, useEffect, useRef } from "react";
+import { View, StyleSheet, FlatList } from "react-native";
 
 // Relative Imports
 import { getButtonsData, getScreenButtons } from "../data/buttonsData";
@@ -8,12 +8,11 @@ import MainButton from "../components/MainButton";
 import Main from "../components/Main";
 import MainCircles from "../components/tabor_college/MainCircles";
 
-const WIDTH = Dimensions.get("window").width;
-
 const TaborCollege = ({ route }) => {
     const [buttonsContainersIndex, setButtonsContainersIndex] = useState(0);
     const [buttonsContainers, setButtonsContainers] = useState([]);
     const [screenButtonNames, setScreenButtonNames] = useState([]);
+    let backCoverRef = useRef();
     const { name } = route;
     const taborCollegeCover = require("../assets/coverImage/taborCollege.jpg");
     const coverImage = {
@@ -27,24 +26,30 @@ const TaborCollege = ({ route }) => {
             setButtonsContainers([
                 ...buttonsData,
                 ...buttonsData,
-                buttonsData[0].slice(0, 5),
+                buttonsData[0].slice(0, 2),
             ])
         );
-    }, [buttonsContainers]);
+    }, []);
 
     useEffect(() => {
         getScreenButtons().then((screenButtons) =>
             setScreenButtonNames(screenButtons.map((button) => button.name))
         );
-    }, [screenButtonNames]);
+    }, []);
+
+    const handleLayout = (event) => {
+        const { width } = event.nativeEvent.layout;
+        backCoverRef.width = width;
+        console.log(backCoverRef);
+    };
 
     return (
         <Main name={name} coverImage={coverImage}>
             <View style={styles.screenContainer}>
-                <View style={styles.buttonsBackCover}>
+                <View onLayout={handleLayout} style={styles.buttonsBackCover}>
                     <FlatList
                         // Width minus all horizontal paddings and margins.
-                        snapToInterval={WIDTH - 50}
+                        snapToInterval={backCoverRef?.width}
                         decelerationRate="fast"
                         disableIntervalMomentum
                         horizontal
@@ -54,25 +59,39 @@ const TaborCollege = ({ route }) => {
                         onScroll={(event) => {
                             // Get index for each swipe
                             const x = event.nativeEvent.contentOffset.x;
-                            const index = Math.round(x / (WIDTH - 50));
+                            const index = Math.round(x / backCoverRef?.width);
                             setButtonsContainersIndex(index);
                         }}
                         renderItem={({ item: buttonsContainer }) => {
                             return (
-                                <View style={styles.buttonsContainer}>
-                                    {buttonsContainer.map(
-                                        ({ name, url, image }) => (
-                                            <MainButton
-                                                key={`_key${name}`}
-                                                name={name}
-                                                url={url}
-                                                image={image}
-                                                screenButtonNames={
-                                                    screenButtonNames
-                                                }
-                                            />
-                                        )
-                                    )}
+                                <View
+                                    style={{
+                                        marginTop: 20,
+                                        flex: 1,
+                                        alignItems: "center",
+                                        width: backCoverRef.width,
+                                    }}
+                                >
+                                    {buttonsContainer.map((buttonsRow, i) => (
+                                        <View
+                                            key={`__key${buttonsRow}${i}`}
+                                            style={styles.buttonsRow}
+                                        >
+                                            {buttonsRow.map(
+                                                ({ name, url, image }) => (
+                                                    <MainButton
+                                                        key={`_key${name}`}
+                                                        name={name}
+                                                        url={url}
+                                                        image={image}
+                                                        screenButtonNames={
+                                                            screenButtonNames
+                                                        }
+                                                    />
+                                                )
+                                            )}
+                                        </View>
+                                    ))}
                                 </View>
                             );
                         }}
@@ -96,15 +115,18 @@ const styles = StyleSheet.create({
         height: "100%",
         borderRadius: 20,
         backgroundColor: "#f8f8f8",
-        padding: 10,
-    },
-    buttonsContainer: {
-        flexDirection: "row",
+        width: 360,
         alignItems: "center",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        marginTop: 20,
-        width: WIDTH - 50,
+        flex: 1,
+    },
+    // buttonsContainer: {
+    //     marginTop: 20,
+    //     flex: 1,
+    //     alignItems: "center",
+    // },
+    buttonsRow: {
+        flexDirection: "row",
+        marginBottom: 5,
     },
 });
 
