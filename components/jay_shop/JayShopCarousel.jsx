@@ -54,7 +54,6 @@ const JayShopCarousel = () => {
                    
                 )}
             />
-           
         </View>
     )
 }
