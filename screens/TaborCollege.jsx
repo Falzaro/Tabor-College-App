@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     buttonsContainer: {
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "center",
         flexWrap: "wrap",
         marginTop: 20,
         width: WIDTH - 50,
