@@ -40,7 +40,6 @@ const TaborCollege = ({ route }) => {
     const handleLayout = (event) => {
         const { width } = event.nativeEvent.layout;
         backCoverRef.width = width;
-        console.log(backCoverRef);
     };
 
     return (
@@ -115,15 +114,10 @@ const styles = StyleSheet.create({
         height: "100%",
         borderRadius: 20,
         backgroundColor: "#f8f8f8",
-        width: 360,
         alignItems: "center",
         flex: 1,
+        width: "auto",
     },
-    // buttonsContainer: {
-    //     marginTop: 20,
-    //     flex: 1,
-    //     alignItems: "center",
-    // },
     buttonsRow: {
         flexDirection: "row",
         marginBottom: 5,
