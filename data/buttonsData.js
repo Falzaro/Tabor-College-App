@@ -18,10 +18,18 @@ const getExternalOrScreenButtons = async (taborCollegeDoc, buttonType) => {
     );
 };
 
+const divideContainerIntoRows = (container) => {
+    const rows = [];
+    for (let i = 0; i < container.length; i += 3) {
+        rows.push(container.slice(i, i + 3));
+    }
+    return rows;
+};
+
 const divideButtonsIntoContainers = (buttons) => {
     const containers = [];
     for (let i = 0; i < buttons.length; i += 12) {
-        containers.push(buttons.slice(i, i + 12));
+        containers.push(divideContainerIntoRows(buttons.slice(i, i + 12)));
     }
     return containers;
 };
