@@ -83,7 +83,7 @@ for contact in libraryContact:
     info["name"] = name
     info["reference"] = reference
     info["email"] = email
-    info["phone"] = phone
+    info["phone"] = phone[:-1]
     info["ext"] = ext
     
     libraryHoursData["Contact information"] = info
