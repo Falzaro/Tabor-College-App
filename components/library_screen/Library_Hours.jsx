@@ -24,6 +24,8 @@ const url = Platform.select({
   android: "geo:" + latitude + "," + longitude + "?q=" + label,
 });
 
+const libUrl = "https://taborcollege.libguides.com/library";
+
 const LibraryHours = () => {
   const [libraryData, setLibraryData] = useState([]);
 
@@ -52,13 +54,13 @@ const LibraryHours = () => {
         source={{ uri: libraryData.image }}
       />
       <Paragraph style={styles.memo}>{libraryData.memo}</Paragraph>
-      {openHours?.map((item) => {
+      {openHours?.map((item, index) => {
         return (
           <View style={styles.alignSideBySide}>
-            <Subheading key={item.days} style={styles.subheading}>
+            <Subheading key={index} style={styles.subheading}>
               {item.days}
             </Subheading>
-            <Subheading key={item.hours} style={styles.hours}>
+            <Subheading key={index} style={styles.hours}>
               {item.hours}
             </Subheading>
           </View>
@@ -70,7 +72,7 @@ const LibraryHours = () => {
           icon="phone"
           color="#003082"
           title="Visit Tabor Library"
-          onPress={() => Linking.openURL(contactInfo.phone)}
+          onPress={() => Linking.openURL(contactInfo?.phone)}
         >
           {contactInfo?.phone} {contactInfo?.ext}
         </Button>
@@ -78,7 +80,7 @@ const LibraryHours = () => {
           icon="web"
           color="#003082"
           title="Visit Tabor Library"
-          onPress={() => Linking.openURL(contactInfo?.url)}
+          onPress={() => Linking.openURL(libUrl)}
         >
           Visit Tabor Library
         </Button>
