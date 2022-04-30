@@ -86,7 +86,7 @@ for contact in libraryContact:
     info["phone"] = phone
     info["ext"] = ext
     
-    libraryHoursData["Contact information"].append(info)
+    libraryHoursData["Contact information"] = info
 
 
 
