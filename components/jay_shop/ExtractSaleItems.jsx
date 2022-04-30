@@ -16,7 +16,7 @@ const SalesItem = () => {
     const [salesItem, setSalesItem] = useState([]);
     useEffect(() => {
         // Get the  from firebase version 9
-        const docRef = doc(db, "products", "testing data2");
+        const docRef = doc(db, "products", "Sales Item");
         getDoc(docRef)
 
             .then((doc) => {
@@ -47,7 +47,8 @@ const SalesItem = () => {
                     <View style ={styles.card}>
                         <Image style = {styles.imageLayout} source = {{uri: section.image}} />
                         <Subheading style={styles.price}>{section.price}</Subheading>
-                        <Subheading style ={styles.name}>{section.text}</Subheading>
+                        <Subheading style={styles.price}>{section.sale}</Subheading>
+                        <Subheading style ={styles.name}>{section.name}</Subheading>
                     </View>
 
                 )}

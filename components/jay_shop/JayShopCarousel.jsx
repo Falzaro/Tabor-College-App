@@ -19,7 +19,7 @@ const JayShopCarousel = () => {
 
     useEffect(() => {
         // Get the  from firebase version 9
-        const docRef = doc(db, "products", "testing data3");
+        const docRef = doc(db, "products", "CollectAllDataFromJayShop");
         getDoc(docRef)
            
             .then((doc) => {
