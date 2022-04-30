@@ -72,7 +72,7 @@ const LibraryHours = () => {
           icon="phone"
           color="#003082"
           title="Visit Tabor Library"
-          onPress={() => Linking.openURL(contactInfo?.phone)}
+          onPress={() => Linking.openURL(`tel:${contactInfo?.phone}`)}
         >
           {contactInfo?.phone} {contactInfo?.ext}
         </Button>
