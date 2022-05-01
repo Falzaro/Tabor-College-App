@@ -1,6 +1,9 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View , FlatList } from "react-native";
 import Main from "../components/Main";
 
+
+import StudentLinks from '../components/student_life/Student_Links';
+import SocialMedia from '../components/student_life/StudentLifeSocialMedia';
 function StudentLife({ route }) {
     const { name } = route;
     const studentLifeCover = require("../assets/coverImage/studentLife.png");
@@ -11,7 +14,14 @@ function StudentLife({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+            <FlatList style={styles.center} 
+            ListHeaderComponent={   
+                <View> 
+                <StudentLinks />
+                <SocialMedia />
+                </View>
+            }
+            />
         </Main>
     );
 }
@@ -21,7 +31,8 @@ export default StudentLife;
 const styles = StyleSheet.create({
     center: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        paddingHorizontal: 18,
+        paddingTop: 5,
+        paddingBottom: 5,
     },
 });

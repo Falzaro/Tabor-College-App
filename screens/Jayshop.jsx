@@ -1,11 +1,13 @@
-import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, FlatList, Linking, ImageBackground , TouchableOpacity} from "react-native";
+import React from 'react';
+import { StyleSheet, View, FlatList, Linking, ImageBackground , } from "react-native";
 import Main from "../components/Main";
 
-import { Card, List, Title, Subheading, } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 import JayShopCarousel from '../components/jay_shop/JayShopCarousel';
 import JayShopHours from '../components/jay_shop/JayShopHours';
+import SalesItem from '../components/jay_shop/ExtractSaleItems';
+import JayShopSocialMedia from "../components/jay_shop/JayShopSocialMedia";
 
 const image = {uri: "https://tabor.edu/wp-content/plugins/phastpress/phast.php?service=images&src=https%3A%2F%2Ftabor.edu%2Fwp-content%2Fthemes%2Ftabor-theme%2Fassets%2Fimg%2Fhome-footer.jpg&cacheMarker=1554954396-93644&token=ac3057f43d6d5d49"};
 
@@ -19,6 +21,7 @@ function Jayshop({ route }) {
         darkness: "rgba(0, 0, 0, 0.10)",
         blurRadius: 0.5,
     };
+
     return (
         <Main name={name} coverImage={coverImage}>
             <ImageBackground source ={image} style={styles.image}  > 
@@ -26,17 +29,25 @@ function Jayshop({ route }) {
                 showsVerticalScrollIndicator = {false}
                 ListFooterComponent={
                     <View style={styles.container}>
-                        <JayShopCarousel />
+                        <SalesItem />
                         <JayShopHours />
+                        <JayShopCarousel />
                         <View style ={styles.buttonView}>
-                            <TouchableOpacity style = {styles.button}   onPress={() => Linking.openURL(linkUrl)}>
-                            <Subheading style = {styles.buttonText}>View More</Subheading>
-                            </TouchableOpacity>
+                        <Button
+                            icon="shopping-outline" 
+                            color ="#003082" 
+                            mode="contained" 
+                            dark
+                            onPress={() => Linking.openURL(linkUrl)}>
+                            Shop Now!
+                        </Button>
                         </View>
                     </View>
                 }
             />
+                <JayShopSocialMedia />
                 </ImageBackground>
+            <View style={styles.center}>{/* No content */}</View>
         </Main>
     );
 }
@@ -55,7 +66,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 5,
         marginBottom: 5,
-        backgroundColor: "#003082",
         borderRadius: 5,
         
     },
@@ -71,6 +81,8 @@ const styles = StyleSheet.create({
     buttonView: {
         paddingHorizontal: 130,
         paddingTop: 10,
+        paddingBottom: 10,
+        
     },
 
 });
