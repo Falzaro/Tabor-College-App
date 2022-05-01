@@ -70,19 +70,19 @@ for contact in libraryContact:
     info = {
         "name": "",
         "reference": "",
-        "email": "",
+        "email1": "",
         "phone": "",
         "ext" : ""
     }
     
 
-    name, reference, email, phone = retrieve_items.text.splitlines()
-    email = email.split()[1]
+    name, reference, email1, phone = retrieve_items.text.splitlines()
+    email1 = email1.split()[1]
     phone, ext = phone.split()[1:]
     
     info["name"] = name
     info["reference"] = reference
-    info["email"] = email
+    info["email1"] = email1
     info["phone"] = phone[:-1]
     info["ext"] = ext
     
