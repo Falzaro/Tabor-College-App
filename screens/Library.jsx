@@ -1,5 +1,7 @@
-import { StyleSheet, View, Text } from "react-native";
+import React from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
 import Main from "../components/Main";
+import LibraryHours from "../components/library_screen/Library_Hours";
 
 function Library({ route }) {
     const { name } = route;
@@ -11,7 +13,12 @@ function Library({ route }) {
     };
     return (
         <Main name={name} coverImage={coverImage}>
-            <View style={styles.center}>{/* No Content */}</View>
+            <ScrollView
+                style={styles.container}
+                showsVerticalScrollIndicator={false}
+            >
+                <LibraryHours />
+            </ScrollView>
         </Main>
     );
 }
@@ -19,9 +26,8 @@ function Library({ route }) {
 export default Library;
 
 const styles = StyleSheet.create({
-    center: {
+    container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        paddingHorizontal: 18,
     },
 });
