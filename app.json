@@ -4,9 +4,9 @@
     "slug": "tabor-college-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/blue_jay_icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash_screen/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
