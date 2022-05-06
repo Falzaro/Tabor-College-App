@@ -14,7 +14,9 @@ function Settings() {
                 <View style={styles.switchSection}>
                     <View style={{ width: "80%" }}>
                         <Title>Notifications</Title>
-                        <Text>Get push notifications</Text>
+                        <Text style={styles.caption}>
+                            Get push notifications
+                        </Text>
                     </View>
                     <Switch
                         value={false}

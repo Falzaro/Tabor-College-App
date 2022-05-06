@@ -27,7 +27,7 @@ const AboutApp = () => {
                 </View>
             </TouchableOpacity>
             <Divider style={styles.divider} />
-            <TouchableOpacity onPress={() => console.log("Support")}>
+            <TouchableOpacity onPress={() => console.log("Rate us")}>
                 <View style={[styles.row, { justifyContent: "space-between" }]}>
                     <Subheading
                         style={[styles.subHeading, internalStyles.caption]}
@@ -38,7 +38,7 @@ const AboutApp = () => {
                 </View>
             </TouchableOpacity>
             <Divider style={styles.divider} />
-            <TouchableOpacity onPress={() => console.log("Support")}>
+            <TouchableOpacity onPress={() => console.log("Privacy Policy")}>
                 <View style={[styles.row, { justifyContent: "space-between" }]}>
                     <Subheading
                         style={[styles.subHeading, internalStyles.caption]}
@@ -58,5 +58,6 @@ export default AboutApp;
 const internalStyles = StyleSheet.create({
     caption: {
         color: "#858585",
+        fontSize: 14,
     },
 });
