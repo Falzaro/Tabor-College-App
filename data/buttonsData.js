@@ -20,8 +20,19 @@ const getExternalOrScreenButtons = async (taborCollegeDoc, buttonType) => {
 
 const divideContainerIntoRows = (container) => {
     const rows = [];
+    const emptyEntry = {
+        name: "",
+        url: "",
+        image: "",
+    };
     for (let i = 0; i < container.length; i += 3) {
-        rows.push(container.slice(i, i + 3));
+        // Create a row with 3 buttons. If there are less than 3 buttons, fill the row with empty buttons.
+        const row = container.slice(i, i + 3);
+        if (row.length < 3) {
+            rows.push([...row, ...Array(3 - row.length).fill(emptyEntry)]);
+        } else {
+            rows.push(row);
+        }
     }
     return rows;
 };

@@ -25,7 +25,7 @@ const TaborCollege = ({ route }) => {
         getButtonsData().then((buttonsData) =>
             setButtonsContainers([
                 ...buttonsData,
-                ...buttonsData,
+                // ...buttonsData,
                 buttonsData[0].slice(0, 2),
             ])
         );
@@ -95,10 +95,12 @@ const TaborCollege = ({ route }) => {
                             );
                         }}
                     />
-                    <MainCircles
-                        buttonsContainersIndex={buttonsContainersIndex}
-                        buttonsContainers={buttonsContainers}
-                    />
+                    {buttonsContainers.length > 1 && (
+                        <MainCircles
+                            buttonsContainersIndex={buttonsContainersIndex}
+                            buttonsContainers={buttonsContainers}
+                        />
+                    )}
                 </View>
             </View>
         </Main>
@@ -121,6 +123,7 @@ const styles = StyleSheet.create({
     buttonsRow: {
         flexDirection: "row",
         marginBottom: 5,
+        // alignSelf: "stretch",
     },
 });
 
