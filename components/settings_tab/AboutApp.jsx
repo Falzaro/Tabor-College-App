@@ -1,14 +1,19 @@
+// Module Imports
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { Title, Divider, Subheading } from "react-native-paper";
 import { Entypo } from "@expo/vector-icons";
+import Constants from "expo-constants";
+
+// Styling Imports
 import { styles } from "./styles";
 
 const AboutApp = () => {
+    const version = Constants.manifest.version;
     return (
         <View style={styles.card}>
             <View style={styles.titleSection}>
                 <Title>About App</Title>
-                <Text style={styles.caption}>V 1.00.0</Text>
+                <Text style={styles.caption}>{version}</Text>
             </View>
             <Divider style={styles.divider} />
             <TouchableOpacity onPress={() => console.log("Support")}>
