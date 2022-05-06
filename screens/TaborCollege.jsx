@@ -77,9 +77,9 @@ const TaborCollege = ({ route }) => {
                                             style={styles.buttonsRow}
                                         >
                                             {buttonsRow.map(
-                                                ({ name, url, image }) => (
+                                                ({ name, url, image }, i) => (
                                                     <MainButton
-                                                        key={`_key${name}`}
+                                                        key={`_key_mainButton${i}`}
                                                         name={name}
                                                         url={url}
                                                         image={image}
@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
     buttonsRow: {
         flexDirection: "row",
         marginBottom: 5,
-        // alignSelf: "stretch",
     },
 });
 

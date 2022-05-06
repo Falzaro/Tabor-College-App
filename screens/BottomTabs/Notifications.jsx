@@ -42,5 +42,6 @@ const styles = StyleSheet.create({
     },
     subheading: {
         textAlign: "center",
+        color: "#858585",
     },
 });
