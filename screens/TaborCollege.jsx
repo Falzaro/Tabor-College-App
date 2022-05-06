@@ -26,7 +26,7 @@ const TaborCollege = ({ route }) => {
             setButtonsContainers([
                 ...buttonsData,
                 // ...buttonsData,
-                buttonsData[0].slice(0, 2),
+                // buttonsData[0].slice(0, 2),
             ])
         );
     }, []);
