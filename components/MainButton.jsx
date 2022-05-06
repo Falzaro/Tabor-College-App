@@ -16,7 +16,6 @@ function MainButton({ name, url, image, screenButtonNames }) {
     const isScreenButton = screenButtonNames.includes(name);
 
     const handlePress = () => {
-        if (!url) return;
         // If the button is not a screen type, open it in the browser
         if (!isScreenButton) Linking.openURL(url);
         // Otherwise, navigate to the screen
