@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     buttonsBackCover: {
         height: "100%",
         borderRadius: 20,
-        backgroundColor: "#f8f8f8",
+        backgroundColor: "#fafafa",
         alignItems: "center",
         flex: 1,
         width: "auto",
