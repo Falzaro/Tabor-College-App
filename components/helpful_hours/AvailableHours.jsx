@@ -1,4 +1,4 @@
-import { View, FlatList, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { Subheading, Card, Title } from "react-native-paper";
 
 const AvailableHours = ({ openHours, section }) => {
@@ -10,8 +10,8 @@ const AvailableHours = ({ openHours, section }) => {
             )}
             {openHours?.map((item, index) => (
                 <View style={styles.item} key={`_key${index}`}>
-                    <Subheading style={styles.days}>{item.days}</Subheading>
-                    {item.hours.map((hours, index) => (
+                    <Subheading style={styles.days}>{item?.days}</Subheading>
+                    {item?.hours?.map((hours, index) => (
                         <Text style={styles.hours} key={`_key${index}`}>
                             {hours}
                         </Text>
