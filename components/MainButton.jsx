@@ -22,6 +22,8 @@ function MainButton({ name, url, image, screenButtonNames }) {
         else navigation.navigate(name);
     };
 
+    if ((!name, !url, !image)) return <View style={styles.button} />;
+
     return (
         <TouchableOpacity style={styles.button} onPress={handlePress}>
             <>
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
         opacity: 0.84,
     },
     icon: {
-        height: 37,
+        height: 36,
         aspectRatio: 1,
     },
 });

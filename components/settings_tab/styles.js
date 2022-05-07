@@ -28,6 +28,8 @@ export const styles = StyleSheet.create({
     },
     divider: {
         marginVertical: 12,
+        backgroundColor: "black",
+        opacity: 0.3,
     },
     row: {
         flexDirection: "row",

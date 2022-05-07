@@ -23,7 +23,7 @@ const AboutApp = () => {
                     >
                         Support
                     </Subheading>
-                    <Entypo name="chevron-right" size={24} color="#9d9d9d" />
+                    <Entypo name="chevron-right" size={24} color="#bababa" />
                 </View>
             </TouchableOpacity>
             <Divider style={styles.divider} />
@@ -34,7 +34,7 @@ const AboutApp = () => {
                     >
                         Rate us
                     </Subheading>
-                    <Entypo name="chevron-right" size={24} color="#9d9d9d" />
+                    <Entypo name="chevron-right" size={24} color="#bababa" />
                 </View>
             </TouchableOpacity>
             <Divider style={styles.divider} />
@@ -45,7 +45,7 @@ const AboutApp = () => {
                     >
                         Privacy Policy
                     </Subheading>
-                    <Entypo name="chevron-right" size={24} color="#9d9d9d" />
+                    <Entypo name="chevron-right" size={24} color="#bababa" />
                 </View>
             </TouchableOpacity>
             <Divider style={{ marginTop: 15 }} />

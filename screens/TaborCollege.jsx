@@ -25,8 +25,8 @@ const TaborCollege = ({ route }) => {
         getButtonsData().then((buttonsData) =>
             setButtonsContainers([
                 ...buttonsData,
-                ...buttonsData,
-                buttonsData[0].slice(0, 2),
+                // ...buttonsData,
+                // buttonsData[0].slice(0, 2),
             ])
         );
     }, []);
@@ -77,9 +77,9 @@ const TaborCollege = ({ route }) => {
                                             style={styles.buttonsRow}
                                         >
                                             {buttonsRow.map(
-                                                ({ name, url, image }) => (
+                                                ({ name, url, image }, i) => (
                                                     <MainButton
-                                                        key={`_key${name}`}
+                                                        key={`_key_mainButton${i}`}
                                                         name={name}
                                                         url={url}
                                                         image={image}
@@ -95,10 +95,12 @@ const TaborCollege = ({ route }) => {
                             );
                         }}
                     />
-                    <MainCircles
-                        buttonsContainersIndex={buttonsContainersIndex}
-                        buttonsContainers={buttonsContainers}
-                    />
+                    {buttonsContainers.length > 1 && (
+                        <MainCircles
+                            buttonsContainersIndex={buttonsContainersIndex}
+                            buttonsContainers={buttonsContainers}
+                        />
+                    )}
                 </View>
             </View>
         </Main>

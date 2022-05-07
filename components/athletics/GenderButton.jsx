@@ -16,7 +16,7 @@ const GenderButton = ({ name, onPress, value }) => {
                     style={{
                         ...styles.buttonText,
                         // Check if it is the selected
-                        color: name === value ? "#fff" : "#A3A3A3",
+                        color: name === value ? "#fff" : "#fff",
                     }}
                 >
                     {/* capitalize the first letter */}
