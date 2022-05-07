@@ -69,8 +69,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     inactiveButton: {
-        width: 48,
+        width: 50,
         backgroundColor: "#EBEBEB",
+        backgroundColor: "white",
         color: "#000",
     },
     activeButton: {

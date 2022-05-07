@@ -8,29 +8,16 @@ const AvailableHours = ({ openHours, section }) => {
             {section.location && (
                 <Text style={styles.location}>({section.location})</Text>
             )}
-            <FlatList
-                style={{ marginBottom: 5 }}
-                showsVerticalScrollIndicator={false}
-                listKey={(_, index) => `_key${index}`}
-                keyExtractor={(_, index) => `_key${index}`}
-                data={openHours}
-                renderItem={({ item }) => (
-                    <View style={styles.item}>
-                        {/* Show days */}
-                        <Subheading style={styles.days}>{item.days}</Subheading>
-                        {/* Map out the hours */}
-                        <FlatList
-                            showsVerticalScrollIndicator={false}
-                            listKey={(_, index) => `_key${index}`}
-                            keyExtractor={(_, index) => `_key${index}`}
-                            data={item.hours}
-                            renderItem={({ item: hours }) => (
-                                <Text style={styles.hours}>{hours}</Text>
-                            )}
-                        />
-                    </View>
-                )}
-            />
+            {openHours?.map((item, index) => (
+                <View style={styles.item} key={`_key${index}`}>
+                    <Subheading style={styles.days}>{item.days}</Subheading>
+                    {item.hours.map((hours, index) => (
+                        <Text style={styles.hours} key={`_key${index}`}>
+                            {hours}
+                        </Text>
+                    ))}
+                </View>
+            ))}
         </Card>
     );
 };

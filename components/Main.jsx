@@ -30,7 +30,7 @@ const Main = ({ children, name, coverImage, imageSize }) => {
                     </View>
                 </ImageBackground>
             </View>
-            {/* Children contains screen content (Tabor College, Cafe Menu, etc.) */}
+            {/* Children contains screen content (Tabor College, Dining Hall, etc.) */}
             <View style={styles.screenBody}>{children}</View>
         </>
     );

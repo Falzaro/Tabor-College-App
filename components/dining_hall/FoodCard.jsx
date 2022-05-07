@@ -36,15 +36,11 @@ function FoodCard({ section }) {
                     <View style={styles.titleUnderline} />
                 </View>
                 {/* List of food items */}
-                <FlatList
-                    keyExtractor={(item) => item}
-                    data={section.data}
-                    renderItem={({ item }) => (
-                        <View style={styles.foodItem}>
-                            <Caption key={item}>{item}</Caption>
-                        </View>
-                    )}
-                />
+                {section.data.map((item) => (
+                    <View style={styles.foodItem} key={item}>
+                        <Caption>{item}</Caption>
+                    </View>
+                ))}
             </View>
         </Card>
     );

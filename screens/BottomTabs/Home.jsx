@@ -5,7 +5,7 @@ import { View, StyleSheet } from "react-native";
 
 // Relative Imports
 import TaborCollege from "../TaborCollege";
-import CafeMenu from "../CafeMenu";
+import DiningHall from "../DiningHall";
 import Athletics from "../Athletics";
 import HelpfulHours from "../HelpfulHours";
 import Jayshop from "../Jayshop";
@@ -30,7 +30,7 @@ const Home = () => {
             >
                 {/* Render the screen that the user is on */}
                 <Stack.Screen name="Tabor College" component={TaborCollege} />
-                <Stack.Screen name="Cafe Menu" component={CafeMenu} />
+                <Stack.Screen name="Dining Hall" component={DiningHall} />
                 <Stack.Screen name="Athletics" component={Athletics} />
                 <Stack.Screen name="Helpful Hours" component={HelpfulHours} />
                 <Stack.Screen name="Jayshop" component={Jayshop} />
