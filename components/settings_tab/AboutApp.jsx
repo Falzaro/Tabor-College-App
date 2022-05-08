@@ -13,7 +13,7 @@ const AboutApp = () => {
         <View style={styles.card}>
             <View style={styles.titleSection}>
                 <Title>About App</Title>
-                <Text style={styles.caption}>{version}</Text>
+                <Text style={styles.caption}>V {version}</Text>
             </View>
             <Divider style={styles.divider} />
             <TouchableOpacity onPress={() => console.log("Support")}>
