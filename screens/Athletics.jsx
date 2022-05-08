@@ -1,7 +1,7 @@
 // Module Imports
 import { useState, useEffect } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 
 // Relative Imports
 import GenderButton from "../components/athletics/GenderButton";
@@ -25,9 +25,10 @@ function Athletics({ route }) {
 
     useEffect(() => {
         const sportsRef = doc(db, "athletics", "sports");
-        getDoc(sportsRef).then((doc) => {
+        const unsub = onSnapshot(sportsRef, (doc) => {
             setSports(doc.data());
         });
+        return unsub;
     }, []);
 
     return (

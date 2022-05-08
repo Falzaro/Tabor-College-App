@@ -22,13 +22,8 @@ const TaborCollege = ({ route }) => {
     };
 
     useEffect(() => {
-        getButtonsData().then((buttonsData) =>
-            setButtonsContainers([
-                ...buttonsData,
-                // ...buttonsData,
-                // buttonsData[0].slice(0, 2),
-            ])
-        );
+        const unsub = getButtonsData(setButtonsContainers);
+        return unsub;
     }, []);
 
     useEffect(() => {

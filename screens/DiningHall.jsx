@@ -1,7 +1,7 @@
 // Module Imports
 import { useEffect, useState } from "react";
-import { StyleSheet, FlatList, View, ScrollView } from "react-native";
-import { doc, getDoc } from "firebase/firestore";
+import { StyleSheet, View, ScrollView } from "react-native";
+import { doc, onSnapshot } from "firebase/firestore";
 import { Card, Subheading } from "react-native-paper";
 
 // Relative Imports
@@ -29,14 +29,11 @@ function DiningHall({ route }) {
         // Get the cafe menu from Firestore
         if (activeDay) {
             const docRef = doc(db, "cafe menu", activeDay);
-            getDoc(docRef)
-                .then((doc) => {
-                    setCafeMenu(doc.data().sections);
-                    setLoadingData(false);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            const unsub = onSnapshot(docRef, (doc) => {
+                setCafeMenu(doc.data().sections);
+                setLoadingData(false);
+            });
+            return unsub;
         }
     }, [activeDay]);
 
@@ -47,13 +44,10 @@ function DiningHall({ route }) {
             "helpful hours example",
             "dining hall hours"
         );
-        getDoc(diningHallDocRef)
-            .then((doc) => {
-                setDiningHallHours(doc.data());
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        const unsub = onSnapshot(diningHallDocRef, (doc) => {
+            setDiningHallHours(doc.data());
+        });
+        return unsub;
     }, []);
 
     return (

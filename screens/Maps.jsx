@@ -7,7 +7,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 // Relative Imports
 import Main from "../components/Main";
 import { db } from "../firebase/config";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import LocationMarkers from "../components/maps/LocationMarkers";
 import BuildingsOnCampus from "../components/maps/BuildingsOnCampus";
 import Classrooms from "../components/maps/Classrooms";
@@ -33,7 +33,7 @@ function Maps({ route }) {
     useEffect(() => {
         // Get maps Locations from Firestore
         const docRef = doc(db, "maps", "Buildings on Campus");
-        getDoc(docRef).then((doc) => {
+        const unsub = onSnapshot(docRef, (doc) => {
             // Sort the locations by name
             const sortedLocations = doc
                 .data()
@@ -42,6 +42,7 @@ function Maps({ route }) {
             // Set the first location as the active location
             setActiveLocation(sortedLocations[0]);
         });
+        return unsub;
     }, []);
 
     const handleFullscreenPress = () => {

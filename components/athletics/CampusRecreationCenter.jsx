@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { Card, Subheading, Title } from "react-native-paper";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 
 // Relative Imports
 import { db } from "../../firebase/config";
@@ -13,10 +13,11 @@ const CampusRecreationCenter = () => {
 
     useEffect(() => {
         const crcRef = doc(db, "athletics", "campus recreation center");
-        getDoc(crcRef).then((doc) => {
+        const unsub = onSnapshot(crcRef, (doc) => {
             setHoursOfOperation(doc.data()["hours of operation"]);
             setWeightRoom(doc.data()["weight room"]);
         });
+        return unsub;
     }, []);
 
     return (
