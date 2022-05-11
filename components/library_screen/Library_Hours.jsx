@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-    StyleSheet,
-    View,
-    Text,
-    Linking,
-    FlatList,
-    ScrollView,
-} from "react-native";
+import { StyleSheet, View, Linking } from "react-native";
 
 import { Card, Title, Subheading, Paragraph, Button } from "react-native-paper";
 
 import { db } from "../../firebase/config";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 
 // set Locations
 const latitude = "38.34882";
@@ -32,14 +25,11 @@ const LibraryHours = () => {
     useEffect(() => {
         // get Jay Shop data from Firestore
         const docRef = doc(db, "helpful hours example", "library hours");
-        getDoc(docRef)
-            .then((doc) => {
-                const data = doc.data();
-                setLibraryData(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        const unsub = onSnapshot(docRef, (doc) => {
+            const data = doc.data();
+            setLibraryData(data);
+        });
+        return unsub;
     }, []);
 
     // Deconstruct Just to call the open hours

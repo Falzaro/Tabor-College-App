@@ -3,7 +3,7 @@ import { StyleSheet, FlatList, View, Text } from "react-native";
 import Main from "../components/Main";
 
 import { db } from "../firebase/config";
-import { getDocs, collection } from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 
 import DropDownTab from "../components/helpful_hours/DropDownTab";
 
@@ -20,14 +20,17 @@ function HelpfulHours({ route }) {
 
     const item = [];
     useEffect(() => {
-        getDocs(collection(db, "helpful hours example"))
-            .then((snapshot) => {
-                const helpfulHours = snapshot.docs.map((doc) => doc.data());
+        const unsub = onSnapshot(
+            collection(db, "helpful hours example"),
+            (querySnapshot) => {
+                console.log(querySnapshot);
+                const helpfulHours = querySnapshot.docs.map((doc) =>
+                    doc.data()
+                );
                 setHelpfulHoursTab(helpfulHours);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+            }
+        );
+        return unsub;
     }, []);
 
     return (

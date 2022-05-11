@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import { Card, Divider, Subheading, Title, Chip } from "react-native-paper";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // Relative Imports
@@ -32,9 +32,10 @@ function Classrooms({
             "maps",
             "List of Classrooms and Capacity Numbers"
         );
-        getDoc(docRef).then((doc) => {
+        const unsub = onSnapshot(docRef, (doc) => {
             setClassrooms(doc.data().classrooms);
         });
+        return unsub;
     }, []);
 
     useEffect(() => {
@@ -72,6 +73,8 @@ function Classrooms({
                 longitudeDelta: 0.0011,
             });
     };
+
+    console.log(filteredClassrooms);
 
     return (
         <Card

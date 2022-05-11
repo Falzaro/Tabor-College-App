@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Linking, StyleSheet, View, Text } from "react-native";
-import { Button, Title } from 'react-native-paper';
+import { Linking, StyleSheet, View } from "react-native";
+import { Button, Title } from "react-native-paper";
 
 import { db } from "../../firebase/config";
-import { getDoc, doc } from "firebase/firestore";
+import { onSnapshot, doc } from "firebase/firestore";
 
 const StudentLifeContact = () => {
     const [getContactInfo, setContactInfo] = useState([]);
@@ -11,57 +11,55 @@ const StudentLifeContact = () => {
     useEffect(() => {
         // get Jay Shop data from Firestore
         const docRef = doc(db, "helpful hours example", "student life");
-        getDoc(docRef)
-            .then((doc) => {
-                const data = doc.data();
-                setContactInfo(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        const unsub = onSnapshot(docRef, (doc) => {
+            const data = doc.data();
+            setContactInfo(data);
+        });
+        return unsub;
     }, []);
 
-  const {"Contact information": contactInfo} = getContactInfo;
+    const { "Contact information": contactInfo } = getContactInfo;
 
     return (
-        <View style ={styles.container}>
-            <Title style = {styles.title}>Contact Us</Title>
-           
-            <Button 
+        <View style={styles.container}>
+            <Title style={styles.title}>Contact Us</Title>
+
+            <Button
                 dark
-                compact 
-                contentStyle = {styles.button}
-                color = "#0071ce" 
-                icon="email" 
-                onPress={() => Linking.openURL(`mailto:${contactInfo?.email2}`)}>
-                    {contactInfo?.email2}
+                compact
+                contentStyle={styles.button}
+                color="#0071ce"
+                icon="email"
+                onPress={() => Linking.openURL(`mailto:${contactInfo?.email2}`)}
+            >
+                {contactInfo?.email2}
             </Button>
-          
-            <Button 
+
+            <Button
                 dark
-                compact 
-                contentStyle = {styles.button}
-                color = "#0071ce" 
-                icon="phone" 
-                onPress={() => Linking.openURL(`tel:${contactInfo?.phone}`)}>
-                    {contactInfo?.phone}
+                compact
+                contentStyle={styles.button}
+                color="#0071ce"
+                icon="phone"
+                onPress={() => Linking.openURL(`tel:${contactInfo?.phone}`)}
+            >
+                {contactInfo?.phone}
             </Button>
-                           
         </View>
     );
-}
+};
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        paddingTop: 5
+        alignItems: "center",
+        paddingTop: 5,
     },
-    button:{
+    button: {
         justifyContent: "space-between",
     },
-    title:{
+    title: {
         color: "#0071ce",
         fontSize: 19,
-    }
-})
+    },
+});
 
 export default StudentLifeContact;
