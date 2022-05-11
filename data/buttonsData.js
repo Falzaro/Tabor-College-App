@@ -57,7 +57,16 @@ export const getButtonsData = (setButtonsContainers) => {
             taborCollegeDoc,
             "screen buttons"
         );
-        const mainButtons = [...screenButtons, ...externalButtons];
+        // sort external buttons by name
+        const sortedExternalButtons = externalButtons.sort((a, b) =>
+            a.name < b.name ? -1 : 1
+        );
+        const sortedScreenButtons = screenButtons.sort((a, b) =>
+            a.name < b.name ? -1 : 1
+        );
+
+        // const mainButtons = [...screenButtons, ...externalButtons];
+        const mainButtons = [...sortedScreenButtons, ...sortedExternalButtons];
         setButtonsContainers(divideButtonsIntoContainers(mainButtons));
     });
 };
