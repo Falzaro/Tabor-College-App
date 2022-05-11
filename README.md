@@ -19,6 +19,24 @@ Since the mobile app needs to support both IOS and Android devices, the frontend
 
 ## Dependencies
 ### React Native Icons 
+This library is installed by default on the template project that get through `expo init` -- it is part of the `expo` package.
+It includes popular icon sets and you can browse all of the icons using [click here](icons.expo.fyi)
+- Official Docs [click here](https://docs.expo.dev/guides/icons/)
+- Example : 
+    -   ``` import * as React from 'react'; 
+        import { View, StyleSheet } from 'react-native';
+        import Ionicons from '@expo/vector-icons/Ionicons';
+
+        export default function App() {
+          return (
+            <View style={styles.container}>
+              <Ionicons name="md-checkmark-circle" size={32} color="green" />
+            </View>
+          );
+        }
+
+        const styles = StyleSheet.create({ ... });  
+        ```
 ### React Native Carousel
 Within this applications we have used this Caruousel Dependencies to layouts images. Please see the Officials docs and GitHub on How to Use.
 - Official Docs [click here](https://www.npmjs.com/package/react-native-snap-carousel)
@@ -26,33 +44,18 @@ Within this applications we have used this Caruousel Dependencies to layouts ima
 - Documentation for known Issues [click here](https://github.com/meliorence/react-native-snap-carousel/blob/master/doc/KNOWN_ISSUES.md)
 - How to Install: 
     - Run : `$ npm install --save react-native-snap-carousel`
-    ```
-     <Carousel 
-                layout = {'default'}
-                data = {getImage}
-                enableSnap = {true} // this must be true for " loop " to work
-                loop // this set item in a loop 
-                decelerationRate = 'fast'
-                autoplay	  // item will automatically play
-                useScrollView={true}
-                sliderWidth={SLIDER_WIDTH}
-                itemWidth={ITEM_WIDTH}
-                renderItem={({ item: section }) => (
-                    <View style ={styles.card}>  
-                        <Image style = {styles.imageLayout} source = {{uri: section.image}} />
-                        <Subheading style={styles.price}>{section.price}</Subheading>
-                        <Subheading style ={styles.name}>{section.name}</Subheading>
-                    </View>
-                   
-                )}
-            />
-    ```
-How to use: This is an example from JayShopCarousel.jsx 
-1.  for the data to render you will need to state the `data` and the direct the data to where you want it to render the items. 
-2.  For the image to render you will need to specify the `sliderWidth = {} and itemWidth={}` a numeric value will still work.
-3.  Inorder to render the image you will need to call `renderItem` and specify the path for it.
-4.  Please see the Documentations for React native Snap Carousel for more examples.
+    
 ### React Native Paper
+- Cross-platform Material Design for React Native.
+Paper is a collection of customizable and production-ready components for React Native, following Google’s Material Design guidelines.
+- Official Docs [click here](https://callstack.github.io/react-native-paper/)
+- GitHub [click here](https://github.com/callstack/react-native-paper)
+- How to install: 
+    -  Open a Terminal in your project's folder and run:
+        - ``` yarn add react-native-paper ```  
+        - or
+        - ``` npm install react-native-paper ```
+    - Getting started [click here](https://callstack.github.io/react-native-paper/getting-started.html)
 ### 
 ### @expo/vector-icons
 - React Native Elements Icons Documentation [click here](https://docs.expo.dev/guides/icons/#expovector-icons)
@@ -109,3 +112,5 @@ The following tools are used for the backend development: </br>
 - Cloud functions / API
 - Python, Pip, BeautifulSoup
 - ReactNative
+
+
