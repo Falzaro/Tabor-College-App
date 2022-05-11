@@ -9,7 +9,6 @@ import DiningHall from "../DiningHall";
 import Athletics from "../Athletics";
 import HelpfulHours from "../HelpfulHours";
 import Jayshop from "../Jayshop";
-import Library from "../Library";
 import StudentLife from "../StudentLife";
 import Maps from "../Maps";
 
@@ -34,7 +33,6 @@ const Home = () => {
                 <Stack.Screen name="Athletics" component={Athletics} />
                 <Stack.Screen name="Helpful Hours" component={HelpfulHours} />
                 <Stack.Screen name="Jayshop" component={Jayshop} />
-                <Stack.Screen name="Library" component={Library} />
                 <Stack.Screen name="Student Life" component={StudentLife} />
                 <Stack.Screen name="Maps" component={Maps} />
             </Stack.Navigator>
