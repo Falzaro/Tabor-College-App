@@ -45,7 +45,7 @@ function HelpfulHours({ route }) {
                 "open hours": [
                     {
                         hours: ["07:00 AM - 04:30 PM"],
-                        days: "Monday-Friday",
+                        days: "Monday - Friday",
                     },
                     {
                         days: "Saturday",
@@ -451,10 +451,10 @@ function HelpfulHours({ route }) {
     ];
 
     useEffect(() => {
-        // helpfulHourshardcode.forEach((helpfulHours) => {
-        //     const { id, data } = helpfulHours;
-        //     setDoc(doc(db, "helpful hours", id), data);
-        // });
+        helpfulHourshardcode.forEach((helpfulHours) => {
+            const { id, data } = helpfulHours;
+            setDoc(doc(db, "helpful hours", id), data);
+        });
         const unsub = onSnapshot(
             collection(db, "helpful hours"),
             (querySnapshot) => {
