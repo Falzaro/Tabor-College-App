@@ -15,7 +15,7 @@ const SalesItem = () => {
     const [salesItem, setSalesItem] = useState([]);
     useEffect(() => {
         // Get the  from firebase version 9
-        const docRef = doc(db, "products", "testing data2");
+        const docRef = doc(db, "products", "Sales Item");
         const unsub = onSnapshot(docRef, (doc) => {
             const data = doc.data().sections;
             setSalesItem(data);
@@ -53,8 +53,11 @@ const SalesItem = () => {
                         <Subheading style={styles.price}>
                             {section.price}
                         </Subheading>
+                        <Subheading style={styles.price}>
+                            {section.sale}
+                        </Subheading>
                         <Subheading style={styles.name}>
-                            {section.text}
+                            {section.name}
                         </Subheading>
                     </View>
                 )}
