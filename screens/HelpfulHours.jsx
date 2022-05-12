@@ -168,7 +168,7 @@ function HelpfulHours({ route }) {
                 "contact information": {
                     ext: "",
                     email2: "",
-                    email1: "finaid@tabor.edu ",
+                    email1: "finaid@tabor.edu",
                     phone: "",
                     url: "",
                 },
@@ -240,12 +240,12 @@ function HelpfulHours({ route }) {
                 ],
                 location: "Located in STCR",
                 title: "Jay Shop Hours",
-                "contact information ": {
+                "contact information": {
                     phone: "",
                     url: "",
                     email2: "",
                     ext: "",
-                    email1: "beckyn@tabor.edu ",
+                    email1: "beckyn@tabor.edu",
                 },
             },
         },
@@ -334,7 +334,7 @@ function HelpfulHours({ route }) {
         {
             id: "open hours for dorms",
             data: {
-                location: "Men and Women’s Quad ",
+                location: "Men and Women’s Quad",
                 "open hours": [
                     {
                         days: "Monday - Thursday",
@@ -451,10 +451,10 @@ function HelpfulHours({ route }) {
     ];
 
     useEffect(() => {
-        helpfulHourshardcode.forEach((helpfulHours) => {
-            const { id, data } = helpfulHours;
-            setDoc(doc(db, "helpful hours", id), data);
-        });
+        // helpfulHourshardcode.forEach((helpfulHours) => {
+        //     const { id, data } = helpfulHours;
+        //     setDoc(doc(db, "helpful hours", id), data);
+        // });
         const unsub = onSnapshot(
             collection(db, "helpful hours"),
             (querySnapshot) => {
