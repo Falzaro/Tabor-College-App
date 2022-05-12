@@ -1,5 +1,11 @@
 // Module Imports
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+    Text,
+    View,
+    StyleSheet,
+    TouchableOpacity,
+    Linking,
+} from "react-native";
 import { Title, Divider, Subheading } from "react-native-paper";
 import { Entypo } from "@expo/vector-icons";
 import Constants from "expo-constants";
@@ -16,7 +22,13 @@ const AboutApp = () => {
                 <Text style={styles.caption}>V {version}</Text>
             </View>
             <Divider style={styles.divider} />
-            <TouchableOpacity onPress={() => console.log("Support")}>
+            <TouchableOpacity
+                onPress={() =>
+                    Linking.openURL(
+                        "https://tabor.edu/appsupport/#:~:text=For%20help%20using%20the%20Tabor,at%20connect%40tabor.edu."
+                    )
+                }
+            >
                 <View style={[styles.row, { justifyContent: "space-between" }]}>
                     <Subheading
                         style={[styles.subHeading, internalStyles.caption]}
@@ -38,7 +50,13 @@ const AboutApp = () => {
                 </View>
             </TouchableOpacity>
             <Divider style={styles.divider} />
-            <TouchableOpacity onPress={() => console.log("Privacy Policy")}>
+            <TouchableOpacity
+                onPress={() =>
+                    Linking.openURL(
+                        "https://app4mobilebiz.wpengine.com/swiftic-mobile-app-end-user-privacy-policy.html"
+                    )
+                }
+            >
                 <View style={[styles.row, { justifyContent: "space-between" }]}>
                     <Subheading
                         style={[styles.subHeading, internalStyles.caption]}
