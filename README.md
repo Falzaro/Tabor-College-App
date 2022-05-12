@@ -87,7 +87,9 @@ Paper is a collection of customizable and production-ready components for React 
 - ` <Ionicons name="arrow-redo-sharp" size={14} color="#444444"  /> `
 - Please see the supported icons for available names to each icons
 
-## WebScraping 
+## WebScraping
+### Jay Shop Web Scrape all products
+### Jay Shop Web Scrap all Sales Items
 ## Backend Documentation
 The backend team is using a package from Python that consists of BeautifulSoup. BeautifulSoup </br>
 is a Python library that extracts data from HTML and XML files. The requirements for BeautifulSoup </br>
