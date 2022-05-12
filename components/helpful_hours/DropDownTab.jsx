@@ -6,7 +6,7 @@ import ContactInformation from "./ContactInformation";
 
 const DropDownTab = ({ section }) => {
     const [expanded, setExpanded] = useState(false); // set this to false, don't want to open automatically
-    const { "Contact information": contactInfo, "open hours": openHours } =
+    const { "contact information": contactInfo, "open hours": openHours } =
         section;
 
     // Toggle list accordion on click
