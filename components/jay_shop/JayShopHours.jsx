@@ -12,7 +12,7 @@ const JayShopHours = () => {
 
     useEffect(() => {
         // get Jay Shop data from Firestore
-        const docRef = doc(db, "helpful hours example", "jay shop hours");
+        const docRef = doc(db, "helpful hours", "jay shop hours");
         const unsub = onSnapshot(docRef, (doc) => {
             const data = doc.data();
             setJayShop(data);

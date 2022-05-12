@@ -39,11 +39,7 @@ function DiningHall({ route }) {
 
     useEffect(() => {
         // Get the dining hall hours from Firestore
-        const diningHallDocRef = doc(
-            db,
-            "helpful hours example",
-            "dining hall hours"
-        );
+        const diningHallDocRef = doc(db, "helpful hours", "dining hall hours");
         const unsub = onSnapshot(diningHallDocRef, (doc) => {
             setDiningHallHours(doc.data());
         });

@@ -10,7 +10,7 @@ const StudentLifeContact = () => {
 
     useEffect(() => {
         // get Jay Shop data from Firestore
-        const docRef = doc(db, "helpful hours example", "student life");
+        const docRef = doc(db, "helpful hours", "student life");
         const unsub = onSnapshot(docRef, (doc) => {
             const data = doc.data();
             setContactInfo(data);
@@ -18,7 +18,7 @@ const StudentLifeContact = () => {
         return unsub;
     }, []);
 
-    const { "Contact information": contactInfo } = getContactInfo;
+    const { "contact information": contactInfo } = getContactInfo;
 
     return (
         <View style={styles.container}>
