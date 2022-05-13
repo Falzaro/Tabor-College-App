@@ -11,6 +11,7 @@ import { db } from "../firebase/config";
 import CampusRecreationCenter from "../components/athletics/CampusRecreationCenter";
 import SportsBanner from "../components/athletics/SportsBanner";
 import SocialMedias from "../components/athletics/SocialMedias";
+import ViewMoreButton from "../components/ViewMoreButton";
 
 function Athletics({ route }) {
     const [genderType, setGenderType] = useState("men's");
@@ -65,6 +66,7 @@ function Athletics({ route }) {
                     genderType={genderType}
                 />
                 <SocialMedias />
+                <ViewMoreButton url="https://www.taborbluejays.com/" />
             </ScrollView>
         </Main>
     );

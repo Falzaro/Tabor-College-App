@@ -119,9 +119,11 @@ function Classrooms({
                                 Room: {classroom.room}
                             </Subheading>
                             {/* Capacity */}
-                            <Subheading>
-                                Capacity: {classroom.capacity}
-                            </Subheading>
+                            {Boolean(classroom.capacity) && (
+                                <Subheading>
+                                    Capacity: {classroom.capacity}
+                                </Subheading>
+                            )}
                         </View>
                         {/* Note */}
                         {Boolean(classroom.note) && (
