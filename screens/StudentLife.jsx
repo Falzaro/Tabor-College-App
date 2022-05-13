@@ -1,9 +1,9 @@
-import { StyleSheet, View , FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import Main from "../components/Main";
 
-
-import StudentLinks from '../components/student_life/Student_Links';
-import SocialMedia from '../components/student_life/StudentLifeSocialMedia';
+import StudentLinks from "../components/student_life/Student_Links";
+import SocialMedia from "../components/student_life/StudentLifeSocialMedia";
+import ViewMoreButton from "../components/ViewMoreButton";
 function StudentLife({ route }) {
     const { name } = route;
     const studentLifeCover = require("../assets/coverImage/studentLife.png");
@@ -12,15 +12,18 @@ function StudentLife({ route }) {
         darkness: "rgba(0, 0, 0, 0.11)",
         blurRadius: 0.5,
     };
+
     return (
         <Main name={name} coverImage={coverImage}>
-            <FlatList style={styles.center} 
-            ListHeaderComponent={   
-                <View> 
-                <StudentLinks />
-                <SocialMedia />
-                </View>
-            }
+            <FlatList
+                style={styles.center}
+                ListHeaderComponent={
+                    <View>
+                        <StudentLinks />
+                        <SocialMedia />
+                        <ViewMoreButton url="https://tabor.edu/undergraduate/student-life/" />
+                    </View>
+                }
             />
         </Main>
     );

@@ -67,7 +67,7 @@ export default SocialMedias;
 const styles = StyleSheet.create({
     socialMedias: {
         flex: 1,
-        marginBottom: 30,
+        marginBottom: 20,
     },
     socialMediaIcon: {
         height: 36,

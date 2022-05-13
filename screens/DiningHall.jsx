@@ -10,6 +10,8 @@ import { db } from "../firebase/config";
 import FoodCard from "../components/dining_hall/FoodCard";
 import DaysButtonGroup from "../components/dining_hall/DaysButtonGroup";
 import AvailableHours from "../components/helpful_hours/AvailableHours";
+import ViewMoreButton from "../components/ViewMoreButton";
+import CustomChip from "../components/CustomChip";
 
 function DiningHall({ route }) {
     const [cafeMenu, setCafeMenu] = useState([]);
@@ -81,6 +83,7 @@ function DiningHall({ route }) {
                         />
                     ))}
                 </View>
+                <ViewMoreButton url="https://oncampusdining.com/tabor/menu/" />
             </ScrollView>
         </Main>
     );
@@ -90,6 +93,7 @@ export default DiningHall;
 
 const styles = StyleSheet.create({
     contentContainer: {
+        flex: 1,
         paddingHorizontal: 18,
         paddingBottom: 5,
     },
@@ -101,8 +105,6 @@ const styles = StyleSheet.create({
     },
     diningHallHours: {
         paddingHorizontal: 18,
-        // marginBottom: 15,
-        // marginTop: -10,
         marginTop: 15,
     },
 });
