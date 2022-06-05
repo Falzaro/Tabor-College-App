@@ -39,7 +39,7 @@ const AboutApp = () => {
                 </View>
             </TouchableOpacity>
             <Divider style={styles.divider} />
-            <TouchableOpacity onPress={() => console.log("Rate us")}>
+            <TouchableOpacity>
                 <View style={[styles.row, { justifyContent: "space-between" }]}>
                     <Subheading
                         style={[styles.subHeading, internalStyles.caption]}
