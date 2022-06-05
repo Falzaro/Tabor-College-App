@@ -74,8 +74,6 @@ function Classrooms({
             });
     };
 
-    console.log(filteredClassrooms);
-
     return (
         <Card
             style={{
