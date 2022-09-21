@@ -19,3 +19,7 @@ firebase/web_scrape/firebase_secret_key.json
 # Backend
 firebase/web_scrape/requirements.txt
 firebase/web_scrape/project_env
+
+# Production
+eas.json
+app.json

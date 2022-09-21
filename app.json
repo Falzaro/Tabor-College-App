@@ -2,7 +2,7 @@
     "expo": {
         "name": "Tabor College Student",
         "slug": "tabor-college-student",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "orientation": "portrait",
         "icon": "./assets/jj_icon.png",
         "splash": {
@@ -15,7 +15,14 @@
         },
         "assetBundlePatterns": ["**/*"],
         "ios": {
-            "supportsTablet": true
+            "supportsTablet": false,
+            "bundleIdentifier": "com.tabor.collegestudent",
+            "buildNumber": "1.0.2",
+            "config": {},
+            "infoPlist": {
+                "NSLocationAlwaysUsageDescription": "This app needs to know where you are so it can show you things near you.",
+                "NSLocationWhenInUseUsageDescription": "This app needs to know where you are so it can show you things near you."
+            }
         },
         "android": {
             "package": "com.tabor.collegestudent",
@@ -23,6 +30,9 @@
             "adaptiveIcon": {
                 "foregroundImage": "./assets/jj_icon.png",
                 "backgroundColor": "#FFFFFF"
+            },
+            "config": {
+                "googleMaps": {}
             }
         },
         "web": {
