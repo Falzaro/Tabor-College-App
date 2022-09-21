@@ -1,7 +1,7 @@
 // Module Imports
 import { useRef, useEffect, useState } from "react";
 import { StyleSheet, ScrollView, TouchableOpacity, View } from "react-native";
-import MapView from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { MaterialIcons } from "@expo/vector-icons";
 
 // Relative Imports
@@ -68,7 +68,7 @@ function Maps({ route }) {
                     latitudeDelta: 0.0012,
                     longitudeDelta: 0.0011,
                 }}
-                provider="google"
+                provider={PROVIDER_GOOGLE}
                 showsCompass={false}
                 ref={(ref) => {
                     regionRef.current = ref;
