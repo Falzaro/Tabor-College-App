@@ -83,7 +83,10 @@ function DiningHall({ route }) {
                         />
                     ))}
                 </View>
-                <ViewMoreButton url="https://oncampusdining.com/tabor/menu/" />
+                <ViewMoreButton
+                    url="https://oncampusdining.com/tabor/menu/"
+                    name="Dinning Hall"
+                />
             </ScrollView>
         </Main>
     );

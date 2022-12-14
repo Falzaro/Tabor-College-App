@@ -21,7 +21,10 @@ function StudentLife({ route }) {
                     <View>
                         <StudentLinks />
                         <SocialMedia />
-                        <ViewMoreButton url="https://tabor.edu/undergraduate/student-life/" />
+                        <ViewMoreButton
+                            url="https://tabor.edu/undergraduate/student-life/"
+                            name="Student Life"
+                        />
                     </View>
                 }
             />

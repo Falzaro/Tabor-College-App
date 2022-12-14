@@ -14,7 +14,11 @@
     },
     "submit": {
         "production": {
-            "ios": {}
+            "ios": {
+                "appleId": "business@tabor.edu",
+                "ascAppId": "1635877253",
+                "appleTeamId": "92HP73W32A"
+            }
         }
     }
 }

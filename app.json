@@ -1,42 +1,47 @@
 {
-    "expo": {
-        "name": "Tabor College Student",
-        "slug": "tabor-college-student",
-        "version": "1.0.2",
-        "orientation": "portrait",
-        "icon": "./assets/jj_icon.png",
-        "splash": {
-            "image": "./assets/splash_screen/splash.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#ffffff"
-        },
-        "updates": {
-            "fallbackToCacheTimeout": 0
-        },
-        "assetBundlePatterns": ["**/*"],
-        "ios": {
-            "supportsTablet": false,
-            "bundleIdentifier": "com.tabor.collegestudent",
-            "buildNumber": "1.0.2",
-            "config": {},
-            "infoPlist": {
-                "NSLocationAlwaysUsageDescription": "This app needs to know where you are so it can show you things near you.",
-                "NSLocationWhenInUseUsageDescription": "This app needs to know where you are so it can show you things near you."
-            }
-        },
-        "android": {
-            "package": "com.tabor.collegestudent",
-            "versionCode": 3,
-            "adaptiveIcon": {
-                "foregroundImage": "./assets/jj_icon.png",
-                "backgroundColor": "#FFFFFF"
-            },
-            "config": {
-                "googleMaps": {}
-            }
-        },
-        "web": {
-            "favicon": "./assets/favicon.png"
+  "expo": {
+    "name": "Tabor College Student",
+    "slug": "tabor-college-student",
+    "version": "1.0.5",
+    "orientation": "portrait",
+    "icon": "./assets/jj_icon.png",
+    "splash": {
+      "image": "./assets/splash_screen/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.tabor.collegestudent",
+      "buildNumber": "1.0.5",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCgs4qHsbIc4TvkpstzNnYaSg3nXQuy6A4"
+      },
+      "infoPlist": {
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses your location to provide you with the best experience possible.",
+        "NSLocationAlwaysUsageDescription": "This app uses your location to provide you with the best experience possible.",
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to provide you with the best experience possible."
+      }
+    },
+    "android": {
+      "package": "com.tabor.collegestudent",
+      "versionCode": 3,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/jj_icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBOdtVFzk9GC0PYQzJDdWTA-wlTTw-J3e8"
         }
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
     }
+  }
 }
