@@ -66,7 +66,10 @@ function Athletics({ route }) {
                     genderType={genderType}
                 />
                 <SocialMedias />
-                <ViewMoreButton url="https://www.taborbluejays.com/" />
+                <ViewMoreButton
+                    url="https://www.taborbluejays.com/"
+                    name="Athletics"
+                />
             </ScrollView>
         </Main>
     );

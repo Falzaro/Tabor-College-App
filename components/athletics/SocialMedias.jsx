@@ -6,20 +6,24 @@ import {
     Linking,
 } from "react-native";
 import SportsBanner from "./SportsBanner";
+import { useNavigation } from "@react-navigation/native";
 
 const SocialMedias = () => {
-    const handleMediaPress = (mediaLink) => {
-        Linking.openURL(mediaLink);
+    const navigation = useNavigation();
+
+    const handleMediaPress = (mediaLink, name) => {
+        navigation.navigate("Webview", { url: mediaLink, name });
     };
 
     return (
         <View style={styles.socialMedias}>
-            <SportsBanner headline="Social Medias" />
+            <SportsBanner headline="Social Media" />
             <View style={styles.socialMediaContainer}>
                 <TouchableOpacity
                     onPress={() =>
                         handleMediaPress(
-                            "https://www.youtube.com/channel/UC5hEYiIzYABiMThMhPj12tQ/videos"
+                            "https://www.youtube.com/channel/UC5hEYiIzYABiMThMhPj12tQ/videos",
+                            "YouTube"
                         )
                     }
                 >
@@ -33,7 +37,8 @@ const SocialMedias = () => {
                 <TouchableOpacity
                     onPress={() =>
                         handleMediaPress(
-                            "https://twitter.com/gotaborbluejays?lang=en"
+                            "https://twitter.com/gotaborbluejays?lang=en",
+                            "Twitter"
                         )
                     }
                 >
@@ -47,7 +52,8 @@ const SocialMedias = () => {
                 <TouchableOpacity
                     onPress={() =>
                         handleMediaPress(
-                            "https://www.instagram.com/taborbluejays/?hl=en"
+                            "https://www.instagram.com/taborbluejays/?hl=en",
+                            "Instagram"
                         )
                     }
                 >

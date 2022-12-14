@@ -1,8 +1,11 @@
 import React from "react";
 import { StyleSheet, Linking, View } from "react-native";
 import { Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 const StudentLifeSocialMedia = () => {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <Button
@@ -11,7 +14,10 @@ const StudentLifeSocialMedia = () => {
                 uppercase={false}
                 labelStyle={{ fontSize: 30 }}
                 onPress={() =>
-                    Linking.openURL("https://twitter.com/taborcollege")
+                    navigation.navigate("Webview", {
+                        url: "https://twitter.com/taborcollege",
+                        name: "Twitter",
+                    })
                 }
             ></Button>
             <Button
@@ -20,7 +26,10 @@ const StudentLifeSocialMedia = () => {
                 uppercase={false}
                 labelStyle={{ fontSize: 30 }}
                 onPress={() =>
-                    Linking.openURL("https://www.facebook.com/TaborCollege")
+                    navigation.navigate("Webview", {
+                        url: "https://www.facebook.com/TaborCollege",
+                        name: "Facebook",
+                    })
                 }
             ></Button>
             <Button
@@ -29,7 +38,10 @@ const StudentLifeSocialMedia = () => {
                 uppercase={false}
                 labelStyle={{ fontSize: 30 }}
                 onPress={() =>
-                    Linking.openURL("https://www.instagram.com/taborcollege/")
+                    navigation.navigate("Webview", {
+                        url: "https://www.instagram.com/taborcollege/",
+                        name: "Instagram",
+                    })
                 }
             ></Button>
         </View>

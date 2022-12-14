@@ -11,6 +11,8 @@ import HelpfulHours from "../HelpfulHours";
 import Jayshop from "../Jayshop";
 import StudentLife from "../StudentLife";
 import Maps from "../Maps";
+import Webview from "../Webview";
+import { Colors } from "react-native-paper";
 
 const Home = () => {
     // Stack Navigator to handle different screens
@@ -35,6 +37,16 @@ const Home = () => {
                 <Stack.Screen name="Jayshop" component={Jayshop} />
                 <Stack.Screen name="Student Life" component={StudentLife} />
                 <Stack.Screen name="Maps" component={Maps} />
+                <Stack.Screen
+                    name="Webview"
+                    component={Webview}
+                    options={(navigation) => ({
+                        headerTransparent: false,
+                        headerBackTitle: "Back",
+                        headerTitle: navigation.route.params.name,
+                        headerTintColor: Colors.darkBlue,
+                    })}
+                />
             </Stack.Navigator>
         </View>
     );

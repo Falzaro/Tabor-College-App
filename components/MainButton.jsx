@@ -1,12 +1,5 @@
 import React from "react";
-import {
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    Linking,
-    View,
-    Image,
-} from "react-native";
+import { Text, StyleSheet, TouchableOpacity, View, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -16,9 +9,7 @@ function MainButton({ name, url, image, screenButtonNames }) {
     const isScreenButton = screenButtonNames.includes(name);
 
     const handlePress = () => {
-        // If the button is not a screen type, open it in the browser
-        if (!isScreenButton) Linking.openURL(url);
-        // Otherwise, navigate to the screen
+        if (!isScreenButton) navigation.navigate("Webview", { url, name });
         else navigation.navigate(name);
     };
 

@@ -1,9 +1,12 @@
 // Module Imports
-import { View, StyleSheet, ImageBackground, Linking } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import { Card, Title } from "react-native-paper";
 import CustomChip from "../CustomChip";
+import { useNavigation } from "@react-navigation/native";
 
 function SeasonCard({ sportsData, season, genderType }) {
+    const navigation = useNavigation();
+
     // Render background image that matches with the season
     const getMensImage = (season) => {
         switch (season) {
@@ -58,7 +61,12 @@ function SeasonCard({ sportsData, season, genderType }) {
                             style={styles.sportItem}
                         >
                             <CustomChip
-                                onPress={() => Linking.openURL(item.url)}
+                                onPress={() =>
+                                    navigation.navigate("Webview", {
+                                        url: item.url,
+                                        name: item.sport,
+                                    })
+                                }
                             >
                                 {item.sport}
                             </CustomChip>

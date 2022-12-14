@@ -1,16 +1,15 @@
-import {
-    StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
-    Linking,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const ViewMoreButton = ({ url }) => {
+const ViewMoreButton = ({ url, name }) => {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => Linking.openURL(url)}>
+            <TouchableOpacity
+                onPress={() => navigation.navigate("Webview", { url, name })}
+            >
                 <View style={styles.chip}>
                     <MaterialCommunityIcons
                         style={{ marginRight: 10 }}

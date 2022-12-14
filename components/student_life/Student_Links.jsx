@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Linking, StyleSheet, View, FlatList } from "react-native";
 import { Card, Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 import { db } from "../../firebase/config";
 import { onSnapshot, doc } from "firebase/firestore";
-
 import ContactInfo from "./ContactInfo";
+
 const StudentLinks = () => {
     const [studentLinks, setStudentLinks] = useState([]);
+    const navigation = useNavigation();
+
     useEffect(() => {
         const docRef = doc(db, "student life links", "student life links");
         const unsub = onSnapshot(docRef, (doc) => {
@@ -16,6 +19,7 @@ const StudentLinks = () => {
         });
         return unsub;
     }, []);
+    console.log(studentLinks);
 
     return (
         <Card style={styles.container}>
@@ -34,7 +38,12 @@ const StudentLinks = () => {
                                 contentStyle={styles.button}
                                 color="#0071ce"
                                 icon="open-in-new"
-                                onPress={() => Linking.openURL(item.links)}
+                                onPress={() =>
+                                    navigation.navigate("Webview", {
+                                        url: item.links,
+                                        name: item.title,
+                                    })
+                                }
                             >
                                 {item.title}
                             </Button>

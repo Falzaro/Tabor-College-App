@@ -8,7 +8,7 @@ import MainButton from "../components/MainButton";
 import Main from "../components/Main";
 import MainCircles from "../components/tabor_college/MainCircles";
 
-const TaborCollege = ({ route }) => {
+const TaborCollege = ({ route, navigation }) => {
     const [buttonsContainersIndex, setButtonsContainersIndex] = useState(0);
     const [buttonsContainers, setButtonsContainers] = useState([]);
     const [screenButtonNames, setScreenButtonNames] = useState([]);
